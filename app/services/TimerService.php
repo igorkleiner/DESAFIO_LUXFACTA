@@ -40,7 +40,7 @@ class TimerService
 	public function minhasHoras(){
 		$horas =  DB::table('timer')
 			->where('usu_id',Auth::user()->usu_id)
-			->orderBy('timer_id', 'desc')
+			->orderBy('data', 'desc')
 			->take(30)
 			->get();
 		return array_reverse($horas);

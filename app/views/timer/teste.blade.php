@@ -1,5 +1,5 @@
 @extends('layout.defaulttemplate')
-@section('title','TESTE')
+@section('title','OFFICE')
 @section('content')
 
 <script type="text/javascript">

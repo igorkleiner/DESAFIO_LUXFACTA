@@ -1,5 +1,5 @@
 @extends('layout.defaulttemplate')
-@section('title','Timer')
+@section('title','TIMER')
 @section('content')
 
 <script type="text/javascript">

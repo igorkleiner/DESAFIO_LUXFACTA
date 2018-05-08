@@ -16,7 +16,7 @@
 
 <div class="warning master borda1 " id='divTimer' data-bind='with:timer'>
 	{{--ko--}}	
-		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2" style="border-radius: 30px" > 
+		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px" > 
 			<div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
 				<strong>
 					<span data-bind=' relogio:agora, text:agora.data '></span>
@@ -41,7 +41,7 @@
 			</div>
 		</div>
 		{{-- periodo 1 --}}
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro ">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro " style="margin-top: 10px;">
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada1'>
 					<div class="thumbnail">
@@ -804,6 +804,7 @@
 			}                      
 			dadosPost = 
 			{
+				'data' : data,
 				'timer_id' : self.timerId(),
 				'timer_key': usuario.usu_id.toString()+usuario.per_id.toString()+data.replace(/\D/g,''),
 				'entrada_1': entradaPeriodo1,

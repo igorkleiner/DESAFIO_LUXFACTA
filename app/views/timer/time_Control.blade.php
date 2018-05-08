@@ -603,7 +603,7 @@
 						self.entradaPeriodo1(result.response.entrada_1);
 						self.entradaPeriodo2(result.response.entrada_2);
 						self.entradaPeriodo3(result.response.entrada_3);
-						self.entradaPeriodo4(result.response.entrada_4);ç
+						self.entradaPeriodo4(result.response.entrada_4);
 						self.entradaPeriodo5(result.response.entrada_5);
 						self.saidaPeriodo1(result.response.saida_1);
 						self.saidaPeriodo2(result.response.saida_2);
@@ -621,6 +621,7 @@
 			}                      
 			dadosPost = 
 			{
+				'data' : data,
 				'timer_id' : self.timerId(),
 				'timer_key': usuario.usu_id.toString()+usuario.per_id.toString()+data.replace(/\D/g,''),
 				'entrada_1': entradaPeriodo1,

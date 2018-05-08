@@ -19,7 +19,7 @@ class TimerService
 	{
 		$timer = !empty($data['timer_id']) ? Timer::find($data['timer_id']) : new Timer;
 
-		$timer->usu_id    = $data['usu_id'];
+		$timer->usu_id    = Auth::user()->usu_id;
 		$timer->data      = $data['data'];
 		$timer->timer_key = $data['timer_key'];
 		$timer->entrada_1 = $data['entrada_1']; 

@@ -1,0 +1,82 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'moment',
+1 verbose cli   '--save' ]
+2 info using npm@4.1.2
+3 info using node@v7.7.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData moment
+8 silly fetchNamedPackageData moment
+9 silly mapToRegistry name moment
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'moment',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'moment',
+12 silly mapToRegistry   name: 'moment',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/moment
+14 verbose request uri https://registry.npmjs.org/moment
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 14:41:32
+17 verbose request id 8b6a14e751bcf09f
+18 http request GET https://registry.npmjs.org/moment
+19 info retry will retry, error on last attempt: Error: error:0906D06C:PEM routines:PEM_read_bio:no start line
+20 info attempt registry request try #2 at 14:41:42
+21 http request GET https://registry.npmjs.org/moment
+22 info retry will retry, error on last attempt: Error: error:0906D06C:PEM routines:PEM_read_bio:no start line
+23 info attempt registry request try #3 at 14:42:42
+24 http request GET https://registry.npmjs.org/moment
+25 silly fetchPackageMetaData Error: error:0906D06C:PEM routines:PEM_read_bio:no start line
+25 silly fetchPackageMetaData     at Object.createSecureContext (_tls_common.js:85:17)
+25 silly fetchPackageMetaData     at Object.exports.connect (_tls_wrap.js:1025:48)
+25 silly fetchPackageMetaData     at Agent.createConnection (https.js:83:22)
+25 silly fetchPackageMetaData     at Agent.createSocket (_http_agent.js:195:26)
+25 silly fetchPackageMetaData     at Agent.addRequest (_http_agent.js:157:10)
+25 silly fetchPackageMetaData     at new ClientRequest (_http_client.js:212:16)
+25 silly fetchPackageMetaData     at Object.request (http.js:26:10)
+25 silly fetchPackageMetaData     at Object.request (https.js:206:15)
+25 silly fetchPackageMetaData     at Request.start (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:744:32)
+25 silly fetchPackageMetaData     at Request.end (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1435:10)
+25 silly fetchPackageMetaData  error for moment Error: error:0906D06C:PEM routines:PEM_read_bio:no start line
+25 silly fetchPackageMetaData     at Object.createSecureContext (_tls_common.js:85:17)
+25 silly fetchPackageMetaData     at Object.exports.connect (_tls_wrap.js:1025:48)
+25 silly fetchPackageMetaData     at Agent.createConnection (https.js:83:22)
+25 silly fetchPackageMetaData     at Agent.createSocket (_http_agent.js:195:26)
+25 silly fetchPackageMetaData     at Agent.addRequest (_http_agent.js:157:10)
+25 silly fetchPackageMetaData     at new ClientRequest (_http_client.js:212:16)
+25 silly fetchPackageMetaData     at Object.request (http.js:26:10)
+25 silly fetchPackageMetaData     at Object.request (https.js:206:15)
+25 silly fetchPackageMetaData     at Request.start (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:744:32)
+25 silly fetchPackageMetaData     at Request.end (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1435:10)
+26 silly rollbackFailedOptional Starting
+27 silly rollbackFailedOptional Finishing
+28 silly runTopLevelLifecycles Finishing
+29 silly install printInstalled
+30 verbose stack Error: error:0906D06C:PEM routines:PEM_read_bio:no start line
+30 verbose stack     at Object.createSecureContext (_tls_common.js:85:17)
+30 verbose stack     at Object.exports.connect (_tls_wrap.js:1025:48)
+30 verbose stack     at Agent.createConnection (https.js:83:22)
+30 verbose stack     at Agent.createSocket (_http_agent.js:195:26)
+30 verbose stack     at Agent.addRequest (_http_agent.js:157:10)
+30 verbose stack     at new ClientRequest (_http_client.js:212:16)
+30 verbose stack     at Object.request (http.js:26:10)
+30 verbose stack     at Object.request (https.js:206:15)
+30 verbose stack     at Request.start (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:744:32)
+30 verbose stack     at Request.end (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1435:10)
+31 verbose cwd C:\LARAVEL\DESAFIO_LUXFACTA
+32 error Windows_NT 10.0.10240
+33 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "moment" "--save"
+34 error node v7.7.1
+35 error npm  v4.1.2
+36 error error:0906D06C:PEM routines:PEM_read_bio:no start line
+37 error If you need help, you may report this error at:
+37 error     <https://github.com/npm/npm/issues>
+38 verbose exit [ 1, true ]

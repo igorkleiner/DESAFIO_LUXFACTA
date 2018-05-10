@@ -23,7 +23,8 @@
 				</strong>			
 			</div>
 			<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center" >
-				<!-- <button class="btn-lg btn-success" style="margin-top: 6px; height: 43px;" data-bind='click:salvar'>Salvar</button> -->
+				{{-- <button class="btn-lg btn-success" style="margin-top: 6px; height: 43px;" data-bind='click:total'>Total do dia</button> --}}
+				{{-- <button class="btn-lg btn-success" style="margin-top: 6px; height: 43px;" data-bind='click:consolidado'>Consolidado dia</button> --}}
 			</div>
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -41,7 +42,8 @@
 		</div>
 		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px; margin-top: 75px; vertical-align: middle;padding: 20px;" > 
 			<center>
-				<div id="chartContainer" class="borda" style="height: 370px; max-width: 1080px; margin: 0px auto;border-radius: 10px"></div>
+				{{-- <div id="chartContainer"  class="borda" style="height: 370px; max-width: 1080px; margin: 0px auto;border-radius: 10px"></div> --}}
+				<div id="chartContainer" class="borda" style="height: 300px; width: 100%; margin: 0px auto;border-radius: 10px"></div>
 			</center>
 		</div>		
 	</div>
@@ -224,6 +226,14 @@
 			self.usuario  = ko.observable(usuario.usu_nome);
 			self.tempos   = [];	
 			self.dadosGrafico = [];
+			self.dadosGrafico2 = [];
+			self.dadosGrafico2["Tp1"] = [];
+			self.dadosGrafico2["Tp2"] = [];
+			self.dadosGrafico2["Tp3"] = [];
+			self.dadosGrafico2["Tp4"] = [];
+			self.dadosGrafico2["Tp5"] = [];
+            console.log(self.dadosGrafico2);
+				
 			if (grafico.status != 0 && grafico.response != null) 
 			{
 				ko.utils.arrayForEach(grafico.response,function(tempo)
@@ -251,177 +261,233 @@
                 //
                 ko.utils.arrayForEach(self.tempos,function(dia)
                 {
-                    tempoEntrada = dia.horasTotais().split(':'); 
-                    var horas = new Date(dia.data);
+					tempoEntrada = dia.horasTotais().split(':'); 
+					var horas = new Date(dia.data);
 					horas.setHours(tempoEntrada[0]);
 					horas.setMinutes(tempoEntrada[1]);
 					horas.setSeconds(tempoEntrada[2]); 
-					//
-                    self.dadosGrafico.push(
-                    	{label:dia.data.toString(), y: parseFloat(horas.getHours()+'.'+horas.getMinutes())}
+					
+					self.dadosGrafico.push(
+						{label:dia.data.toString(), y: parseFloat(horas.getHours()+'.'+horas.getMinutes())}
+     				)
+
+                    Tp1 = dia.totalHorasPeriodo1().split(':');
+                    var horas = new Date(dia.data);
+					horas.setHours(Tp1[0]);
+					horas.setMinutes(Tp1[1]);
+					horas.setSeconds(Tp1[2]); 
+					self.dadosGrafico2["Tp1"].push(
+						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
+                    )
+                    Tp2 = dia.totalHorasPeriodo2().split(':');
+                    var horas = new Date(dia.data);
+					horas.setHours(Tp2[0]);
+					horas.setMinutes(Tp2[1]);
+					horas.setSeconds(Tp2[2]); 
+					self.dadosGrafico2["Tp2"].push(
+						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
+                    )
+                    Tp3 = dia.totalHorasPeriodo3().split(':');
+                    var horas = new Date(dia.data);
+					horas.setHours(Tp3[0]);
+					horas.setMinutes(Tp3[1]);
+					horas.setSeconds(Tp3[2]); 
+					self.dadosGrafico2["Tp3"].push(
+						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
+                    )
+                    Tp4 = dia.totalHorasPeriodo4().split(':');
+                    var horas = new Date(dia.data);
+					horas.setHours(Tp4[0]);
+					horas.setMinutes(Tp4[1]);
+					horas.setSeconds(Tp4[2]); 
+					self.dadosGrafico2["Tp4"].push(
+						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
+                    )
+                    Tp5 = dia.totalHorasPeriodo5().split(':');
+                    var horas = new Date(dia.data);
+					horas.setHours(Tp5[0]);
+					horas.setMinutes(Tp5[1]);
+					horas.setSeconds(Tp5[2]); 
+					self.dadosGrafico2["Tp5"].push(
+						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
                     )
                 });
+                console.log(self.dadosGrafico);
+                console.log(self.dadosGrafico2);
                 //
-    			var chart = new CanvasJS.Chart("chartContainer", 
+				//======= grafico 1 =========================================================================================
+					var chart = new CanvasJS.Chart("chartContainer", 
+					{
+						// Change theme to "light1", "light2", "dark1", "dark2",   
+						// theme: "light1", 
+						theme: "light2", 
+						// theme: "dark1",     
+						// theme: "dark2",   
+						animationEnabled: true, // change to true		
+						
+						title:
+						{
+							text: "Gráfico de Horas/Dia"
+						},
+						
+						axisX: 
+						{
+							interval: 1
+						},
+
+						axisY: 
+						{
+							title: "Horas",
+							scaleBreaks: 
+							{
+								type: "wavy",
+								customBreaks: 
+								[
+									{startValue: 80, endValue: 210},
+									{startValue: 230,endValue: 600}
+								]
+							}
+						},
+
+						data: 
+						[
+							{
+								// Change type to "column", "bar", "area", "spline", "pie",etc.
+								type: "column",
+								// type: "bar",
+								// type: "area",
+								// type: "spline",
+								// type: "pie",
+								// dataPoints:[
+								// 	{ label: "USA", y: 57466.787 },
+								// 	{ label: "Austraila", y: 49927.82 },
+								// 	{ label: "UK", y: 39899.388 },
+								// 	{ label: "UAE", y: 37622.207 },
+								// 	{ label: "Brazil", y: 8649.948 },
+								// 	{ label: "China", y: 8123.181 },
+								// 	{ label: "Indonesia", y: 3570.295 },
+								// 	{ label: "India", y: 1709.387 }	
+								// ] 
+								dataPoints:self.dadosGrafico 
+							}
+						]
+					});	  
+					chart.render();  						
+				//=============================================================================================================
+				//======= grafico 2 ===========================================================================================
+					// var chart1 = new CanvasJS.Chart("chartContainer", 
+					// {
+					// 	animationEnabled: true,
+					// 	title:{
+					// 		text: "Horas - Consolidadas por Periodo",
+					// 		fontFamily: "arial black",
+					// 		fontColor: "#695A42"
+					// 	},
+					// 	axisX: {
+					// 		interval: 5,
+					// 		intervalType: "day"
+					// 	},
+					// 	axisY:{
+					// 		// prefix:'AAA',
+					// 		suffix:"h",
+					// 		valueFormatString:"",
+					// 		gridColor: "#B6B1A8",
+					// 		tickColor: "#B6B1A8"
+					// 	},
+					// 	toolTip: {
+					// 		shared: true,
+					// 		content: toolTipContent
+					// 	},
+					// 	data: 
+					// 	[
+					// 		{
+					// 			type: "stackedColumn",
+					// 			showInLegend: true,
+					// 			// color: "#696661",
+					// 			color: "#f00",
+					// 			name: "Periodo_1",
+					// 			indexLabel: "#total h",
+					// 			dataPoints: self.dadosGrafico2.Tp1
+					// 			// dataPoints: [
+					// 			// 	{ y: 6.75 , x: new Date(2010,0) },
+					// 			// 	{ y: 8.57 , x: new Date(2011,0) },
+					// 			// 	{ y: 10.64, x: new Date(2012,0) },
+					// 			// 	{ y: 13.97, x: new Date(2013,0) },
+					// 			// 	{ y: 15.42, x: new Date(2014,0) },
+					// 			// 	{ y: 17.26, x: new Date(2015,0) },
+					// 			// 	{ y: 20.26, x: new Date(2016,0) }
+					// 			// ]
+					// 		},
+					// 		{        
+					// 			type: "stackedColumn",
+					// 			showInLegend: true,
+					// 			name: "Periodo_2",
+					// 			// color: "#EDCA93",
+					// 			color: "#0f0",
+					// 			dataPoints: self.dadosGrafico2.Tp2							
+					// 		},
+					// 		{        
+					// 			type: "stackedColumn",
+					// 			showInLegend: true,
+					// 			name: "Periodo_3",
+					// 			// color: "#695A42",
+					// 			color: "#00f",
+					// 			dataPoints: self.dadosGrafico2.Tp3
+					// 		},
+					// 		{        
+					// 			type: "stackedColumn",
+					// 			showInLegend: true,
+					// 			name: "Periodo_4",
+					// 			// color: "#B6B1A8",
+					// 			color: "#f50",
+					// 			dataPoints: self.dadosGrafico2.Tp4
+					// 		},
+					// 		{        
+					// 			type: "stackedColumn",
+					// 			showInLegend: true,
+					// 			name: "Periodo_5",
+					// 			// color: "#695A42",
+					// 			color: "#f99",
+					// 			dataPoints: self.dadosGrafico2.Tp5
+					// 		}
+					// 	]
+					// });
+				//=============================================================================================================
+
+				function toolTipContent(e) 
 				{
-					// Change theme to "light1", "light2", "dark1", "dark2",   
-					// theme: "light1", 
-					theme: "light2", 
-					// theme: "dark1",     
-					// theme: "dark2",   
-					animationEnabled: true, // change to true		
-					
-					title:
+					var str = "";
+					var total = 0;
+					var str2, str3;
+					for (var i = 0; i < e.entries.length; i++)
 					{
-						text: "Gráfico de Horas/Dia"
-					},
-					
-					axisX: 
-					{
-						interval: 1
-					},
+						var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + 
+									"\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+
+									e.entries[i].dataPoint.y+"</strong>bn<br/>";
 
-					axisY: 
-					{
-						title: "Horas",
-						scaleBreaks: 
-						{
-							type: "wavy",
-							customBreaks: 
-							[
-								{startValue: 80, endValue: 210},
-								{startValue: 230,endValue: 600}
-							]
-						}
-					},
-
-					data: 
-					[
-						{
-							// Change type to "column", "bar", "area", "spline", "pie",etc.
-							type: "column",
-							// type: "bar",
-							// type: "area",
-							// type: "spline",
-							// type: "pie",
-							// dataPoints:[
-							// 	{ label: "USA", y: 57466.787 },
-							// 	{ label: "Austraila", y: 49927.82 },
-							// 	{ label: "UK", y: 39899.388 },
-							// 	{ label: "UAE", y: 37622.207 },
-							// 	{ label: "Brazil", y: 8649.948 },
-							// 	{ label: "China", y: 8123.181 },
-							// 	{ label: "Indonesia", y: 3570.295 },
-							// 	{ label: "India", y: 1709.387 }	
-							// ] 
-							dataPoints:self.dadosGrafico 
-						}
-					]
-				});
-				chart.render();
-				// var chart = new CanvasJS.Chart("chartContainer", {
-				// 	animationEnabled: true,
-				// 	title:{
-				// 		text: "Google - Consolidated Quarterly Revenue",
-				// 		fontFamily: "arial black",
-				// 		fontColor: "#695A42"
-				// 	},
-				// 	axisX: {
-				// 		interval: 1,
-				// 		intervalType: "year"
-				// 	},
-				// 	axisY:{
-				// 		valueFormatString:"$#0bn",
-				// 		gridColor: "#B6B1A8",
-				// 		tickColor: "#B6B1A8"
-				// 	},
-				// 	toolTip: {
-				// 		shared: true,
-				// 		content: toolTipContent
-				// 	},
-				// 	data: [{
-				// 		type: "stackedColumn",
-				// 		showInLegend: true,
-				// 		color: "#696661",
-				// 		name: "Q1",
-				// 		dataPoints: [
-				// 			{ y: 6.75, x: new Date(2010,0) },
-				// 			{ y: 8.57, x: new Date(2011,0) },
-				// 			{ y: 10.64, x: new Date(2012,0) },
-				// 			{ y: 13.97, x: new Date(2013,0) },
-				// 			{ y: 15.42, x: new Date(2014,0) },
-				// 			{ y: 17.26, x: new Date(2015,0) },
-				// 			{ y: 20.26, x: new Date(2016,0) }
-				// 		]
-				// 		},
-				// 		{        
-				// 			type: "stackedColumn",
-				// 			showInLegend: true,
-				// 			name: "Q2",
-				// 			color: "#EDCA93",
-				// 			dataPoints: [
-				// 				{ y: 6.82, x: new Date(2010,0) },
-				// 				{ y: 9.02, x: new Date(2011,0) },
-				// 				{ y: 11.80, x: new Date(2012,0) },
-				// 				{ y: 14.11, x: new Date(2013,0) },
-				// 				{ y: 15.96, x: new Date(2014,0) },
-				// 				{ y: 17.73, x: new Date(2015,0) },
-				// 				{ y: 21.5, x: new Date(2016,0) }
-				// 			]
-				// 		},
-				// 		{        
-				// 			type: "stackedColumn",
-				// 			showInLegend: true,
-				// 			name: "Q3",
-				// 			color: "#695A42",
-				// 			dataPoints: [
-				// 				{ y: 7.28, x: new Date(2010,0) },
-				// 				{ y: 9.72, x: new Date(2011,0) },
-				// 				{ y: 13.30, x: new Date(2012,0) },
-				// 				{ y: 14.9, x: new Date(2013,0) },
-				// 				{ y: 18.10, x: new Date(2014,0) },
-				// 				{ y: 18.68, x: new Date(2015,0) },
-				// 				{ y: 22.45, x: new Date(2016,0) }
-				// 			]
-				// 		},
-				// 		{        
-				// 			type: "stackedColumn",
-				// 			showInLegend: true,
-				// 			name: "Q4",
-				// 			color: "#B6B1A8",
-				// 			dataPoints: [
-				// 				{ y: 8.44, x: new Date(2010,0) },
-				// 				{ y: 10.58, x: new Date(2011,0) },
-				// 				{ y: 14.41, x: new Date(2012,0) },
-				// 				{ y: 16.86, x: new Date(2013,0) },
-				// 				{ y: 10.64, x: new Date(2014,0) },
-				// 				{ y: 21.32, x: new Date(2015,0) },
-				// 				{ y: 26.06, x: new Date(2016,0) }
-				// 			]
-				// 	}]
-				// });
-				// chart.render();
-
-				// function toolTipContent(e) {
-				// 	var str = "";
-				// 	var total = 0;
-				// 	var str2, str3;
-				// 	for (var i = 0; i < e.entries.length; i++)
-				// 	{
-				// 		var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + "\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+e.entries[i].dataPoint.y+"</strong>bn<br/>";
-				// 		total = e.entries[i].dataPoint.y + total;
-				// 		str = str.concat(str1);
-				// 	}
-				// 	str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).getFullYear()+"</strong></span><br/>";
-				// 	total = Math.round(total * 100) / 100;
-				// 	str3 = "<span style = \"color:Tomato\">Total:</span><strong> $"+total+"</strong>bn<br/>";
-				// 	return (str2.concat(str)).concat(str3);
+						total = e.entries[i].dataPoint.y + total;
+						str = str.concat(str1);
+					}
+					str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).getFullYear()+"</strong></span><br/>";
+					total = Math.round(total * 100) / 100;
+					str3 = "<span style = \"color:Tomato\">Total:</span><strong>"+total+"</strong>h<br/>";
+					return (str2.concat(str)).concat(str3);
+				}
+				// self.total = function()
+	   //  		{	
+				// 	// chart.render();
+				// }
+				// self.consolidado = function()
+	   //  		{	
+	   //  			//chart.destroy();
+				// 	chart1.render();
+	   //  			chart1.destroy();
 				// }
 			}					
 		}
 		//-------------------------------------------------------------------------------------------------------------------------- 
 		viewModel = new ViewModel;
-		
+
 		$(function(){
 			ko.applyBindings(viewModel, document.getElementById('divTimer'));
 		});

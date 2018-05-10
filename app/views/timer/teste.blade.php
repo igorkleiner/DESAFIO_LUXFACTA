@@ -44,31 +44,27 @@
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro " style="margin-top: 10px;">
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada1'>
-					<div class="thumbnail">
-						<div class="caption">
+					<div class="thumbnail" >
+						<div class="caption" style="display: inline-block;">
 							<h3>Entrada do periodo 1</h3>
 							<input type='text' data-bind="masked:entradaPeriodo1, mask: mask, hasFocus:focoEntrada1"></input>	
-							<p>
-								<button class='btn btn-success' data-bind='click: setEntrada1'>Set Now</button>
-							</p>
+							<button class='btn btn-success' data-bind='click: setEntrada1'>Set Now</button>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4" >
-					<div class="thumbnail" data-bind='visible:visuSaida1'>
-						<div class="caption">
+					<div class="thumbnail" data-bind='visible:visuSaida1' >
+						<div class="caption" style="display: inline-block;">
 							<h3>Saida do periodo 1</h3>
 							<input type='text' data-bind='masked:saidaPeriodo1, mask: mask,  visible:visuSaida1, hasFocus:focoSaida1'></input>
-							<p>
-								<button class='btn btn-danger' data-bind='click: setSaida1, visible:visuSaida1'>Set Now</button>				
-							</p>
+							<button class='btn btn-danger' data-bind='click: setSaida1, visible:visuSaida1'>Set Now</button>				
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4 direita" data-bind='visible:visuEntrada1'>
-					<div class="thumbnail">
+					<div class="thumbnail" >
 						<div class="caption">
-							<div class="row " style="text-align: center">
+							<div class="row " style="text-align: center;;margin-top: -25px;">
 								<h3>Dados do periodo 1</h3>
 							</div>
 							<div class="row">
@@ -77,7 +73,7 @@
 									<h4><strong><span data-bind='text:totalHorasPeriodo1' ></span></strong></h4>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: center">
-								    <h5>Ausencia após período</h5>
+								    <h5>Ausencia Transitória</h5>
 									<h4><strong><span data-bind='text:totalAusenciaPeriodo12'></span></strong></h4>
 								</div>
 							</div>
@@ -87,34 +83,30 @@
 	        </div>		
 		</div>
 		{{-- periodo 2 --}}
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" data-bind='visible:visuEntrada2'>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" style="margin-top: 10px;" data-bind='visible:visuEntrada2'>
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada2'>
 					<div class="thumbnail">
-						<div class="caption">
+						<div class="caption" style="display: inline-block;">
 							<h3>Entrada do periodo 2</h3>
 							<input type='text' data-bind="masked:entradaPeriodo2, mask: mask, hasFocus:focoEntrada2"></input>	
-							<p>
-								<button class='btn btn-success' data-bind='click: setEntrada2'>Set Now</button>
-							</p>
+							<button class='btn btn-success' data-bind='click: setEntrada2'>Set Now</button>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4" >
 					<div class="thumbnail" data-bind='visible:visuSaida2'>
-						<div class="caption">
+						<div class="caption" style="display: inline-block;">
 							<h3>Saida do periodo 2</h3>
 							<input type='text' data-bind='masked:saidaPeriodo2, mask: mask,  visible:visuSaida2, hasFocus:focoSaida2'></input>
-							<p>
-								<button class='btn btn-danger' data-bind='click: setSaida2, visible:visuSaida2'>Set Now</button>				
-							</p>
+							<button class='btn btn-danger' data-bind='click: setSaida2, visible:visuSaida2'>Set Now</button>				
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4 direita" data-bind='visible:visuEntrada2'>
 					<div class="thumbnail">
 						<div class="caption">
-							<div class="row " style="text-align: center">
+							<div class="row " style="text-align: center; margin-top: -25px;">
 								<h3>Dados do periodo 2</h3>
 							</div>
 							<div class="row">
@@ -123,7 +115,7 @@
 									<h4><strong><span data-bind='text:totalHorasPeriodo2' ></span></strong></h4>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: center">
-								    <h5>Ausencia após período</h5>
+								    <h5>Ausencia Transitória</h5>
 									<h4><strong><span data-bind='text:totalAusenciaPeriodo23'></span></strong></h4>
 								</div>
 							</div>
@@ -133,34 +125,30 @@
 	        </div>		
 		</div>
 		{{-- periodo 3 --}}
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" data-bind='visible:visuEntrada3'>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" style="margin-top: 10px;" data-bind='visible:visuEntrada3'>
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada3'>
 					<div class="thumbnail">
-						<div class="caption">
+						<div class="caption" style="display: inline-block;">
 							<h3>Entrada do periodo 3</h3>
 							<input type='text' data-bind="masked:entradaPeriodo3, mask: mask, hasFocus:focoEntrada3"></input>	
-							<p>
-								<button class='btn btn-success' data-bind='click: setEntrada3'>Set Now</button>
-							</p>
+							<button class='btn btn-success' data-bind='click: setEntrada3'>Set Now</button>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4" >
 					<div class="thumbnail" data-bind='visible:visuSaida3'>
-						<div class="caption">
+						<div class="caption" style="display: inline-block;">
 							<h3>Saida do periodo 3</h3>
 							<input type='text' data-bind='masked:saidaPeriodo3, mask: mask,  visible:visuSaida3, hasFocus:focoSaida3'></input>
-							<p>
-								<button class='btn btn-danger' data-bind='click: setSaida3, visible:visuSaida3'>Set Now</button>				
-							</p>
+							<button class='btn btn-danger' data-bind='click: setSaida3, visible:visuSaida3'>Set Now</button>				
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4 direita" data-bind='visible:visuEntrada3'>
 					<div class="thumbnail">
 						<div class="caption">
-							<div class="row " style="text-align: center">
+							<div class="row " style="text-align: center; margin-top: -25px;">
 								<h3>Dados do periodo 3</h3>
 							</div>
 							<div class="row">
@@ -169,7 +157,7 @@
 									<h4><strong><span data-bind='text:totalHorasPeriodo3' ></span></strong></h4>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: center">
-								    <h5>Ausencia após período</h5>
+								    <h5>Ausencia Transitória</h5>
 									<h4><strong><span data-bind='text:totalAusenciaPeriodo34'></span></strong></h4>
 								</div>
 							</div>
@@ -179,34 +167,30 @@
 	        </div>		
 		</div>
 		{{-- periodo 4 --}}
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" data-bind='visible:visuEntrada4'>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" style="margin-top: 10px;" data-bind='visible:visuEntrada4'>
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada4'>
 					<div class="thumbnail">
-						<div class="caption">
+						<div class="caption" style="display: inline-block;">
 							<h3>Entrada do periodo 4</h3>
 							<input type='text' data-bind="masked:entradaPeriodo4, mask: mask, hasFocus:focoEntrada4"></input>	
-							<p>
 								<button class='btn btn-success' data-bind='click: setEntrada4'>Set Now</button>
-							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4" >
 					<div class="thumbnail" data-bind='visible:visuSaida4'>
-						<div class="caption">
+						<div class="caption" style="display: inline-block;">
 							<h3>Saida do periodo 4</h3>
 							<input type='text' data-bind='masked:saidaPeriodo4, mask: mask,  visible:visuSaida4, hasFocus:focoSaida4'></input>
-							<p>
 								<button class='btn btn-danger' data-bind='click: setSaida4, visible:visuSaida4'>Set Now</button>				
-							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4 direita" data-bind='visible:visuEntrada4'>
 					<div class="thumbnail">
 						<div class="caption">
-							<div class="row " style="text-align: center">
+							<div class="row " style="text-align: center; margin-top: -25px;">
 								<h3>Dados do periodo 4</h3>
 							</div>
 							<div class="row">
@@ -215,7 +199,7 @@
 									<h4><strong><span data-bind='text:totalHorasPeriodo4' ></span></strong></h4>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: center">
-								    <h5>Ausencia após período</h5>
+								    <h5>Ausencia Transitória</h5>
 									<h4><strong><span data-bind='text:totalAusenciaPeriodo45'></span></strong></h4>
 								</div>
 							</div>
@@ -225,34 +209,30 @@
 	        </div>		
 		</div>
 		{{-- periodo 5 --}}
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" data-bind='visible:visuEntrada5'>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" style="margin-top: 10px;" data-bind='visible:visuEntrada5'>
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada5'>
 					<div class="thumbnail">
-						<div class="caption">
+						<div class="caption" style="display: inline-block;">
 							<h3>Entrada do periodo 5</h3>
 							<input type='text' data-bind="masked:entradaPeriodo5, mask: mask, hasFocus:focoEntrada5"></input>	
-							<p>
 								<button class='btn btn-success' data-bind='click: setEntrada5'>Set Now</button>
-							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4" >
 					<div class="thumbnail" data-bind='visible:visuSaida5'>
-						<div class="caption">
+						<div class="caption" style="display: inline-block;">
 							<h3>Saida do periodo 5</h3>
 							<input type='text' data-bind='masked:saidaPeriodo5, mask: mask,  visible:visuSaida5, hasFocus:focoSaida5'></input>
-							<p>
 								<button class='btn btn-danger' data-bind='click: setSaida5, visible:visuSaida5'>Set Now</button>				
-							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4 direita" data-bind='visible:visuEntrada5'>
 					<div class="thumbnail">
 						<div class="caption">
-							<div class="row " style="text-align: center">
+							<div class="row " style="text-align: center;">
 								<h3>Dados do periodo 5</h3>
 								<h5>Total desse período</h5>
 								<h4><strong><span data-bind='text:totalHorasPeriodo5' ></span></strong></h4>
@@ -263,10 +243,10 @@
 	        </div>		
 		</div>
 		{{-- TOTAIS --}}
-		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro " > 
+		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro " style="margin-top: 10px;" > 
 			<div class="row">
 				<div class=" col-sm-6 col-md-4  borda 2">
-					<div class="thumbnail ">
+					<div class="thumbnail " style="max-height: 150px;">
 						<div class="caption">
 							<div class="row " style="text-align: center">
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: center">
@@ -292,14 +272,14 @@
 					</div>		
 				</div>		
 				<div class=" ccol-sm-6 col-md-4 ">
-					<div class="thumbnail">
+					<div class="thumbnail" style="max-height: 150px;">
 						<div class="caption">
 							<div class="row " style="text-align: center">
 								<h3>Horas extras</h3>
 							</div>
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: center">
-								    <h5>Previsão Horas Extras</h5>
+								    <h5>Previsão de Extras</h5>
 									<h4><strong>
 									<span data-bind='text:previsaoHorasExtras'></span></strong></h4>
 								</div>
@@ -312,7 +292,7 @@
 					</div>
 				</div> 		
 				<div class="col-sm-6 col-md-4 direita">
-					<div class="thumbnail">
+					<div class="thumbnail" style="max-height: 150px;">
 						<div class="caption">
 							<div class="row " style="text-align: center">
 								<h3>Total do Dia</h3>

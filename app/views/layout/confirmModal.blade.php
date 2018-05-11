@@ -248,8 +248,7 @@
 				'usuario':self.usuario(),
 				'senha'  :self.senha()
 			};
-			globalViewModel.submit("{{Route('igor.makeLogin')}}", dadosPost,callback);
-			
+			globalViewModel.submit("{{Route('igor.makeLogin')}}", dadosPost,callback);			
 		}
 		self.fazlogout = function()
 		{
@@ -261,12 +260,8 @@
 				'usu_nome':'Guest',
 				'per_id'  :"0"
 			};
-			globalViewModel.submit("{{Route('igor.logout')}}", dadosPost,callback);
-			
-		}
-		
-		
-		
+			globalViewModel.submit("{{Route('igor.logout')}}", dadosPost,callback);			
+		}		
 	}
 	var login = new Login();
 	$(function(){

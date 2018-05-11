@@ -24,7 +24,7 @@
 				</strong>			
 			</div>
 			<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center" >
-				<button class="btn-lg btn-success" style="margin-top: 6px;" data-bind='click:salvar'>Salvar</button>
+				<button class="btn-lg btn-success" style="margin-top: 3px;" data-bind='click:salvar'>Salvar</button>
 			</div>
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -327,11 +327,13 @@
 		//
 		self.timerId                 = ko.observable(timer_id);    
 		self.usuario                 = ko.observable(usuario.usu_nome);
+		//
 		self.visuEntrada1            = ko.observable(true);
 		self.visuEntrada2            = ko.observable(false);
 		self.visuEntrada3            = ko.observable(false);
 		self.visuEntrada4            = ko.observable(false);
 		self.visuEntrada5            = ko.observable(false);
+		//
 		self.visuSaida1              = ko.observable(false);
 		self.visuSaida2              = ko.observable(false);
 		self.visuSaida3              = ko.observable(false);
@@ -343,38 +345,40 @@
 		self.focoEntrada3            = ko.observable(false);
 		self.focoEntrada4            = ko.observable(false);
 		self.focoEntrada5            = ko.observable(false);
+		//
 		self.focoSaida1              = ko.observable(false);
 		self.focoSaida2              = ko.observable(false);
 		self.focoSaida3              = ko.observable(false);
 		self.focoSaida4              = ko.observable(false);
 		self.focoSaida5              = ko.observable(false);
+		//
 		self.entradaPeriodo1         = ko.observable(entrada1);//("08:16:00");
-		self.displayEntrada1         = ko.observable(entrada1);		 
-		self.saidaPeriodo1           = ko.observable(saida1);//('10:41:00');
-		self.displaySaida1           = ko.observable(saida1);
 		self.entradaPeriodo2         = ko.observable(entrada2);//('11:29:00');
-		self.displayEntrada2         = ko.observable(entrada2);
-		self.saidaPeriodo2           = ko.observable(saida2);//('13:21:00');
-		self.displaySaida2           = ko.observable(saida2);
 		self.entradaPeriodo3         = ko.observable(entrada3);//('16:20:00');
-		self.displayEntrada3         = ko.observable(entrada3);
-		self.saidaPeriodo3           = ko.observable(saida3);//("00:00:00");
-		self.displaySaida3           = ko.observable(saida3);
 		self.entradaPeriodo4         = ko.observable(entrada4);//("00:00:00");
-		self.displayEntrada4         = ko.observable(entrada4);
-		self.saidaPeriodo4           = ko.observable(saida4);//("00:00:00");
-		self.displaySaida4           = ko.observable(saida4);
 		self.entradaPeriodo5         = ko.observable(entrada5);//("00:00:00");
-		self.displayEntrada5         = ko.observable(entrada5);      
+		//
+		self.saidaPeriodo1           = ko.observable(saida1);//('10:41:00');
+		self.saidaPeriodo2           = ko.observable(saida2);//('13:21:00');
+		self.saidaPeriodo3           = ko.observable(saida3);//("00:00:00");
+		self.saidaPeriodo4           = ko.observable(saida4);//("00:00:00");
 		self.saidaPeriodo5           = ko.observable(saida5);//("00:00:00");
+		//		
+		self.displayEntrada1         = ko.observable(entrada1);		 
+		self.displayEntrada2         = ko.observable(entrada2);
+		self.displayEntrada3         = ko.observable(entrada3);
+		self.displayEntrada4         = ko.observable(entrada4);
+		self.displayEntrada5         = ko.observable(entrada5);      
+		
+		self.displaySaida1           = ko.observable(saida1);
+		self.displaySaida2           = ko.observable(saida2);
+		self.displaySaida3           = ko.observable(saida3);
+		self.displaySaida4           = ko.observable(saida4);
 		self.displaySaida5           = ko.observable(saida5);
+		//
 		self.horasContratadas        = ko.observable("08:00:00");
 		self.saidaMinima             = ko.observable("16:00:00"); 
 		self.previsaoHorasExtras     = ko.observable("00:00:00"); 
-
-
-
-
 		//		
 		self.totalAusencias = ko.pureComputed(function()
 		{
@@ -839,6 +843,7 @@
 		else 
 		{
 			console.log(time);
+			console.log(time);
 			self.timer = new Timer( time.response.timer_id,
 									 time.response.entrada_1,
 									 time.response.entrada_2,
@@ -851,6 +856,7 @@
 									 time.response.saida_4,
 									 time.response.saida_5
 									);
+			console.log(self.timer);
 		}
 		self.limpar = function()
 		{

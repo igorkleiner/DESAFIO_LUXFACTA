@@ -56,17 +56,17 @@
 		{
 			var self = this;
 			self.data = data;
-			self.entradaPeriodo1         = ko.observable(entrada_1);
-			self.entradaPeriodo2         = ko.observable(entrada_2);
-			self.entradaPeriodo3         = ko.observable(entrada_3);
-			self.entradaPeriodo4         = ko.observable(entrada_4);
-			self.entradaPeriodo5         = ko.observable(entrada_5);
+			self.entradaPeriodo1 = ko.observable(entrada_1);
+			self.entradaPeriodo2 = ko.observable(entrada_2);
+			self.entradaPeriodo3 = ko.observable(entrada_3);
+			self.entradaPeriodo4 = ko.observable(entrada_4);
+			self.entradaPeriodo5 = ko.observable(entrada_5);
 			//
-			self.saidaPeriodo1           = ko.observable(saida_1);
-			self.saidaPeriodo2           = ko.observable(saida_2);
-			self.saidaPeriodo3           = ko.observable(saida_3);
-			self.saidaPeriodo4           = ko.observable(saida_4);
-			self.saidaPeriodo5           = ko.observable(saida_5);
+			self.saidaPeriodo1   = ko.observable(saida_1);
+			self.saidaPeriodo2   = ko.observable(saida_2);
+			self.saidaPeriodo3   = ko.observable(saida_3);
+			self.saidaPeriodo4   = ko.observable(saida_4);
+			self.saidaPeriodo5   = ko.observable(saida_5);
 			//
 			self.agora = new Relogio();
 			self.dateDiff = function (date1, date2)
@@ -121,7 +121,7 @@
 			};
 			//
 			self.timeAdd = function (time1, time2, time3, time4, time5)
-			{            
+			{
 				time1 = time1.split(':');              
 				time2 = time2.split(':');
 				time3 = time3.split(':');            
@@ -148,7 +148,7 @@
 			};
 			//
 			self.totalHorasPeriodo1 = ko.pureComputed(function()
-			{				
+			{
 				var tempoEntrada = self.entradaPeriodo1()||"00:00:00";            
 				var tempoSaida = self.saidaPeriodo1()||"00:00:00";            
 				
@@ -208,7 +208,7 @@
 			},this);
 			//
 			self.horasTotais = ko.pureComputed(function()
-			{		   
+			{
 				return self.timeAdd(  self.totalHorasPeriodo1()
 									, self.totalHorasPeriodo2()
 									, self.totalHorasPeriodo3()
@@ -222,11 +222,11 @@
 		function ViewModel()
 		{
 			var self = this;
-			self.agora    = new Relogio();
-			self.usuario  = ko.observable(usuario.usu_nome);
-			self.tempos   = [];	
-			self.dadosGrafico = [];
-			self.dadosGrafico2 = [];
+			self.agora                = new Relogio();
+			self.usuario              = ko.observable(usuario.usu_nome);
+			self.tempos               = [];	
+			self.dadosGrafico         = [];
+			self.dadosGrafico2        = [];
 			self.dadosGrafico2["Tp1"] = [];
 			self.dadosGrafico2["Tp2"] = [];
 			self.dadosGrafico2["Tp3"] = [];
@@ -318,59 +318,23 @@
 				//======= grafico 1 =========================================================================================
 					var chart = new CanvasJS.Chart("chartContainer", 
 					{
-						// Change theme to "light1", "light2", "dark1", "dark2",   
-						// theme: "light1", 
 						theme: "light2", 
-						// theme: "dark1",     
-						// theme: "dark2",   
-						animationEnabled: true, // change to true		
-						
-						title:
-						{
+						animationEnabled: true,
+						title:{
 							text: "Gráfico de Horas/Dia"
-						},
-						
-						axisX: 
-						{
+						},						
+						axisX:{
 							interval: 1
 						},
-
-						axisY: 
-						{
+						axisY:{
 							title: "Horas",
-							scaleBreaks: 
-							{
-								type: "wavy",
-								customBreaks: 
-								[
-									{startValue: 80, endValue: 210},
-									{startValue: 230,endValue: 600}
-								]
-							}
+							interval: 1,
 						},
 
-						data: 
-						[
-							{
-								// Change type to "column", "bar", "area", "spline", "pie",etc.
-								type: "column",
-								// type: "bar",
-								// type: "area",
-								// type: "spline",
-								// type: "pie",
-								// dataPoints:[
-								// 	{ label: "USA", y: 57466.787 },
-								// 	{ label: "Austraila", y: 49927.82 },
-								// 	{ label: "UK", y: 39899.388 },
-								// 	{ label: "UAE", y: 37622.207 },
-								// 	{ label: "Brazil", y: 8649.948 },
-								// 	{ label: "China", y: 8123.181 },
-								// 	{ label: "Indonesia", y: 3570.295 },
-								// 	{ label: "India", y: 1709.387 }	
-								// ] 
-								dataPoints:self.dadosGrafico 
-							}
-						]
+						data:[{
+							type: "column",
+							dataPoints:self.dadosGrafico 
+						}]
 					});	  
 					chart.render();  						
 				//=============================================================================================================

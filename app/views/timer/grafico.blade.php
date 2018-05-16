@@ -50,8 +50,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/CSS/timer.css')}}">
 	<script type="text/javascript" src="{{asset('assets/moment-js/moments.js')}}"></script>
 	<script type="text/javascript">
-
-		//---------------------------------------------------------------------------------------------------------------
+	//-----------Tempo-----------------------------------------------------------------------------------------------
 		function Tempo(usuario,data,entrada_1,entrada_2,entrada_3,entrada_4,entrada_5,saida_1,saida_2,saida_3,saida_4,saida_5)
 		{
 			var self = this;
@@ -115,7 +114,6 @@
 				}
 				catch(ex)
 				{
-					console.log('entrei no catch do erro', ex);
 					return '00:00:00';
 				}
 			};
@@ -216,9 +214,8 @@
 									, self.totalHorasPeriodo5()
 				);
 			},this);
-		}
-				
-		//-----------------------------------------------------------------------------------------------------------------------
+		}				
+	//-----------ViewModel-------------------------------------------------------------------------------------------
 		function ViewModel()
 		{
 			var self = this;
@@ -232,13 +229,11 @@
 			self.dadosGrafico2["Tp3"] = [];
 			self.dadosGrafico2["Tp4"] = [];
 			self.dadosGrafico2["Tp5"] = [];
-            console.log(self.dadosGrafico2);
 				
 			if (grafico.status != 0 && grafico.response != null) 
 			{
 				ko.utils.arrayForEach(grafico.response,function(tempo)
                 {
-                	// console.log(tempo);
                 	//debugger;
                     self.tempos.push(
 						new Tempo(
@@ -257,7 +252,6 @@
 						)
                     );
                 });
-                console.log(self.tempos);
                 //
                 ko.utils.arrayForEach(self.tempos,function(dia)
                 {
@@ -266,54 +260,64 @@
 					horas.setHours(tempoEntrada[0]);
 					horas.setMinutes(tempoEntrada[1]);
 					horas.setSeconds(tempoEntrada[2]); 
+					var a = parseInt(horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours());
+					var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100);
 					
 					self.dadosGrafico.push(
-						{label:dia.data.toString(), y: parseFloat(horas.getHours()+'.'+horas.getMinutes())}
+						{label:dia.data.toString(), y: parseFloat(a+'.'+b)}
      				)
 
                     Tp1 = dia.totalHorasPeriodo1().split(':');
                     var horas = new Date(dia.data);
 					horas.setHours(Tp1[0]);
 					horas.setMinutes(Tp1[1]);
-					horas.setSeconds(Tp1[2]); 
+					horas.setSeconds(Tp1[2]);
+					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
+					var b = horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes(); 
 					self.dadosGrafico2["Tp1"].push(
-						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
+						{ y: parseFloat(a+'.'+b) , x: new Date(dia.data.toString()) },
                     )
                     Tp2 = dia.totalHorasPeriodo2().split(':');
                     var horas = new Date(dia.data);
 					horas.setHours(Tp2[0]);
 					horas.setMinutes(Tp2[1]);
-					horas.setSeconds(Tp2[2]); 
+					horas.setSeconds(Tp2[2]);
+					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
+					var b = horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes(); 
 					self.dadosGrafico2["Tp2"].push(
-						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
+						{ y: parseFloat(a+'.'+b) , x: new Date(dia.data.toString()) },
                     )
                     Tp3 = dia.totalHorasPeriodo3().split(':');
                     var horas = new Date(dia.data);
 					horas.setHours(Tp3[0]);
 					horas.setMinutes(Tp3[1]);
-					horas.setSeconds(Tp3[2]); 
+					horas.setSeconds(Tp3[2]);
+					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
+					var b = horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes(); 
 					self.dadosGrafico2["Tp3"].push(
-						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
+						{ y: parseFloat(a+'.'+b) , x: new Date(dia.data.toString()) },
                     )
                     Tp4 = dia.totalHorasPeriodo4().split(':');
                     var horas = new Date(dia.data);
 					horas.setHours(Tp4[0]);
 					horas.setMinutes(Tp4[1]);
-					horas.setSeconds(Tp4[2]); 
+					horas.setSeconds(Tp4[2]);
+					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
+					var b = horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes(); 
 					self.dadosGrafico2["Tp4"].push(
-						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
+						{ y: parseFloat(a+'.'+b) , x: new Date(dia.data.toString()) },
                     )
                     Tp5 = dia.totalHorasPeriodo5().split(':');
                     var horas = new Date(dia.data);
 					horas.setHours(Tp5[0]);
 					horas.setMinutes(Tp5[1]);
-					horas.setSeconds(Tp5[2]); 
+					horas.setSeconds(Tp5[2]);
+					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
+					var b = horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes(); 
 					self.dadosGrafico2["Tp5"].push(
-						{ y: parseFloat(horas.getHours()+'.'+horas.getMinutes()) , x: new Date(dia.data.toString()) },
+						{ y: parseFloat(a+'.'+b) , x: new Date(dia.data.toString()) },
                     )
                 });
-                console.log(self.dadosGrafico);
-                console.log(self.dadosGrafico2);
                 //
 				//======= grafico 1 =========================================================================================
 					var chart = new CanvasJS.Chart("chartContainer", 
@@ -437,24 +441,15 @@
 					str3 = "<span style = \"color:Tomato\">Total:</span><strong>"+total+"</strong>h<br/>";
 					return (str2.concat(str)).concat(str3);
 				}
-				// self.total = function()
-	   //  		{	
-				// 	// chart.render();
-				// }
-				// self.consolidado = function()
-	   //  		{	
-	   //  			//chart.destroy();
-				// 	chart1.render();
-	   //  			chart1.destroy();
-				// }
 			}					
 		}
-		//-------------------------------------------------------------------------------------------------------------------------- 
+	//---------------------------------------------------------------------------------------------------------------
 		viewModel = new ViewModel;
 
 		$(function(){
 			ko.applyBindings(viewModel, document.getElementById('divTimer'));
 		});
+	//---------------------------------------------------------------------------------------------------------------
 
 	</script>
 @stop

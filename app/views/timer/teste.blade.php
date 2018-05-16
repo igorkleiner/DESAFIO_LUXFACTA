@@ -327,6 +327,7 @@
 		//
 		self.timerId                 = ko.observable(timer_id);    
 		self.usuario                 = ko.observable(usuario.usu_nome);
+		self.usu_id                 = ko.observable(usuario.usu_id);
 		//
 		self.visuEntrada1            = ko.observable(true);
 		self.visuEntrada2            = ko.observable(false);
@@ -788,7 +789,8 @@
 			}                      
 			dadosPost = 
 			{
-				'data' : data,
+				'data'     : data,
+				'usu_id'   : usuario.usu_id,
 				'timer_id' : self.timerId(),
 				'timer_key': usuario.usu_id.toString()+usuario.per_id.toString()+data.replace(/\D/g,''),
 				'entrada_1': entradaPeriodo1,
@@ -842,8 +844,6 @@
 		}
 		else 
 		{
-			console.log(time);
-			console.log(time);
 			self.timer = new Timer( time.response.timer_id,
 									 time.response.entrada_1,
 									 time.response.entrada_2,
@@ -856,7 +856,6 @@
 									 time.response.saida_4,
 									 time.response.saida_5
 									);
-			console.log(self.timer);
 		}
 		self.limpar = function()
 		{

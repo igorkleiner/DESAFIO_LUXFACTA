@@ -141,6 +141,9 @@ class HomeController extends BaseController
 							->with('grafico', $result)
 							->with('true',$true);
 	}
+	public function login(){
+		return View::make('layout.login');
+	}
 
 	/**
 	 * 	=============================== METODO CHAMADO POR AJAX ===============================

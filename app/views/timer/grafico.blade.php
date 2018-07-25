@@ -258,10 +258,14 @@
 					tempoEntrada = dia.horasTotais().split(':'); 
 					var horas = new Date(dia.data);
 					horas.setHours(tempoEntrada[0]);
+					// console.log(horas.getHours());
 					horas.setMinutes(tempoEntrada[1]);
+					// console.log(horas.getMinutes());
 					horas.setSeconds(tempoEntrada[2]); 
 					var a = parseInt(horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours());
+					// console.log(a);
 					var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100);
+					// console.log(b);
 					
 					self.dadosGrafico.push(
 						{label:dia.data.toString(), y: parseFloat(a+'.'+b)}

@@ -40,6 +40,8 @@ Route::group(array('before' => 'auth','prefix' => ''),function(){
 	//{{Route(igor.teste) }}
 	Route::post('/salvarTimer',    array('as'=>'salvar.timer',                   'uses'=>'HomeController@salvarTimer'));
 	//{{Route(salvar.timer) }}
+	Route::post('/salvarTimer2',    array('as'=>'salvar.timer2',                   'uses'=>'HomeController@salvarTimer2'));
+	//{{Route(salvar.timer2) }}
 	Route::any('/logError',        array('as'=>'log.error',                      'uses'=>'HomeController@logError'));
 	//{{Route(igor.erro) }}
 	Route::any('/grafico',         array('as'=>'usuario.grafico',                'uses'=>'HomeController@graficoHoras'));

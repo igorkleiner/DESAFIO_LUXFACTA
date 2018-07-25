@@ -97,7 +97,7 @@ class HomeController extends BaseController
 		$hora = date('H:i:s:u',time());
 		$true = true;
 		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called TIMER blade" );
-		$result = MakeRequest::callService('TimerService', 'listarHoje') ;
+		$result = MakeRequest::callService('TimerService2', 'listarHoje2') ;
 		Log::info('<< DADOS VINDOS DO BANCO: >>', $result);		
 		return View::make('timer.time_Control')
 							->with('usuario',Auth::user())
@@ -110,6 +110,14 @@ class HomeController extends BaseController
 		$data = Input::all();		
 		Log::info('<< metodo salvar no controler: >>', $data);	
 		$result = MakeRequest::callService('TimerService', 'salvar', $data) ;
+		return json_encode($result);
+	}
+
+	public function salvarTimer2()
+	{
+		$data = Input::all();		
+		Log::info('<< metodo salvar no controler: >>', $data);	
+		$result = MakeRequest::callService('TimerService2', 'salvar2', $data) ;
 		return json_encode($result);
 	}
 

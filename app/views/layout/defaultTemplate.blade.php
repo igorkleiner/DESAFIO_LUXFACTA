@@ -16,6 +16,7 @@
 	<body>
 		<div style="padding: 20px;">		
 			<!-- @include('layout.logo')			 -->
+			@include('componentes.knockoutComponents')
 			@include('layout.menusuperior')
 			@include('layout.confirmModal')								
 			<div class="container">
@@ -42,11 +43,10 @@
 					})
 					.fail(function(error){
 
-						$("#alert-modal #alert-msg").html(error);
+						$("#alert-modal #alert-msg").html(error.statusText);
 						$("#alert-modal").modal('show');
-						console.log(error);
-						//$.post(urlError, error);
-						alert(statusText);
+						// console.log(error.statusText);
+						// alert(error.statusText);
 					})
 					.always(function(done){
 						$("#loading-modal").modal('hide');

@@ -17,7 +17,7 @@ abstract class MakeRequest
 				$tmpClass = new $class;
 				$result = $tmpClass->$method($data);
 				$content = ['status'=> 1, 'response'=>$result];
-				Log::info("'[Service@Method:] '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
+				Log::info("'Service@Method: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
 			}
 
 			catch (Exception $error)

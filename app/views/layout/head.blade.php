@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/jquery-ui-1.11.4/jquery-ui.css')}}">
 <script src="{{asset('assets/knockout-js/knockout-3.4.0.js')}}"></script>
 <script src="{{asset('assets/knockout-js/knockout_custom_bindings.js')}}"></script>
+<script src="{{asset('assets/knockout-js/knockout_custom_bindings.js')}}"></script>
 <script src="{{asset('assets/jquery-ui-1.11.4/external/jquery/jquery.js')}}"></script>
 <script src="{{asset('assets/jquery-ui-1.11.4/jquery-ui.js')}}"></script>
 <script src="{{asset('assets/jquery-ui-1.11.4/jquery.maskedinput.js')}}"></script>

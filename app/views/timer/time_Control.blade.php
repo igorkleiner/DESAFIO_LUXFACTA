@@ -53,33 +53,18 @@
 					<tr class='' height="45px" >
 						<td align='center'><span data-bind='text:usuario'></span></td>
 						<td align='center' data-bind='relogio:agora'><span data-bind='text: agora.data'></span></td>
+						
 						<td align='center'>
-
-
-
-
-							<horario data-bind='
-								params:
-									"2018-07-20" 
-								, 
-								{{-- mask: mask, 
-								placeholder:placeholder, --}}
-								visible:visuEntrada1, 
-								hasFocus:focoEntrada1'
-							></horario>
-
-
-
-
-
-							{{-- <input type='text' style='width:70px;' data-bind="value:displayentradaPeriodo1, mask: mask, visible:visuEntrada1, hasFocus:focoEntrada1"></input> --}}
+							<horario params="value:entradaPeriodo1,mask:mask,placeholder: placeholder"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo1"), visible:visuEntrada1'>Set Now</button>
 						</td>
+						{{-- 
 						<td align='center'>
-							<input type='text' style='width:70px;' data-bind='value:displaysaidaPeriodo1, mask: mask,  visible:visuSaida1, hasFocus:focoSaida1'></input>
+							<horario params="value:saidaPeriodo1,mask:mask,placeholder: placeholder"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo1"), visible:visuSaida1'>Set Now</button>
-						</td>
-						<td align='center'>
+						</td> --}}
+						
+						{{-- <td align='center'>
 							<input type='text' style='width:70px;' data-bind='value:entradaPeriodo2,mask: mask, visible:visuEntrada2, hasFocus:focoEntrada2'></input>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo2"), visible:visuEntrada2'>Set Now</button>
 						</td>
@@ -110,7 +95,7 @@
 						<td align='center'>
 							<input type='text' style='width:70px;' data-bind='value:saidaPeriodo5, mask: mask,  visible: visuSaida5, hasFocus:focoSaida5'></input>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo5"), visible:visuSaida5 '>Set Now</button>
-						</td>                            
+						</td>               --}}              
 					</tr>
 					<tr class='warning' height="60px" > 
 						<th style='text-align:center' >Previsão de saída</th>
@@ -174,7 +159,7 @@
 			{{--/ko--}}
 		</div>
 	</div>
-</div>
+	</div>
 {{-- ---------------------------------------------------------------------------------------------------------- --}}
 {{-- COLOCANDO JAVASCRIPT --}}
 <script type="text/javascript">
@@ -222,49 +207,9 @@
 
 
 
-		self.entradaPeriodo1         = ko.observable(entrada1);
-		self.displayentradaPeriodo1  = ko.observable();
-
-
-
-
-		// self.compEntradaPeriodo1     = ko.computed(function()
-		// {
-		// 	var display = self.entradaPeriodo1().split(" ");
-		// 	if (display[1]) 
-		// 	{
-		// 		self.displayentradaPeriodo1(
-		// 			display[1].toString()
-		// 		);
-		// 	}			
-		// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		self.saidaPeriodo1           = ko.observable(saida1);//('10:41:00');
-		self.displaysaidaPeriodo1    = ko.observable();
-		self.compSaidaPeriodo1    = ko.computed(function()
-		{
-			var display = self.saidaPeriodo1().split(" ");
-			if (display[1]) 
-			{
-				self.displaysaidaPeriodo1(display[1].toString());
-			}
-
-		});
+		self.entradaPeriodo1         = ko.observable(moment(entrada1,"YYYY-MM-DD HH:mm:ss" ));
+		self.saidaPeriodo1           = ko.observable(moment(saida1  ,"YYYY-MM-DD HH:mm:ss" ));
+		
 
 		self.entradaPeriodo2         = ko.observable(entrada2);//('11:29:00');
 		self.displayentradaPeriodo2         = ko.computed(function(){
@@ -553,9 +498,8 @@
 					var horas    = 0;
 					var minutos  = 0;
 					var segundos = 0;
-					var milisegundos = depois.diff(antes, 'miliseconds');
+					var milisegundos = depois.diff(antes, 'seconds');
 
-					while(milisegundos>999){milisegundos = milisegundos-1000;segundos++;}
 					while(segundos>59){segundos = segundos-60;minutos++;}
 					while(minutos >59){minutos  = minutos -60;horas++;}
 
@@ -581,11 +525,15 @@
 		{  			
 			try
 			{
-				
+				//time1
+				//time2
+				//time3
+				//time4
+				//time5
 			}
 			catch(ex)
 			{
-				console.log('entrei no catch do erro', ex);
+				console.log('entrei no catch do erro timeAdd', ex);
 				return '00:00:00';
 			}
 		}; 

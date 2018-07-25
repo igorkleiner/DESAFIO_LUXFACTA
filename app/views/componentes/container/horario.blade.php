@@ -3,7 +3,9 @@
 		type='text' 
 		style='width:70px;' 
 		data-bind="
-			value:display, 
+			masked:display, 
+			mask: mask,
+			placeholder:'bosta'	 
 		"
 	></input>
 </template>
@@ -11,31 +13,35 @@
 	ko.components.register('horario',{
 		viewModel:function(params)
 		{
-			console.log('params');
-			console.log(params);
+			console.log("params: ", params)
 			var self = this;
-			self.template  = 'horariotemplate';
-			self.val       = ko.observable(params.val);
-			self.display   = ko.observable();
-			
-			var a = ko.computed(function(){
-				read:
-				if (!!self.val())
-				{
-					console.log('entrei 1');
-					var display = self.val().split(' ');	
-					self.display(display[1]);
-				}
-				write: 
-					console.log('entrei 2');
-					self.val(
-					moment().format("YYYY-MM-DD")+' '+params.val
-				);
+			self.template      = 'horariotemplate';
+			self.internalValue = params.value;
+			self.internalValue.subscribe( function(){
+				self.display(self.internalValue().format('HH:mm:ss'));
 			});
-			console.log('self.val()');
-			console.log(self.val());
-			console.log('self.display()');
-			console.log(self.display());
+			self.mask          - ko.observable(params.mask);
+			self.placeholder   - ko.observable(params.placeholder);
+			self.display       = ko.observable();	
+					
+			var a = ko.computed(
+			{
+				read: function()
+				{
+					if (!!self.internalValue())
+					{					
+						self.display(self.internalValue().format('HH:mm:ss'));
+					}
+				},
+				write: function(val)
+				{
+					self.internalValue( moment(params.value()) );
+				},
+				update: function(val)
+				{
+
+				}
+			});
 		},
 		template:'<!-- ko template:template --><!-- /ko -->'
 	});	

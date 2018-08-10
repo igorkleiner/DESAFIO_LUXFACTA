@@ -13,18 +13,21 @@
 	ko.components.register('horario',{
 		viewModel:function(params)
 		{
-			console.log("params: ", params)
+			// console.log("params: ", params)
 			var self = this;
+
 			self.template      = 'horariotemplate';
-			self.internalValue = params.value;
-			self.internalValue.subscribe( function(){
-				self.display(self.internalValue().format('HH:mm:ss'));
-			});
+			// self.internalValue = params.value;
+			
+			// self.internalValue.subscribe( function(){
+			// 	self.display(self.internalValue().format('HH:mm:ss'));
+			// });
+
 			self.mask          - ko.observable(params.mask);
 			self.placeholder   - ko.observable(params.placeholder);
 			self.display       = ko.observable();	
 					
-			var a = ko.computed(
+			self.internalValue = ko.computed(
 			{
 				read: function()
 				{

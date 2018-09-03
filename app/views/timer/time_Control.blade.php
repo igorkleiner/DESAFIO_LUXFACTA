@@ -5,14 +5,14 @@
 <script type="text/javascript">
 	// INSTANCIA DAS VARIAVEIS DA PAGINA
 	var viewModel, diaSemana,data,hora,usuario,time, mask, placeholder;
-	diaSemana = "{{date('D',time())}}";
-	data = "{{date('Y-m-d',time())}}";    
-	hora = "{{date('H:i:s:u',time())}}";          
-	usuario = {{json_encode($usuario)}};   
+	diaSemana         = "{{date('D',time())}}";
+	data              = "{{date('Y-m-d',time())}}";    
+	hora              = "{{date('H:i:s:u',time())}}";          
+	usuario           = {{json_encode($usuario)}};   
 	usuario['usu_id'] = {{$usuario->usu_id}};    
-	time = {{json_encode($time)}};
-	mask = '99:99:99';
-	placeholder = 'Informe a Hora';
+	time              = {{json_encode($time)}};
+	mask              = '99:99:99';
+	placeholder       = 'Informe a Hora';
 </script>
 
 <style >
@@ -58,11 +58,11 @@
 							<horario params="value:entradaPeriodo1,mask:mask,placeholder: placeholder"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo1"), visible:visuEntrada1'>Set Now</button>
 						</td>
-						{{-- 
+						
 						<td align='center'>
 							<horario params="value:saidaPeriodo1,mask:mask,placeholder: placeholder"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo1"), visible:visuSaida1'>Set Now</button>
-						</td> --}}
+						</td>
 						
 						{{-- <td align='center'>
 							<input type='text' style='width:70px;' data-bind='value:entradaPeriodo2,mask: mask, visible:visuEntrada2, hasFocus:focoEntrada2'></input>
@@ -172,86 +172,48 @@
 		self.timerId                 = ko.observable(timer_id);    
 		self.usuario                 = ko.observable(usuario.usu_nome);
 		//
-		self.visuEntrada1            = ko.observable(true);
-		self.visuEntrada2            = ko.observable(false);
-		self.visuEntrada3            = ko.observable(false);
-		self.visuEntrada4            = ko.observable(false);
-		self.visuEntrada5            = ko.observable(false);
-		self.visuSaida1              = ko.observable(false);
-		self.visuSaida2              = ko.observable(false);
-		self.visuSaida3              = ko.observable(false);
-		self.visuSaida4              = ko.observable(false);
-		self.visuSaida5              = ko.observable(false);
-
-		self.focoEntrada1            = ko.observable(true);
-		self.focoEntrada2            = ko.observable(false);
-		self.focoEntrada3            = ko.observable(false);
-		self.focoEntrada4            = ko.observable(false);
-		self.focoEntrada5            = ko.observable(false);
-		self.focoSaida1              = ko.observable(false);
-		self.focoSaida2              = ko.observable(false);
-		self.focoSaida3              = ko.observable(false);
-		self.focoSaida4              = ko.observable(false);
-		self.focoSaida5              = ko.observable(false);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			self.visuEntrada1            = ko.observable(true);
+			self.visuSaida1              = ko.observable(false);
+			self.visuEntrada2            = ko.observable(false);
+			self.visuSaida2              = ko.observable(false);
+			self.visuEntrada3            = ko.observable(false);
+			self.visuSaida3              = ko.observable(false);
+			self.visuEntrada4            = ko.observable(false);
+			self.visuSaida4              = ko.observable(false);
+			self.visuEntrada5            = ko.observable(false);
+			self.visuSaida5              = ko.observable(false);
+		//
+			self.focoEntrada1            = ko.observable(true);
+			self.focoSaida1              = ko.observable(false);
+			self.focoEntrada2            = ko.observable(false);
+			self.focoSaida2              = ko.observable(false);
+			self.focoEntrada3            = ko.observable(false);
+			self.focoSaida3              = ko.observable(false);
+			self.focoEntrada4            = ko.observable(false);
+			self.focoSaida4              = ko.observable(false);
+			self.focoEntrada5            = ko.observable(false);
+			self.focoSaida5              = ko.observable(false);
+		//
 		self.entradaPeriodo1         = ko.observable(moment(entrada1,"YYYY-MM-DD HH:mm:ss" ));
 		self.saidaPeriodo1           = ko.observable(moment(saida1  ,"YYYY-MM-DD HH:mm:ss" ));
-		
-
-		self.entradaPeriodo2         = ko.observable(entrada2);//('11:29:00');
-		self.displayentradaPeriodo2         = ko.computed(function(){
-
-		});//('11:29:00');
-		self.saidaPeriodo2           = ko.observable(saida2);//('13:21:00');
-		self.displaysaidaPeriodo2           = ko.computed(function(){
-
-		});//('13:21:00');
-
-		self.entradaPeriodo3         = ko.observable(entrada3);//('16:20:00');
-		self.displayentradaPeriodo3         = ko.computed(function(){
-
-		});//('16:20:00');
-		self.saidaPeriodo3           = ko.observable(saida3);//("00:00:00");
-		self.displaysaidaPeriodo3           = ko.computed(function(){
-
-		});//("00:00:00");
-
-		self.entradaPeriodo4         = ko.observable(entrada4);//("00:00:00");
-		self.displayentradaPeriodo4         = ko.computed(function(){
-
-		});//("00:00:00");
-		self.saidaPeriodo4           = ko.observable(saida4);//("00:00:00");
-		self.displaysaidaPeriodo4           = ko.computed(function(){
-
-		});//("00:00:00");
-
-		self.entradaPeriodo5         = ko.observable(entrada5);//("00:00:00");      
-		self.displayentradaPeriodo5         = ko.computed(function(){
-
-		});//("00:00:00");      
-		self.saidaPeriodo5           = ko.observable(saida5);//("00:00:00");
-		self.displaysaidaPeriodo5           = ko.computed(function(){
-
-		});//("00:00:00");
-
+		//		
+		self.entradaPeriodo2         = ko.observable(entrada2);
+		self.saidaPeriodo2           = ko.observable(saida2);
+		//
+		self.entradaPeriodo3         = ko.observable(entrada3);
+		self.saidaPeriodo3           = ko.observable(saida3);
+		//
+		self.entradaPeriodo4         = ko.observable(entrada4);
+		self.saidaPeriodo4           = ko.observable(saida4);
+		//
+		self.entradaPeriodo5         = ko.observable(entrada5);
+		self.saidaPeriodo5           = ko.observable(saida5);
+		//
 		self.horasContratadas        = ko.observable("08:00:00");
 		self.saidaMinima             = ko.observable("16:00:00"); 
 		self.previsaoHorasExtras     = ko.observable("00:00:00"); 
 
-		
+	//	
 		// self.totalAusencias          = ko.pureComputed(function()
 		// {
 		//    return self.timeAdd(  self.totalAusenciaPeriodo12()
@@ -283,11 +245,11 @@
 		// {            
 		// 	   return self.dateDiff(self.horasContratadas(), self.horasTotais());            
 		// });
-		
+	//	
 		
 		self.agora = new Relogio();
 
-
+	//
 		// self.totalTrabalhadoAteAgora = ko.pureComputed(function()
 		// {
 			
@@ -403,19 +365,18 @@
 		// 	var totalAusenciaPeriodo45 =  self.dateDiff(tempoEntrada, tempoSaida);
 		// 	return totalAusenciaPeriodo45;
 		// },this);
-
-
+	//
 		self.totalHorasPeriodo1 = ko.pureComputed(function()
 		{
-			var tempoEntrada = self.entradaPeriodo1();            
-			var tempoSaida = self.saidaPeriodo1();            
+			var tempoEntrada = self.entradaPeriodo1().format("YYYY-MM-DD HH:mm:ss");            
+			var tempoSaida   =   self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = moment().format("YYYY-MM-DD")+ " " +self.agora.hora();
+			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 
 		},this);
 
-
+	//
 		// self.totalHorasPeriodo2 = ko.pureComputed(function()
 		// {
 		// 	var tempoEntrada = self.entradaPeriodo2()||"00:00:00";
@@ -467,38 +428,27 @@
 		// 	var totalHorasPeriodo5 =  self.dateDiff(tempoEntrada, tempoSaida);
 		// 	return totalHorasPeriodo5; 
 		// },this);
-
-
-		self.hora = function()
-		{
-			var data = new Date();
-			var hora    = data.getHours()   <10 ? "0"+data.getHours()   : data.getHours();
-			var minuto  = data.getMinutes() <10 ? "0"+data.getMinutes() : data.getMinutes();
-			var segundo = data.getSeconds() <10 ? "0"+data.getSeconds() : data.getSeconds();
-			var display = hora+":"+minuto+":"+segundo;
-			return display;            
-		}
-
+	//
 
 		self.setTime = function(e)
 		{
 			if(typeof(e) != 'function')
-				self[e](moment().format("YYYY-MM-DD HH:mm:ss"));
+				self[e](moment());
 			//console.log(self[e]());
 		};
 
 		self.dateDiff = function (entrada, saida)
 		{	
-			if(!!entrada && !!saida)
+			if(!!entrada && !!saida &&(entrada < saida))
 			{
 				try
 				{    
 					var antes    = moment(entrada);
 					var depois   = moment(saida);
+					var tempoCorrido = depois.diff(antes, 'seconds');
 					var horas    = 0;
 					var minutos  = 0;
-					var segundos = 0;
-					var milisegundos = depois.diff(antes, 'seconds');
+					var segundos = tempoCorrido;
 
 					while(segundos>59){segundos = segundos-60;minutos++;}
 					while(minutos >59){minutos  = minutos -60;horas++;}
@@ -665,18 +615,18 @@
 		self.focar = function()
 		{
 			setTimeout(function()
-				{
-					self.timer.focoEntrada1(self.timer.visuEntrada1());
-					self.timer.focoSaida1(  self.timer.visuSaida1());
-					self.timer.focoEntrada2(self.timer.visuEntrada2());
-					self.timer.focoSaida2(  self.timer.visuSaida2());
-					self.timer.focoEntrada3(self.timer.visuEntrada3());
-					self.timer.focoSaida3(  self.timer.visuSaida3());
-					self.timer.focoEntrada4(self.timer.visuEntrada4());
-					self.timer.focoSaida4(  self.timer.visuSaida4());
-					self.timer.focoEntrada5(self.timer.visuEntrada5());
-					self.timer.focoSaida5(  self.timer.visuSaida5());
-				}, 010);
+			{
+				self.timer.focoEntrada1(self.timer.visuEntrada1());
+				self.timer.focoSaida1(  self.timer.visuSaida1());
+				self.timer.focoEntrada2(self.timer.visuEntrada2());
+				self.timer.focoSaida2(  self.timer.visuSaida2());
+				self.timer.focoEntrada3(self.timer.visuEntrada3());
+				self.timer.focoSaida3(  self.timer.visuSaida3());
+				self.timer.focoEntrada4(self.timer.visuEntrada4());
+				self.timer.focoSaida4(  self.timer.visuSaida4());
+				self.timer.focoEntrada5(self.timer.visuEntrada5());
+				self.timer.focoSaida5(  self.timer.visuSaida5());
+			}, 010);
 		}
 		self.focar();
 	}

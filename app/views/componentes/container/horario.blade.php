@@ -3,9 +3,9 @@
 		type='text' 
 		style='width:70px;' 
 		data-bind="
-			masked:display, 
+			masked:internalValue, 
 			mask: mask,
-			placeholder:'bosta'	 
+			placeholder:'placeholder'	 
 		"
 	></input>
 </template>
@@ -17,12 +17,6 @@
 			var self = this;
 
 			self.template      = 'horariotemplate';
-			// self.internalValue = params.value;
-			
-			// self.internalValue.subscribe( function(){
-			// 	self.display(self.internalValue().format('HH:mm:ss'));
-			// });
-
 			self.mask          - ko.observable(params.mask);
 			self.placeholder   - ko.observable(params.placeholder);
 			self.display       = ko.observable();	
@@ -31,18 +25,16 @@
 			{
 				read: function()
 				{
-					if (!!self.internalValue())
+					if (!!params.value())
 					{					
-						self.display(self.internalValue().format('HH:mm:ss'));
+						return params.value().format('HH:mm:ss');
 					}
 				},
-				write: function(val)
+				write: function(hora)
 				{
-					self.internalValue( moment(params.value()) );
-				},
-				update: function(val)
-				{
-
+					params.value(moment(
+						moment().format("YYYY-MM-DD")+' '+ hora , "YYYY-MM-DD HH:mm:ss"
+					));
 				}
 			});
 		},

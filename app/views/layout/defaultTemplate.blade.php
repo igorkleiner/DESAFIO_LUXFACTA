@@ -15,7 +15,6 @@
 	    
 	<body>
 		<div style="padding: 20px;">		
-			<!-- @include('layout.logo')			 -->
 			@include('componentes.knockoutComponents')
 			@include('layout.menusuperior')
 			@include('layout.confirmModal')								
@@ -25,7 +24,6 @@
 		</div>		
 	</body>
 </html>
-	<!-- @include('layout.footer') -->
 	<script type="text/javascript" src="{{asset('assets/bootstrap-3.3.6-dist/js/bootstrap.js')}}"></script>
 	<script type="text/javascript">
 

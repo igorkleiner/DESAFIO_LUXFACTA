@@ -25,7 +25,7 @@
 			{
 				read: function()
 				{
-					if (!!params.value())
+					if (params.value() &&!!params.value())
 					{					
 						return params.value().format('HH:mm:ss');
 					}

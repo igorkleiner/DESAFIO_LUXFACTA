@@ -12,7 +12,7 @@
 	usuario['usu_id'] = {{$usuario->usu_id}};    
 	time              = {{json_encode($time)}};
 	mask              = '99:99:99';
-	placeholder       = 'Informe a Hora';
+	placeholder       = '  :  :  ';
 </script>
 
 <style >
@@ -55,50 +55,50 @@
 						<td align='center' data-bind='relogio:agora'><span data-bind='text: agora.data'></span></td>
 					{{-- PERIODO 1 --}}
 						<td align='center'>
-							<horario params="value:entradaPeriodo1,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:entradaPeriodo1,mask:mask,placeholder:placeholder, visible:visuEntrada1"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo1"), visible:visuEntrada1'>Set Now</button>
 						</td>
 						
 						<td align='center'>
-							<horario params="value:saidaPeriodo1,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:saidaPeriodo1,mask:mask,placeholder:placeholder, visible:visuSaida1"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo1"), visible:visuSaida1'>Set Now</button>
 						</td>
 					{{-- PERIODO 2 --}}
 						<td align='center'>
-							<horario params="value:entradaPeriodo2,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:entradaPeriodo2,mask:mask,placeholder:placeholder, visible:visuEntrada2"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo2"), visible:visuEntrada2'>Set Now</button>
 						</td>						
 						<td align='center'>
-							<horario params="value:saidaPeriodo2,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:saidaPeriodo2,mask:mask,placeholder: placeholder, visible:visuSaida2"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo2"), visible:visuSaida2'>Set Now</button>
 						</td>
 					{{-- PERIODO 3 --}}
 						<td align='center'>
-							<horario params="value:entradaPeriodo3,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:entradaPeriodo3,mask:mask,placeholder: placeholder,visible:visuEntrada3"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo3"), visible:visuEntrada3'>Set Now</button>
 						</td>
 						
 						<td align='center'>
-							<horario params="value:saidaPeriodo3,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:saidaPeriodo3,mask:mask,placeholder: placeholder, visible:visuSaida3"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo3"), visible:visuSaida3'>Set Now</button>
 						</td>
 					{{-- PERIODO 4 --}}						
 						<td align='center'>
-							<horario params="value:entradaPeriodo4,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:entradaPeriodo4,mask:mask,placeholder: placeholder, visible:visuEntrada4"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo4"), visible:visuEntrada4'>Set Now</button>
 						</td>
 						
 						<td align='center'>
-							<horario params="value:saidaPeriodo4,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:saidaPeriodo4,mask:mask,placeholder: placeholder, visible:visuSaida4"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo4"), visible:visuSaida4'>Set Now</button>
 						</td>
 					{{-- PERIODO 5 --}}						
 						<td align='center'>
-							<horario params="value:entradaPeriodo5,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:entradaPeriodo5,mask:mask,placeholder: placeholder, visible:visuEntrada5"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo5"), visible:visuEntrada5'>Set Now</button>
 						</td>
 						<td align='center'>
-							<horario params="value:saidaPeriodo5,mask:mask,placeholder: placeholder"></horario>
+							<horario params="value:saidaPeriodo5,mask:mask,placeholder: placeholder, visible:visuSaida5"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo5"), visible:visuSaida5'>Set Now</button>
 						</td>
 <!-- 
@@ -139,12 +139,12 @@
 						<th style='text-align:center'>Ausencias</th>
 						<th style='text-align:center'>Saída minima</th>
 						<th style='text-align:center'>Horas Totais</th>
-						{{-- <th style='text-align:center'>Horas Restantes</th> --}}
+						<th style='text-align:center'>Horas Restantes</th>
 						<th style='text-align:center'>Horas Extras</th>
-						{{-- <th style='text-align:center'>Previsão de saida 1</th>
+						<th style='text-align:center'>Previsão de saida 1</th>
 						<th style='text-align:center'>Previsão de saida 2</th>
 						<th style='text-align:center'>Previsão de saida 3</th>
-						<th style='text-align:center'>Previsão de saida 4</th> --}}
+						<th style='text-align:center'>Previsão de saida 4</th>
 						<th style='text-align:center'>Ação</th>
 					</tr>
 					<tr class='' height="45px" border-radius='10px'>
@@ -153,12 +153,12 @@
 							<td align='center'><strong><span data-bind='text:totalAusencias'></span></strong></td>
 							<td align='center'><strong><span data-bind='text:saidaMinima'></span></strong></td> 
 							<td align='center'><strong><span data-bind='text:horasTotais'></span></strong></td>
-							{{-- <td align='center'><strong><span data-bind='text:horasRestantes'></span></strong></td> --}}
+							<td align='center'><strong><span {{-- data-bind='text:horasRestantes' --}}></span></strong></td>
 							<td align='center'><strong><span data-bind='text:horasExtras'></span></strong></td>
-							{{-- <td align='center'><span text='00:00:00'>00:00:00</span></td>
 							<td align='center'><span text='00:00:00'>00:00:00</span></td>
 							<td align='center'><span text='00:00:00'>00:00:00</span></td>
-							<td align='center'><span text='00:00:00'>00:00:00</span></td> --}}
+							<td align='center'><span text='00:00:00'>00:00:00</span></td>
+							<td align='center'><span text='00:00:00'>00:00:00</span></td>
 							<td align='center'><button class="btn btn-success" data-bind='click:salvar'>Salvar</button></td>
 					</tr>
 				</tbody>                    
@@ -173,7 +173,24 @@
 <script type="text/javascript">
 	//---------------------------------------------------------------------------------------------------------------
 	// CRIANDO A CLASSE TIMER
-	function Timer(timer_id,entrada1,entrada2,entrada3,entrada4,entrada5,saida1,saida2,saida3,saida4,saida5)
+	function Timer(
+		timer_id,
+		entrada1,
+		saida1,
+		entrada2,
+		saida2,
+		entrada3,
+		saida3,
+		entrada4,
+		saida4,
+		entrada5,
+		saida5
+		
+		
+		
+		
+		
+		)
 	{
 		var self                    = this;
 		//
@@ -245,13 +262,13 @@
 
 		self.horasRestantes = ko.pureComputed(function()
 		{            
-				 return self.dateDiff(self.totalTrabalhadoAteAgora(),self.horasContratadas());
+			return self.dateDiff(self.totalTrabalhadoAteAgora(),self.horasContratadas());
 		});
 
 
 		self.horasExtras = ko.pureComputed(function()
 		{            
-			   return self.dateDiff(self.horasContratadas(), self.horasTotais());            
+			return self.dateDiff(self.horasContratadas(), self.horasTotais());            
 		});
 	//	
 		
@@ -328,7 +345,7 @@
 			var tempoEntrada = self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.entradaPeriodo2().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.saidaPeriodo1().format('HH:mm:ss') != "00:00:00"  && self.entradaPeriodo2().format('HH:mm:ss') == "00:00:00" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 		},this);
 
@@ -367,7 +384,7 @@
 			var tempoEntrada = self.entradaPeriodo1().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.entradaPeriodo1().format("HH:mm:ss") != "00:00:00"  && self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss") == "00:00:00" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 
 		},this);
@@ -543,15 +560,15 @@
 
 		self.visualizar = ko.computed(function()
 		{            
-			self.visuSaida1(self.entradaPeriodo1() != undefined && self.entradaPeriodo1()!= "" && self.entradaPeriodo1()!= "00:00:00"); 
-			self.visuEntrada2(self.saidaPeriodo1() != undefined && self.saidaPeriodo1()  != "" && self.saidaPeriodo1()  != "00:00:00");
-			self.visuSaida2(self.entradaPeriodo2() != undefined && self.entradaPeriodo2()!= "" && self.entradaPeriodo2()!= "00:00:00");
-			self.visuEntrada3(self.saidaPeriodo2() != undefined && self.saidaPeriodo2()  != "" && self.saidaPeriodo2()  != "00:00:00");
-			self.visuSaida3(self.entradaPeriodo3() != undefined && self.entradaPeriodo3()!= "" && self.entradaPeriodo3()!= "00:00:00");
-			self.visuEntrada4(self.saidaPeriodo3() != undefined && self.saidaPeriodo3()  != "" && self.saidaPeriodo3()  != "00:00:00");
-			self.visuSaida4(self.entradaPeriodo4() != undefined && self.entradaPeriodo4()!= "" && self.entradaPeriodo4()!= "00:00:00");
-			self.visuEntrada5(self.saidaPeriodo4() != undefined && self.saidaPeriodo4()  != "" && self.saidaPeriodo4()  != "00:00:00");
-			self.visuSaida5(self.entradaPeriodo5() != undefined && self.entradaPeriodo5()!= "" && self.entradaPeriodo5()!= "00:00:00");
+			self.visuSaida1(self.entradaPeriodo1() != undefined && self.entradaPeriodo1()!= "" && self.entradaPeriodo1().format('HH:mm:ss')!= "00:00:00"); 
+			self.visuEntrada2(self.saidaPeriodo1() != undefined && self.saidaPeriodo1()  != "" && self.saidaPeriodo1().format('HH:mm:ss')  != "00:00:00");
+			self.visuSaida2(self.entradaPeriodo2() != undefined && self.entradaPeriodo2()!= "" && self.entradaPeriodo2().format('HH:mm:ss')!= "00:00:00");
+			self.visuEntrada3(self.saidaPeriodo2() != undefined && self.saidaPeriodo2()  != "" && self.saidaPeriodo2().format('HH:mm:ss')  != "00:00:00");
+			self.visuSaida3(self.entradaPeriodo3() != undefined && self.entradaPeriodo3()!= "" && self.entradaPeriodo3().format('HH:mm:ss')!= "00:00:00");
+			self.visuEntrada4(self.saidaPeriodo3() != undefined && self.saidaPeriodo3()  != "" && self.saidaPeriodo3().format('HH:mm:ss')  != "00:00:00");
+			self.visuSaida4(self.entradaPeriodo4() != undefined && self.entradaPeriodo4()!= "" && self.entradaPeriodo4().format('HH:mm:ss')!= "00:00:00");
+			self.visuEntrada5(self.saidaPeriodo4() != undefined && self.saidaPeriodo4()  != "" && self.saidaPeriodo4().format('HH:mm:ss')  != "00:00:00");
+			self.visuSaida5(self.entradaPeriodo5() != undefined && self.entradaPeriodo5()!= "" && self.entradaPeriodo5().format('HH:mm:ss')!= "00:00:00");
 			//
 			self.focoEntrada1(self.visuEntrada1());
 			self.focoSaida1(  self.visuSaida1());
@@ -580,29 +597,34 @@
 			console.log(time);
 			self.timer = new Timer( time.response.timer_id,
 									 time.response.entrada_1,
-									 time.response.entrada_2,
-									 time.response.entrada_3,
-									 time.response.entrada_4,
-									 time.response.entrada_5,
 									 time.response.saida_1,
+									 time.response.entrada_2,
 									 time.response.saida_2,
+									 time.response.entrada_3,
 									 time.response.saida_3,
+									 time.response.entrada_4,
 									 time.response.saida_4,
+									 time.response.entrada_5,
 									 time.response.saida_5
+									 
+									 
+									 
+									 
+									 
 									);
 		}
 		self.limpar = function()
 		{
-			if(self.timer.entradaPeriodo1() == "00:00:00") self.timer.entradaPeriodo1(""); 
-			if(self.timer.saidaPeriodo1()   == "00:00:00") self.timer.saidaPeriodo1("");
-			if(self.timer.entradaPeriodo2() == "00:00:00") self.timer.entradaPeriodo2(""); 
-			if(self.timer.saidaPeriodo2()   == "00:00:00") self.timer.saidaPeriodo2("");
-			if(self.timer.entradaPeriodo3() == "00:00:00") self.timer.entradaPeriodo3(""); 
-			if(self.timer.saidaPeriodo3()   == "00:00:00") self.timer.saidaPeriodo3("");
-			if(self.timer.entradaPeriodo4() == "00:00:00") self.timer.entradaPeriodo4(""); 
-			if(self.timer.saidaPeriodo4()   == "00:00:00") self.timer.saidaPeriodo4("");
-			if(self.timer.entradaPeriodo5() == "00:00:00") self.timer.entradaPeriodo5(""); 
-			if(self.timer.saidaPeriodo5()   == "00:00:00") self.timer.saidaPeriodo5("");   
+			if(self.timer.entradaPeriodo1() == "00:00:00") self.timer.entradaPeriodo1(moment().format('YYYY-MM-DD')); 
+			if(self.timer.saidaPeriodo1()   == "00:00:00") self.timer.saidaPeriodo1(moment().format('YYYY-MM-DD'));
+			if(self.timer.entradaPeriodo2() == "00:00:00") self.timer.entradaPeriodo2(moment().format('YYYY-MM-DD')); 
+			if(self.timer.saidaPeriodo2()   == "00:00:00") self.timer.saidaPeriodo2(moment().format('YYYY-MM-DD'));
+			if(self.timer.entradaPeriodo3() == "00:00:00") self.timer.entradaPeriodo3(moment().format('YYYY-MM-DD')); 
+			if(self.timer.saidaPeriodo3()   == "00:00:00") self.timer.saidaPeriodo3(moment().format('YYYY-MM-DD'));
+			if(self.timer.entradaPeriodo4() == "00:00:00") self.timer.entradaPeriodo4(moment().format('YYYY-MM-DD')); 
+			if(self.timer.saidaPeriodo4()   == "00:00:00") self.timer.saidaPeriodo4(moment().format('YYYY-MM-DD'));
+			if(self.timer.entradaPeriodo5() == "00:00:00") self.timer.entradaPeriodo5(moment().format('YYYY-MM-DD')); 
+			if(self.timer.saidaPeriodo5()   == "00:00:00") self.timer.saidaPeriodo5(moment().format('YYYY-MM-DD'));   
 		}  
 		self.limpar();    
 		self.focar = function()

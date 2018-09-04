@@ -5,7 +5,8 @@
 		data-bind="
 			masked:internalValue, 
 			mask: mask,
-			placeholder:'placeholder'	 
+			placeholder:'placeholder',
+			visible:visible
 		"
 	></input>
 </template>
@@ -20,6 +21,7 @@
 			self.mask          - ko.observable(params.mask);
 			self.placeholder   - ko.observable(params.placeholder);
 			self.display       = ko.observable();	
+			self.visible       = params.visible;
 					
 			self.internalValue = ko.computed(
 			{

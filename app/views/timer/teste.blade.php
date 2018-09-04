@@ -40,7 +40,7 @@
 				</div>
 			</div>
 		</div>
-		{{-- periodo 1 --}}
+	{{-- periodo 1 --}}
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro " style="margin-top: 10px;">
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada1'>
@@ -82,7 +82,7 @@
 				</div>
 	        </div>		
 		</div>
-		{{-- periodo 2 --}}
+	{{-- periodo 2 --}}
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" style="margin-top: 10px;" data-bind='visible:visuEntrada2'>
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada2'>
@@ -124,7 +124,7 @@
 				</div>
 	        </div>		
 		</div>
-		{{-- periodo 3 --}}
+	{{-- periodo 3 --}}
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" style="margin-top: 10px;" data-bind='visible:visuEntrada3'>
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada3'>
@@ -166,7 +166,7 @@
 				</div>
 	        </div>		
 		</div>
-		{{-- periodo 4 --}}
+	{{-- periodo 4 --}}
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" style="margin-top: 10px;" data-bind='visible:visuEntrada4'>
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada4'>
@@ -208,7 +208,7 @@
 				</div>
 	        </div>		
 		</div>
-		{{-- periodo 5 --}}
+	{{-- periodo 5 --}}
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro" style="margin-top: 10px;" data-bind='visible:visuEntrada5'>
 			<div class="row">
 				<div class="col-sm-6 col-md-4" data-bind='visible:visuEntrada5'>

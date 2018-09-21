@@ -5,8 +5,8 @@
 		data-bind="
 			masked:internalValue, 
 			mask: mask,
-			placeholder:'placeholder',
-			visible:visible
+			visible:visible,
+			hasFocus:hasFocus
 		"
 	></input>
 </template>
@@ -14,29 +14,28 @@
 	ko.components.register('horario',{
 		viewModel:function(params)
 		{
-			// console.log("params: ", params)
 			var self = this;
 
 			self.template      = 'horariotemplate';
 			self.mask          - ko.observable(params.mask);
-			self.placeholder   - ko.observable(params.placeholder);
-			self.display       = ko.observable();	
 			self.visible       = params.visible;
+			self.hasFocus      = params.hasFocus;
 					
 			self.internalValue = ko.computed(
 			{
 				read: function()
 				{
-					if (params.value() &&!!params.value())
+					if (params.value() &&!!params.value() && params.value().format('HH:mm:ss') !="00:00:00")
 					{					
 						return params.value().format('HH:mm:ss');
 					}
+					return self.placeholder;
 				},
 				write: function(hora)
 				{
-					params.value(moment(
-						moment().format("YYYY-MM-DD")+' '+ hora , "YYYY-MM-DD HH:mm:ss"
-					));
+					params.value( moment(
+						moment().format("YYYY-MM-DD")+' '+ hora , "YYYY-MM-DD HH:mm:ss")
+					);
 				}
 			});
 		},

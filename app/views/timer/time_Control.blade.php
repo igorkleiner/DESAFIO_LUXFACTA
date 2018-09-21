@@ -12,7 +12,7 @@
 	usuario['usu_id'] = {{$usuario->usu_id}};    
 	time              = {{json_encode($time)}};
 	mask              = '99:99:99';
-	placeholder       = '  :  :  ';
+	placeholder       = '__:__:__';
 </script>
 
 <style >
@@ -55,50 +55,50 @@
 						<td align='center' data-bind='relogio:agora'><span data-bind='text: agora.data'></span></td>
 					{{-- PERIODO 1 --}}
 						<td align='center'>
-							<horario params="value:entradaPeriodo1,mask:mask,placeholder:placeholder, visible:visuEntrada1"></horario>
+							<horario params="value:entradaPeriodo1,mask:mask, visible:visuEntrada1,hasFocus:focoEntrada1"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo1"), visible:visuEntrada1'>Set Now</button>
 						</td>
 						
 						<td align='center'>
-							<horario params="value:saidaPeriodo1,mask:mask,placeholder:placeholder, visible:visuSaida1"></horario>
+							<horario params="value:saidaPeriodo1,mask:mask, visible:visuSaida1,hasFocus:focoSaida1"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo1"), visible:visuSaida1'>Set Now</button>
 						</td>
 					{{-- PERIODO 2 --}}
 						<td align='center'>
-							<horario params="value:entradaPeriodo2,mask:mask,placeholder:placeholder, visible:visuEntrada2"></horario>
+							<horario params="value:entradaPeriodo2,mask:mask, visible:visuEntrada2,hasFocus:focoEntrada2"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo2"), visible:visuEntrada2'>Set Now</button>
 						</td>						
 						<td align='center'>
-							<horario params="value:saidaPeriodo2,mask:mask,placeholder: placeholder, visible:visuSaida2"></horario>
+							<horario params="value:saidaPeriodo2,mask:mask, visible:visuSaida2,hasFocus:focoSaida2"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo2"), visible:visuSaida2'>Set Now</button>
 						</td>
 					{{-- PERIODO 3 --}}
 						<td align='center'>
-							<horario params="value:entradaPeriodo3,mask:mask,placeholder: placeholder,visible:visuEntrada3"></horario>
+							<horario params="value:entradaPeriodo3,mask:mask,visible:visuEntrada3,hasFocus:focoEntrada3"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo3"), visible:visuEntrada3'>Set Now</button>
 						</td>
 						
 						<td align='center'>
-							<horario params="value:saidaPeriodo3,mask:mask,placeholder: placeholder, visible:visuSaida3"></horario>
+							<horario params="value:saidaPeriodo3,mask:mask, visible:visuSaida3,hasFocus:focoSaida3"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo3"), visible:visuSaida3'>Set Now</button>
 						</td>
 					{{-- PERIODO 4 --}}						
 						<td align='center'>
-							<horario params="value:entradaPeriodo4,mask:mask,placeholder: placeholder, visible:visuEntrada4"></horario>
+							<horario params="value:entradaPeriodo4,mask:mask, visible:visuEntrada4,hasFocus:focoEntrada4"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo4"), visible:visuEntrada4'>Set Now</button>
 						</td>
 						
 						<td align='center'>
-							<horario params="value:saidaPeriodo4,mask:mask,placeholder: placeholder, visible:visuSaida4"></horario>
+							<horario params="value:saidaPeriodo4,mask:mask, visible:visuSaida4,hasFocus:focoSaida4"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo4"), visible:visuSaida4'>Set Now</button>
 						</td>
 					{{-- PERIODO 5 --}}						
 						<td align='center'>
-							<horario params="value:entradaPeriodo5,mask:mask,placeholder: placeholder, visible:visuEntrada5"></horario>
+							<horario params="value:entradaPeriodo5,mask:mask, visible:visuEntrada5,hasFocus:focoEntrada5"></horario>
 							<button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo5"), visible:visuEntrada5'>Set Now</button>
 						</td>
 						<td align='center'>
-							<horario params="value:saidaPeriodo5,mask:mask,placeholder: placeholder, visible:visuSaida5"></horario>
+							<horario params="value:saidaPeriodo5,mask:mask, visible:visuSaida5,hasFocus:focoSaida5"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo5"), visible:visuSaida5'>Set Now</button>
 						</td>
 <!-- 
@@ -120,8 +120,8 @@
 						<th style='text-align:center'>Horas Contratadas</th>                           
 					</tr> 
 					<tr class='' height="45px" >
-						<td align='center'><strong><span {{-- data-bind='text:previsaoSaida' --}}></span></strong></td>
-						<td align='center'><strong><span {{-- data-bind='text:totalTrabalhadoAteAgora' --}}></span></strong></td>                                                    
+						<td align='center'><strong><span data-bind='text:previsaoSaida'></span></strong></td>
+						<td align='center'><strong><span data-bind='text:totalTrabalhadoAteAgora'></span></strong></td>                                                    
 						<td align='center'><strong><span data-bind='text:totalHorasPeriodo1'></span></strong></td>
 						<td align='center'><strong><span data-bind='text:totalAusenciaPeriodo12'></span></strong></td>
 						<td align='center'><strong><span data-bind='text:totalHorasPeriodo2'></span></strong></td>
@@ -153,7 +153,7 @@
 							<td align='center'><strong><span data-bind='text:totalAusencias'></span></strong></td>
 							<td align='center'><strong><span data-bind='text:saidaMinima'></span></strong></td> 
 							<td align='center'><strong><span data-bind='text:horasTotais'></span></strong></td>
-							<td align='center'><strong><span {{-- data-bind='text:horasRestantes' --}}></span></strong></td>
+							<td align='center'><strong><span data-bind='text:horasRestantes'></span></strong></td>
 							<td align='center'><strong><span data-bind='text:horasExtras'></span></strong></td>
 							<td align='center'><span text='00:00:00'>00:00:00</span></td>
 							<td align='center'><span text='00:00:00'>00:00:00</span></td>
@@ -185,11 +185,6 @@
 		saida4,
 		entrada5,
 		saida5
-		
-		
-		
-		
-		
 		)
 	{
 		var self                    = this;
@@ -262,72 +257,49 @@
 
 		self.horasRestantes = ko.pureComputed(function()
 		{            
-			return self.dateDiff(self.totalTrabalhadoAteAgora(),self.horasContratadas());
+			return self.timeDiff(self.horasContratadas(),self.totalTrabalhadoAteAgora());
 		});
 
 
 		self.horasExtras = ko.pureComputed(function()
 		{            
-			return self.dateDiff(self.horasContratadas(), self.horasTotais());            
+			return self.timeDiff(self.horasTotais(),self.horasContratadas());            
 		});
 	//	
 		
 		self.agora = new Relogio();
 
 	//
-		// self.totalTrabalhadoAteAgora = ko.pureComputed(function()
-		// {
+		self.totalTrabalhadoAteAgora = ko.pureComputed(function()
+		{
 			
-		// 	if(self.entradaPeriodo1() != undefined)
-		// 	{   
-		// 		var temposaida1 = self.saidaPeriodo1();             
-		// 		var temposaida2 = self.saidaPeriodo2();
-		// 		var temposaida3 = self.saidaPeriodo3();
-		// 		var temposaida4 = self.saidaPeriodo4();
-		// 		var compara  = new Date();
-		// 		var total1, total2, total3, total4, total;
+			if (self.entradaPeriodo1()._isValid && self.entradaPeriodo1().format('HH:mm:ss') != "00:00:00") 
+			{
+				var compara = moment();
 
-		// 		if (temposaida1 == "") temposaida1 = "00:00:00";
-		// 		if (temposaida2 == "") temposaida2 = "00:00:00";
-		// 		if (temposaida3 == "") temposaida3 = "00:00:00";
-		// 		if (temposaida4 == "") temposaida4 = "00:00:00";                
+				if (self.saidaPeriodo1() < compara) total1 = self.totalAusenciaPeriodo12(); else total1 = "00:00:00";                
+				if (self.saidaPeriodo2() < compara) total2 = self.totalAusenciaPeriodo23(); else total2 = "00:00:00";                
+				if (self.saidaPeriodo3() < compara) total3 = self.totalAusenciaPeriodo34(); else total3 = "00:00:00";                
+				if (self.saidaPeriodo4() < compara) total4 = self.totalAusenciaPeriodo45(); else total4 = "00:00:00"; 
 
-		// 		calculotemposaida1 = temposaida1.split(":");
-		// 		var saida1 = new Date();
-		// 		saida1.setHours(calculotemposaida1[0]);
-		// 		saida1.setMinutes(calculotemposaida1[1]);
-		// 		saida1.setSeconds(calculotemposaida1[2]);
+				var totalAusencias = self.timeAdd(total1, total2, total3, total4, "00:00:00");
+				var agora = moment().format("YYYY-MM-DD ")+self.agora.hora();
+				var inicio = self.entradaPeriodo1().format("YYYY-MM-DD HH:mm:ss");
+				// console.log('agora: ',agora);
+				// console.log('inicio: ',inicio);
+				var display = self.timeDiff( //  ausencias menos (inicio ate agora) 
+					self.dateDiff(inicio,agora),
+					totalAusencias
+				);
+				return display;
 
-		// 		calculotemposaida2 = temposaida2.split(":");
-		// 		var saida2 = new Date();
-		// 		saida2.setHours(calculotemposaida2[0]);
-		// 		saida2.setMinutes(calculotemposaida2[1]);
-		// 		saida2.setSeconds(calculotemposaida2[2]);
-
-		// 		calculotemposaida3 = temposaida3.split(":");
-		// 		var saida3 = new Date();
-		// 		saida3.setHours(calculotemposaida3[0]);
-		// 		saida3.setMinutes(calculotemposaida3[1]);
-		// 		saida3.setSeconds(calculotemposaida3[2]);
-
-		// 		calculotemposaida4 = temposaida4.split(":");
-		// 		var saida4 = new Date();
-		// 		saida4.setHours(calculotemposaida4[0]);
-		// 		saida4.setMinutes(calculotemposaida4[1]);
-		// 		saida4.setSeconds(calculotemposaida4[2]);
-
-		// 		if (saida1.getTime() < compara.getTime()) total1 = self.totalAusenciaPeriodo12(); else total1 = "00:00:00";                
-		// 		if (saida2.getTime() < compara.getTime()) total2 = self.totalAusenciaPeriodo23(); else total2 = "00:00:00";                
-		// 		if (saida3.getTime() < compara.getTime()) total3 = self.totalAusenciaPeriodo34(); else total3 = "00:00:00";                
-		// 		if (saida4.getTime() < compara.getTime()) total4 = self.totalAusenciaPeriodo45(); else total4 = "00:00:00";  
-				
-		// 		total = self.timeAdd(total1, total2, total3, total4, "00:00:00");
-				
-		// 		return self.dateDiff(total, self.dateDiff(self.entradaPeriodo1(),self.agora.hora()));
-		// 	}
-		// 	else
-		// 		return "00:00:00"
-		// },this);
+			}
+			else
+			{
+				return "00:00:00";
+			}
+			
+		},this);
 
 		self.previsaoSaida  = ko.pureComputed(function()
 		{  
@@ -339,13 +311,14 @@
 				previsao[0] = "0" + previsao[0].toString();
 			return  previsao[0]+":"+previsao[1].toString()+":"+previsao[2].toString();
 		},this);
-
+	//
 		self.totalAusenciaPeriodo12 = ko.pureComputed(function()
 		{
 			var tempoEntrada = self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.entradaPeriodo2().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (self.saidaPeriodo1().format('HH:mm:ss') != "00:00:00"  && self.entradaPeriodo2().format('HH:mm:ss') == "00:00:00" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.saidaPeriodo1().format('HH:mm:ss') != "00:00:00"  && self.entradaPeriodo2().format('HH:mm:ss') == "00:00:00" ) 
+				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 		},this);
 
@@ -355,7 +328,8 @@
 			var tempoEntrada = self.saidaPeriodo2().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.entradaPeriodo3().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.saidaPeriodo2().format('HH:mm:ss') != "00:00:00"  && self.entradaPeriodo3().format('HH:mm:ss') == "00:00:00" ) 
+				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 		},this);
 
@@ -365,7 +339,8 @@
 			var tempoEntrada = self.saidaPeriodo3().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.entradaPeriodo4().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.saidaPeriodo3().format('HH:mm:ss') != "00:00:00"  && self.entradaPeriodo4().format('HH:mm:ss') == "00:00:00" ) 
+				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 		},this);
 
@@ -375,27 +350,31 @@
 			var tempoEntrada = self.saidaPeriodo4().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.entradaPeriodo5().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.saidaPeriodo4().format('HH:mm:ss') != "00:00:00"  && self.entradaPeriodo5().format('HH:mm:ss') == "00:00:00" ) 
+				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 		},this);
 	//
+
 		self.totalHorasPeriodo1 = ko.pureComputed(function()
 		{
 			var tempoEntrada = self.entradaPeriodo1().format("YYYY-MM-DD HH:mm:ss");            
-			var tempoSaida   =   self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss");            
+			var tempoSaida   =   self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss");  
 			
-			if (self.entradaPeriodo1().format("HH:mm:ss") != "00:00:00"  && self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss") == "00:00:00" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.entradaPeriodo1().format("HH:mm:ss") != "00:00:00"  && self.saidaPeriodo1().format("HH:mm:ss") == "00:00:00" ) 
+				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 
 		},this);
 
-	//
+
 		self.totalHorasPeriodo2 = ko.pureComputed(function()
 		{
 			var tempoEntrada = self.entradaPeriodo2().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.saidaPeriodo2().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.entradaPeriodo2().format("HH:mm:ss") != "00:00:00"  && self.saidaPeriodo2().format("HH:mm:ss") == "00:00:00" ) 
+				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 
 		},this);
@@ -406,7 +385,8 @@
 			var tempoEntrada = self.entradaPeriodo3().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.saidaPeriodo3().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.entradaPeriodo3().format("HH:mm:ss") != "00:00:00"  && self.saidaPeriodo3().format("HH:mm:ss") == "00:00:00" ) 
+				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 		},this);
 
@@ -416,8 +396,9 @@
 			var tempoEntrada = self.entradaPeriodo4().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.saidaPeriodo4().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
-			return self.dateDiff(tempoEntrada, tempoSaida); 
+			if (self.entradaPeriodo4().format("HH:mm:ss") != "00:00:00"  && self.saidaPeriodo4().format("HH:mm:ss") == "00:00:00" ) 
+				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
+			return self.dateDiff(tempoEntrada, tempoSaida);
 		},this);
 
 
@@ -426,10 +407,11 @@
 			var tempoEntrada = self.entradaPeriodo5().format("YYYY-MM-DD HH:mm:ss");            
 			var tempoSaida   =   self.saidaPeriodo5().format("YYYY-MM-DD HH:mm:ss");            
 			
-			if (tempoEntrada != ""  && tempoSaida == "" ) tempoSaida = self.agora.data()+ " " +self.agora.hora();
+			if (self.entradaPeriodo5().format("HH:mm:ss") != "00:00:00"  && self.saidaPeriodo5().format("HH:mm:ss") == "00:00:00" ) 
+				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida); 
 		},this);
-
+	//
 		self.setTime = function(e)
 		{
 			if(typeof(e) != 'function')
@@ -439,7 +421,7 @@
 
 		self.dateDiff = function (entrada, saida)
 		{	
-			if(!!entrada && !!saida &&(entrada < saida))
+			if(!!entrada && !!saida && (entrada < saida))
 			{
 				try
 				{    
@@ -497,6 +479,39 @@
 				return '00:00:00';
 			}
 		}; 
+		self.timeDiff = function(antes,depois)
+		{
+			time1 = antes.split(':');              
+			time2 = depois.split(':');
+
+			var horas    = parseFloat(time1[0]) - parseFloat(time2[0]);
+			var minutos  = parseFloat(time1[1]) - parseFloat(time2[1]);
+			var segundos = parseFloat(time1[2]) - parseFloat(time2[2]);
+			if (moment(moment().format('YYYY-MM-DD ')+antes) > moment(moment().format('YYYY-MM-DD ')+depois) ) 
+			{
+				try
+				{
+					while (segundos < 0 ) {segundos = segundos + 60; minutos --;}
+					while (minutos  < 0 ) {minutos  = minutos  + 60; horas   --;}  
+
+					if (horas    < 10) horas    = "0"+ horas.toString();
+					if (minutos  < 10) minutos  = "0"+ minutos.toString();
+					if (segundos < 10) segundos = "0"+ segundos.toString(); 
+					
+					return `${horas}:${minutos}:${segundos}`;
+				}
+				catch(ex)
+				{
+					console.log(ex);
+					return '00:00:00';
+				}
+			}
+			else
+			{
+				return '00:00:00';
+			}
+		}
+
 
 
 		self.salvar = function()
@@ -581,6 +596,7 @@
 			self.focoEntrada5(self.visuEntrada5());
 			self.focoSaida5(  self.visuSaida5()); 
 		});
+	//
 	}
 			
 //-----------------------------------------------------------------------------------------------------------------------
@@ -590,41 +606,52 @@
 		//		
 		if (time.status == 0 || time.response == null) 
 		{
-			self.timer = new Timer("","","","","","","","","","");
+			console.log('Time na viewModel: ');
+			console.log(time);
+			self.timer = new Timer(
+				moment().set({hour:0,minute:0,second:0}),
+				moment().set({hour:0,minute:0,second:0}),
+				moment().set({hour:0,minute:0,second:0}),
+				moment().set({hour:0,minute:0,second:0}),
+				moment().set({hour:0,minute:0,second:0}),
+				moment().set({hour:0,minute:0,second:0}),
+				moment().set({hour:0,minute:0,second:0}),
+				moment().set({hour:0,minute:0,second:0}),
+				moment().set({hour:0,minute:0,second:0}),
+				moment().set({hour:0,minute:0,second:0})
+			);
 		}
 		else 
 		{
+			console.log('Time na viewModel: ');
 			console.log(time);
-			self.timer = new Timer( time.response.timer_id,
-									 time.response.entrada_1,
-									 time.response.saida_1,
-									 time.response.entrada_2,
-									 time.response.saida_2,
-									 time.response.entrada_3,
-									 time.response.saida_3,
-									 time.response.entrada_4,
-									 time.response.saida_4,
-									 time.response.entrada_5,
-									 time.response.saida_5
-									 
-									 
-									 
-									 
-									 
-									);
+			self.timer = new Timer( 
+				time.response.timer_id,
+				time.response.entrada_1,
+				time.response.saida_1,
+				time.response.entrada_2,
+				time.response.saida_2,
+				time.response.entrada_3,
+				time.response.saida_3,
+				time.response.entrada_4,
+				time.response.saida_4,
+				time.response.entrada_5,
+				time.response.saida_5
+			);
 		}
 		self.limpar = function()
 		{
-			if(self.timer.entradaPeriodo1() == "00:00:00") self.timer.entradaPeriodo1(moment().format('YYYY-MM-DD')); 
-			if(self.timer.saidaPeriodo1()   == "00:00:00") self.timer.saidaPeriodo1(moment().format('YYYY-MM-DD'));
-			if(self.timer.entradaPeriodo2() == "00:00:00") self.timer.entradaPeriodo2(moment().format('YYYY-MM-DD')); 
-			if(self.timer.saidaPeriodo2()   == "00:00:00") self.timer.saidaPeriodo2(moment().format('YYYY-MM-DD'));
-			if(self.timer.entradaPeriodo3() == "00:00:00") self.timer.entradaPeriodo3(moment().format('YYYY-MM-DD')); 
-			if(self.timer.saidaPeriodo3()   == "00:00:00") self.timer.saidaPeriodo3(moment().format('YYYY-MM-DD'));
-			if(self.timer.entradaPeriodo4() == "00:00:00") self.timer.entradaPeriodo4(moment().format('YYYY-MM-DD')); 
-			if(self.timer.saidaPeriodo4()   == "00:00:00") self.timer.saidaPeriodo4(moment().format('YYYY-MM-DD'));
-			if(self.timer.entradaPeriodo5() == "00:00:00") self.timer.entradaPeriodo5(moment().format('YYYY-MM-DD')); 
-			if(self.timer.saidaPeriodo5()   == "00:00:00") self.timer.saidaPeriodo5(moment().format('YYYY-MM-DD'));   
+			if(!self.timer.entradaPeriodo1()._isvalid ) self.timer.entradaPeriodo1( moment().set({hour:0,minute:0,second:0})); 
+			if(!self.timer.saidaPeriodo1()._isvalid   ) self.timer.saidaPeriodo1(   moment().set({hour:0,minute:0,second:0}));
+			if(!self.timer.entradaPeriodo2()._isvalid ) self.timer.entradaPeriodo2( moment().set({hour:0,minute:0,second:0})); 
+			if(!self.timer.saidaPeriodo2()._isvalid   ) self.timer.saidaPeriodo2(   moment().set({hour:0,minute:0,second:0}));
+			if(!self.timer.entradaPeriodo3()._isvalid ) self.timer.entradaPeriodo3( moment().set({hour:0,minute:0,second:0})); 
+			if(!self.timer.saidaPeriodo3()._isvalid   ) self.timer.saidaPeriodo3(   moment().set({hour:0,minute:0,second:0}));
+			if(!self.timer.entradaPeriodo4()._isvalid ) self.timer.entradaPeriodo4( moment().set({hour:0,minute:0,second:0})); 
+			if(!self.timer.saidaPeriodo4()._isvalid   ) self.timer.saidaPeriodo4(   moment().set({hour:0,minute:0,second:0}));
+			if(!self.timer.entradaPeriodo5()._isvalid ) self.timer.entradaPeriodo5( moment().set({hour:0,minute:0,second:0})); 
+			if(!self.timer.saidaPeriodo5()._isvalid   ) self.timer.saidaPeriodo5(   moment().set({hour:0,minute:0,second:0}));   
+			// console.log(self.timer.entradaPeriodo1());
 		}  
 		self.limpar();    
 		self.focar = function()
@@ -647,7 +674,7 @@
 	}
 //-------------------------------------------------------------------------------------------------------------------------- 
 	viewModel = new ViewModel;
-	viewModel.focar();
+	// viewModel.focar();
 	 //<input id="DOB" type="text" size="12" maxlength="8" data-bind="masked: BirthDate, mask: '99:99:99', placeholder: '00:00:00', valueUpdate: 'onKeyPress'"/>
 	$(function(){
 		ko.applyBindings(viewModel, document.getElementById('idtimer'));

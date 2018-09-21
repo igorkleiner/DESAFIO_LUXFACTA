@@ -468,7 +468,7 @@
 				return self.dateDiff(total, self.dateDiff(self.entradaPeriodo1(),self.agora.hora()));
 			}
 			else
-				return "00:00:00"
+				return "00:00:00";
 		},this);
 
 		self.previsaoSaida  = ko.pureComputed(function()

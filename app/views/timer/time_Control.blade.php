@@ -101,7 +101,7 @@
 							<horario params="value:saidaPeriodo5,mask:mask, visible:visuSaida5,hasFocus:focoSaida5"></horario>
 							<button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo5"), visible:visuSaida5'>Set Now</button>
 						</td>
-<!-- 
+					<!-- 
 						 -->
 						       
 					</tr>
@@ -187,6 +187,18 @@
 		saida5
 		)
 	{
+		// console.log("parametros recebidos no obj");
+		// console.log(timer_id);
+		// console.log(entrada1);
+		// console.log(saida1);
+		// console.log(entrada2);
+		// console.log(saida2);
+		// console.log(entrada3);
+		// console.log(saida3);
+		// console.log(entrada4);
+		// console.log(saida4);
+		// console.log(entrada5);
+		// console.log(saida5);
 		var self                    = this;
 		//
 		self.timerId                 = ko.observable(timer_id);    
@@ -285,14 +297,11 @@
 				var totalAusencias = self.timeAdd(total1, total2, total3, total4, "00:00:00");
 				var agora = moment().format("YYYY-MM-DD ")+self.agora.hora();
 				var inicio = self.entradaPeriodo1().format("YYYY-MM-DD HH:mm:ss");
-				// console.log('agora: ',agora);
-				// console.log('inicio: ',inicio);
-				var display = self.timeDiff( //  ausencias menos (inicio ate agora) 
+
+				return self.timeDiff( //  (inicio ate agora) menos ausencias
 					self.dateDiff(inicio,agora),
 					totalAusencias
 				);
-				return display;
-
 			}
 			else
 			{
@@ -497,7 +506,7 @@
 					if (horas    < 10) horas    = "0"+ horas.toString();
 					if (minutos  < 10) minutos  = "0"+ minutos.toString();
 					if (segundos < 10) segundos = "0"+ segundos.toString(); 
-					
+
 					return `${horas}:${minutos}:${segundos}`;
 				}
 				catch(ex)
@@ -516,16 +525,6 @@
 
 		self.salvar = function()
 		{
-			var entradaPeriodo1 = self.entradaPeriodo1() || "";
-			var entradaPeriodo2 = self.entradaPeriodo2() || "";
-			var entradaPeriodo3 = self.entradaPeriodo3() || "";
-			var entradaPeriodo4 = self.entradaPeriodo4() || "";
-			var entradaPeriodo5 = self.entradaPeriodo5() || "";
-			var saidaPeriodo1   = self.saidaPeriodo1()   || "";
-			var saidaPeriodo2   = self.saidaPeriodo2()   || "";
-			var saidaPeriodo3   = self.saidaPeriodo3()   || "";
-			var saidaPeriodo4   = self.saidaPeriodo4()   || "";
-			var saidaPeriodo5   = self.saidaPeriodo5()   || "";            
 
 			var callback = function(result)
 			{
@@ -534,41 +533,44 @@
 					if(result.status == 1)
 					{                        
 						self.timerId(result.response.timer_id);
-						self.entradaPeriodo1(result.response.entrada_1);
-						self.entradaPeriodo2(result.response.entrada_2);
-						self.entradaPeriodo3(result.response.entrada_3);
-						self.entradaPeriodo4(result.response.entrada_4);
-						self.entradaPeriodo5(result.response.entrada_5);
-						self.saidaPeriodo1(result.response.saida_1);
-						self.saidaPeriodo2(result.response.saida_2);
-						self.saidaPeriodo3(result.response.saida_3);
-						self.saidaPeriodo4(result.response.saida_4);
-						self.saidaPeriodo5(result.response.saida_5);
+						self.entradaPeriodo1(moment(result.response.entrada_1,'YYYY-MM-DD HH:mm:ss'));
+						self.entradaPeriodo2(moment(result.response.entrada_2,'YYYY-MM-DD HH:mm:ss'));
+						self.entradaPeriodo3(moment(result.response.entrada_3,'YYYY-MM-DD HH:mm:ss'));
+						self.entradaPeriodo4(moment(result.response.entrada_4,'YYYY-MM-DD HH:mm:ss'));
+						self.entradaPeriodo5(moment(result.response.entrada_5,'YYYY-MM-DD HH:mm:ss'));
+						self.saidaPeriodo1(moment(result.response.saida_1,'YYYY-MM-DD HH:mm:ss'));
+						self.saidaPeriodo2(moment(result.response.saida_2,'YYYY-MM-DD HH:mm:ss'));
+						self.saidaPeriodo3(moment(result.response.saida_3,'YYYY-MM-DD HH:mm:ss'));
+						self.saidaPeriodo4(moment(result.response.saida_4,'YYYY-MM-DD HH:mm:ss'));
+						self.saidaPeriodo5(moment(result.response.saida_5,'YYYY-MM-DD HH:mm:ss'));
 					}
 					else
 					{
-						globalViewModel.submit("{{Route('log.error')}}", result.message,function(){location.reload()});
 						alert(result.message);
 					}
 				}               
-			}                      
+			} 
+
+			
+
 			dadosPost = 
 			{
 				'data' : data,
 				"usu_id": usuario['usu_id'],
 				'timer_id' : self.timerId(),
 				'timer_key': usuario.usu_id.toString()+usuario.per_id.toString()+data.replace(/\D/g,''),
-				'entrada_1': entradaPeriodo1,
-				'entrada_2': entradaPeriodo2,
-				'entrada_3': entradaPeriodo3,
-				'entrada_4': entradaPeriodo4,
-				'entrada_5': entradaPeriodo5,
-				'saida_1'  : saidaPeriodo1,
-				'saida_2'  : saidaPeriodo2,
-				'saida_3'  : saidaPeriodo3,
-				'saida_4'  : saidaPeriodo4,
-				'saida_5'  : saidaPeriodo5
-			};                        
+				'entrada_1': self.entradaPeriodo1().format("YYYY-MM-DD HH:mm:ss"),
+				'saida_1'  : self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss"),
+				'entrada_2': self.entradaPeriodo2().format("YYYY-MM-DD HH:mm:ss"),
+				'saida_2'  : self.saidaPeriodo2().format("YYYY-MM-DD HH:mm:ss"),
+				'entrada_3': self.entradaPeriodo3().format("YYYY-MM-DD HH:mm:ss"),
+				'saida_3'  : self.saidaPeriodo3().format("YYYY-MM-DD HH:mm:ss"),
+				'entrada_4': self.entradaPeriodo4().format("YYYY-MM-DD HH:mm:ss"),
+				'saida_4'  : self.saidaPeriodo4().format("YYYY-MM-DD HH:mm:ss"),
+				'entrada_5': self.entradaPeriodo5().format("YYYY-MM-DD HH:mm:ss"),
+				'saida_5'  : self.saidaPeriodo5().format("YYYY-MM-DD HH:mm:ss")
+			};    
+			console.log(dadosPost)                  ;
 			globalViewModel.submit("{{Route('salvar.timer2')}}", dadosPost,callback);
 		} 
 
@@ -606,24 +608,25 @@
 		//		
 		if (time.status == 0 || time.response == null) 
 		{
-			console.log('Time na viewModel: ');
+			console.log('Time  vazio na viewModel: ');
 			console.log(time);
 			self.timer = new Timer(
-				moment().set({hour:0,minute:0,second:0}),
-				moment().set({hour:0,minute:0,second:0}),
-				moment().set({hour:0,minute:0,second:0}),
-				moment().set({hour:0,minute:0,second:0}),
-				moment().set({hour:0,minute:0,second:0}),
-				moment().set({hour:0,minute:0,second:0}),
-				moment().set({hour:0,minute:0,second:0}),
-				moment().set({hour:0,minute:0,second:0}),
-				moment().set({hour:0,minute:0,second:0}),
-				moment().set({hour:0,minute:0,second:0})
+				'',
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss"),
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss"),
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss"),
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss"),
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss"),
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss"),
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss"),
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss"),
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss"),
+				moment().set({hour:0,minute:0,second:0}).format("YYYY-MM-DD HH:mm:ss")
 			);
 		}
 		else 
 		{
-			console.log('Time na viewModel: ');
+			console.log('Time com conteudo na viewModel: ');
 			console.log(time);
 			self.timer = new Timer( 
 				time.response.timer_id,
@@ -639,21 +642,32 @@
 				time.response.saida_5
 			);
 		}
-		self.limpar = function()
-		{
-			if(!self.timer.entradaPeriodo1()._isvalid ) self.timer.entradaPeriodo1( moment().set({hour:0,minute:0,second:0})); 
-			if(!self.timer.saidaPeriodo1()._isvalid   ) self.timer.saidaPeriodo1(   moment().set({hour:0,minute:0,second:0}));
-			if(!self.timer.entradaPeriodo2()._isvalid ) self.timer.entradaPeriodo2( moment().set({hour:0,minute:0,second:0})); 
-			if(!self.timer.saidaPeriodo2()._isvalid   ) self.timer.saidaPeriodo2(   moment().set({hour:0,minute:0,second:0}));
-			if(!self.timer.entradaPeriodo3()._isvalid ) self.timer.entradaPeriodo3( moment().set({hour:0,minute:0,second:0})); 
-			if(!self.timer.saidaPeriodo3()._isvalid   ) self.timer.saidaPeriodo3(   moment().set({hour:0,minute:0,second:0}));
-			if(!self.timer.entradaPeriodo4()._isvalid ) self.timer.entradaPeriodo4( moment().set({hour:0,minute:0,second:0})); 
-			if(!self.timer.saidaPeriodo4()._isvalid   ) self.timer.saidaPeriodo4(   moment().set({hour:0,minute:0,second:0}));
-			if(!self.timer.entradaPeriodo5()._isvalid ) self.timer.entradaPeriodo5( moment().set({hour:0,minute:0,second:0})); 
-			if(!self.timer.saidaPeriodo5()._isvalid   ) self.timer.saidaPeriodo5(   moment().set({hour:0,minute:0,second:0}));   
-			// console.log(self.timer.entradaPeriodo1());
-		}  
-		self.limpar();    
+		// self.limpar = function()
+		// {
+		// 	if(self.timer.entradaPeriodo1()._isValid == false) self.timer.entradaPeriodo1( moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0})); 
+		// 	if(self.timer.saidaPeriodo1()._isValid == false)   self.timer.saidaPeriodo1(   moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0}));
+		// 	if(self.timer.entradaPeriodo2()._isValid == false) self.timer.entradaPeriodo2( moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0})); 
+		// 	if(self.timer.saidaPeriodo2()._isValid == false)   self.timer.saidaPeriodo2(   moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0}));
+		// 	if(self.timer.entradaPeriodo3()._isValid == false) self.timer.entradaPeriodo3( moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0})); 
+		// 	if(self.timer.saidaPeriodo3()._isValid == false)   self.timer.saidaPeriodo3(   moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0}));
+		// 	if(self.timer.entradaPeriodo4()._isValid == false) self.timer.entradaPeriodo4( moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0})); 
+		// 	if(self.timer.saidaPeriodo4()._isValid == false)   self.timer.saidaPeriodo4(   moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0}));
+		// 	if(self.timer.entradaPeriodo5()._isValid == false) self.timer.entradaPeriodo5( moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0})); 
+		// 	if(self.timer.saidaPeriodo5()._isValid == false)   self.timer.saidaPeriodo5(   moment("YYYY-MM-DD HH:mm:ss").set({hour:0,minute:0,second:0}));   
+
+		// 	// console.log('depois de limpar: ');
+		// 	// console.log(self.timer.entradaPeriodo1());
+		// 	// console.log(self.timer.saidaPeriodo1());
+		// 	// console.log(self.timer.entradaPeriodo2());
+		// 	// console.log(self.timer.saidaPeriodo2());
+		// 	// console.log(self.timer.entradaPeriodo3());
+		// 	// console.log(self.timer.saidaPeriodo3());
+		// 	// console.log(self.timer.entradaPeriodo4());
+		// 	// console.log(self.timer.saidaPeriodo4());
+		// 	// console.log(self.timer.entradaPeriodo5());
+		// 	// console.log(self.timer.saidaPeriodo5());
+		// }  
+		// self.limpar();    
 		self.focar = function()
 		{
 			setTimeout(function()

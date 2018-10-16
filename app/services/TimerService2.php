@@ -17,6 +17,7 @@ class TimerService2
 
 	public function salvar2($data)
 	{
+		Log::debug("AQUIIIIIIIIIIIII");
 		$timer = !empty($data['timer_id']) ? Timer2::find($data['timer_id']) : new Timer2;
 
 		$timer->usu_id    = $data['usu_id'];

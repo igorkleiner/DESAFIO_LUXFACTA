@@ -14,7 +14,7 @@
 	</style>
 	    
 	<body>
-		<div style="padding: 20px;">		
+		<div style="padding: 5px;">		
 			@include('componentes.knockoutComponents')
 			@include('layout.menusuperior')
 			@include('layout.confirmModal')								
@@ -43,8 +43,6 @@
 
 						$("#alert-modal #alert-msg").html(error.statusText);
 						$("#alert-modal").modal('show');
-						// console.log(error.statusText);
-						// alert(error.statusText);
 					})
 					.always(function(done){
 						$("#loading-modal").modal('hide');

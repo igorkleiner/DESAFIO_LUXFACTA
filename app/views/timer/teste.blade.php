@@ -14,7 +14,7 @@
 	mask = '99:99:99';	
 </script>
 
-<div class="warning master borda1 " id='divTimer' data-bind='with:timer'>
+<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 warning master borda1 " id='divTimer' data-bind='with:timer' style="height: fit-content;">
 	{{--ko--}}	
 		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px" > 
 			<div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 ">

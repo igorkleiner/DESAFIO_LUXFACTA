@@ -28,7 +28,7 @@
 		box-shadow: 0px 0px 10px 7px rgba(27, 65, 67, 0.74);
 	}
 </style>
-<div class="borda1" id='idtimer' >
+<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 warning master borda1" id='idtimer' style="height: fit-content;" >
 	<div class="row " >
 		<div class=" col-lg-12 col-md-12 col-sm-12 " data-bind='with:timer'>        
 			<table class=" table table-bordered table-striped borda2 "  >

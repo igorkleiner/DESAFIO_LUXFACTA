@@ -14,7 +14,7 @@
 		mask = '99:99:99';	
 	</script>
 
-	<div class="warning master borda1 " id='divTimer' >
+	<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 warning master borda1 " id='divTimer'  style="height: fit-content;">
 		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px" > 
 			<div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
 				<strong>
@@ -40,10 +40,10 @@
 				</div>
 			</div>
 		</div>
-		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px; margin-top: 75px; vertical-align: middle;padding: 20px;" > 
+		<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px; margin-top: 15px; vertical-align: middle;padding: 20px;" > 
 			<center>
-				<div id="chartContainer" class="borda" style="height: 300px; width: 100%; margin: 0px auto;border-radius: 10px"></div>
-				<div id="chartContainerr"  class="borda" style="height: 370px; max-width: 1080px; margin: 0px auto;border-radius: 10px"></div>
+				<div id="chartContainer"   class="borda" style="height: 250px; width: 100%; margin: 0px auto;border-radius: 10px"></div>
+				<div id="chartContainerr"  class="borda" style="height: 250px; width: 100%; margin: 0px auto;border-radius: 10px"></div>
 			</center>
 		</div>		
 	</div>
@@ -265,8 +265,9 @@
 					var a = parseInt(horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours());
 					// console.log(a);
 					// var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100);
-					var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100);
-					// console.log(b);
+					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
+					console.log(dia);
+					console.log(b);
 					
 					self.dadosGrafico.push(
 						{label:dia.data.toString(), y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) }
@@ -278,7 +279,7 @@
 					horas.setMinutes(Tp1[1]);
 					horas.setSeconds(Tp1[2]);
 					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100); 
+					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
 					self.dadosGrafico2["Tp1"].push(
 						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
                     )
@@ -288,7 +289,7 @@
 					horas.setMinutes(Tp2[1]);
 					horas.setSeconds(Tp2[2]);
 					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100); 
+					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
 					self.dadosGrafico2["Tp2"].push(
 						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
                     )
@@ -298,7 +299,7 @@
 					horas.setMinutes(Tp3[1]);
 					horas.setSeconds(Tp3[2]);
 					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100); 
+					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
 					self.dadosGrafico2["Tp3"].push(
 						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
                     )
@@ -308,7 +309,7 @@
 					horas.setMinutes(Tp4[1]);
 					horas.setSeconds(Tp4[2]);
 					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100); 
+					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
 					self.dadosGrafico2["Tp4"].push(
 						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
                     )
@@ -318,7 +319,7 @@
 					horas.setMinutes(Tp5[1]);
 					horas.setSeconds(Tp5[2]);
 					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100); 
+					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
 					self.dadosGrafico2["Tp5"].push(
 						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
                     )
@@ -356,7 +357,7 @@
 						title:{
 							text: "Horas - Consolidadas por Periodo",
 							fontFamily: "arial black",
-							fontColor: "#695A42"
+							fontColor: "#3a3a3a"
 						},
 						axisX: {
 							interval: 1,

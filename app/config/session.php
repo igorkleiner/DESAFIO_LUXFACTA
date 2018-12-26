@@ -96,7 +96,8 @@ return array(
 	|
 	*/
 
-	'cookie' => 'laravel_session',
+	'cookie' => 'desafio',
+	// 'cookie' => 'desafio_lux_4.2',
 
 	/*
 	|--------------------------------------------------------------------------

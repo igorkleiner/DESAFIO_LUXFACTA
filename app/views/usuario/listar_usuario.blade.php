@@ -7,6 +7,7 @@
 <div class="row">
 	<div class=" col-md-12"> 
         <table class="table table-bordered ">
+            
             <thead>
             	<tr class='warning'>                
             		<th>Id</th>
@@ -148,17 +149,17 @@ var viewModel,dados,usuario;
 		self.perfil = ko.observable(perfil);
 		self.editando = ko.observable(editando);
 		self.original = {
-                id   :id,
-                nome :nome,
-                perfil:perfil
-            }
-            // PROPRIEDADE atualizaOriginal RECEBENDO UMA FUNÇÃO QUE SUBSTITUI OS VALORES ORIGINAIS
-            self.atualizaOriginal = function()
-            {
-                self.original.id     = self.id();
-                self.original.nome   = self.nome();
-                self.original.perfil  = self.perfil();                
-            };
+            id   :id,
+            nome :nome,
+            perfil:perfil
+        }
+        // PROPRIEDADE atualizaOriginal RECEBENDO UMA FUNÇÃO QUE SUBSTITUI OS VALORES ORIGINAIS
+        self.atualizaOriginal = function()
+        {
+            self.original.id     = self.id();
+            self.original.nome   = self.nome();
+            self.original.perfil  = self.perfil();                
+        };
 		self.editar = function()
 		{
              // PROPRIEDADE editando MUDA PARA true
@@ -184,7 +185,6 @@ var viewModel,dados,usuario;
                     }
                     else
                     {
-                        globalViewModel.submit("{{Route('log.error')}}", result.message,function(){location.reload()});
                         alert(result.message);
                     }
                 }        		

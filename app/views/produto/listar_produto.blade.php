@@ -402,7 +402,7 @@
                 {
                     options = ko.utils.arrayFilter(options, function(i)
                     {
-                        return i.nome().toLowerCase().indexOf(self.bnome().toLowerCase()) ==0;
+                        return i.nome().toLowerCase().indexOf(self.bnome().toLowerCase()) == 0;
                     });
                 }
 

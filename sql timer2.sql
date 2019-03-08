@@ -1,4 +1,4 @@
-truncate table timer;
+truncate table timer2;
 insert into timer2 (
 	timer_id,
 	usu_id,

@@ -95,14 +95,12 @@ class HomeController extends BaseController
 		$nome = Auth::user()->usu_nome;
 		$date = date('d-m-Y',time());
 		$hora = date('H:i:s:u',time());
-		$true = true;
 		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called TIMER blade" );
 		$result = MakeRequest::callService('TimerService2', 'listarHoje2') ;
 		Log::info('<< DADOS VINDOS DO BANCO: >>', $result);		
 		return View::make('timer.time_Control')
 							->with('usuario',Auth::user())
-							->with('time', $result)
-							->with('true',$true);
+							->with('time', $result);
 	}
 
 	public function salvarTimer()

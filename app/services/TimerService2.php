@@ -10,6 +10,7 @@ class TimerService2
 	public function listarHoje2()
 	{
 		$key['timer_key'] = Auth::user()->usu_id.Auth::user()->per_id.date('Ymd',time());
+		Log::debug([$key]);
 		Log::info('<< FAZENDO A BUSCA COM:   >>',$key);
 		$data = Timer2::where('timer_key', $key['timer_key'])->first();		
 		return $data;
@@ -17,7 +18,6 @@ class TimerService2
 
 	public function salvar2($data)
 	{
-		Log::debug("AQUIIIIIIIIIIIII");
 		$timer = !empty($data['timer_id']) ? Timer2::find($data['timer_id']) : new Timer2;
 
 		$timer->usu_id    = $data['usu_id'];

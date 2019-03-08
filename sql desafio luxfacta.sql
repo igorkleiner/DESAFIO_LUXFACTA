@@ -74,6 +74,23 @@ CREATE TABLE timer (
   PRIMARY KEY (timer_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
+CREATE TABLE timer2 (
+  timer_id int(11) unsigned NOT NULL AUTO_INCREMENT,
+  usu_id int(11), 
+  data date,
+  timer_key varchar(50) DEFAULT NULL,
+  entrada_1 Datetime null,
+  entrada_2 Datetime null,
+  entrada_3 Datetime null,
+  entrada_4 Datetime null,
+  entrada_5 Datetime null,
+  saida_1   Datetime null,
+  saida_2   Datetime null,
+  saida_3   Datetime null,
+  saida_4   Datetime null,
+  saida_5   Datetime null,
+  PRIMARY KEY (timer_id)
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 /*
 -- Query: SELECT * FROM desafio_luxfacta.timer
 -- Date: 2017-12-22 08:44

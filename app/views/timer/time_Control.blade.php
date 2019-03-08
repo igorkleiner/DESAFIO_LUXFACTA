@@ -226,26 +226,26 @@
 			self.focoEntrada5            = ko.observable(false);
 			self.focoSaida5              = ko.observable(false);
 		//
-		self.entradaPeriodo1         = ko.observable(moment(entrada1,"YYYY-MM-DD HH:mm:ss" ));
-		self.saidaPeriodo1           = ko.observable(moment(saida1  ,"YYYY-MM-DD HH:mm:ss" ));
-		//		
-		self.entradaPeriodo2         = ko.observable(moment(entrada2,"YYYY-MM-DD HH:mm:ss" ));
-		self.saidaPeriodo2           = ko.observable(moment(saida2  ,"YYYY-MM-DD HH:mm:ss" ));
-		//
-		self.entradaPeriodo3         = ko.observable(moment(entrada3,"YYYY-MM-DD HH:mm:ss" ));
-		self.saidaPeriodo3           = ko.observable(moment(saida3  ,"YYYY-MM-DD HH:mm:ss" ));
-		//
-		self.entradaPeriodo4         = ko.observable(moment(entrada4,"YYYY-MM-DD HH:mm:ss" ));
-		self.saidaPeriodo4           = ko.observable(moment(saida4  ,"YYYY-MM-DD HH:mm:ss" ));
-		//
-		self.entradaPeriodo5         = ko.observable(moment(entrada5,"YYYY-MM-DD HH:mm:ss" ));
-		self.saidaPeriodo5           = ko.observable(moment(saida5  ,"YYYY-MM-DD HH:mm:ss" ));
+			self.entradaPeriodo1         = ko.observable(moment(entrada1,"YYYY-MM-DD HH:mm:ss" ));
+			self.saidaPeriodo1           = ko.observable(moment(saida1  ,"YYYY-MM-DD HH:mm:ss" ));
+			//		
+			self.entradaPeriodo2         = ko.observable(moment(entrada2,"YYYY-MM-DD HH:mm:ss" ));
+			self.saidaPeriodo2           = ko.observable(moment(saida2  ,"YYYY-MM-DD HH:mm:ss" ));
+			//
+			self.entradaPeriodo3         = ko.observable(moment(entrada3,"YYYY-MM-DD HH:mm:ss" ));
+			self.saidaPeriodo3           = ko.observable(moment(saida3  ,"YYYY-MM-DD HH:mm:ss" ));
+			//
+			self.entradaPeriodo4         = ko.observable(moment(entrada4,"YYYY-MM-DD HH:mm:ss" ));
+			self.saidaPeriodo4           = ko.observable(moment(saida4  ,"YYYY-MM-DD HH:mm:ss" ));
+			//
+			self.entradaPeriodo5         = ko.observable(moment(entrada5,"YYYY-MM-DD HH:mm:ss" ));
+			self.saidaPeriodo5           = ko.observable(moment(saida5  ,"YYYY-MM-DD HH:mm:ss" ));
 		//
 		self.horasContratadas        = ko.observable("08:00:00");
 		self.saidaMinima             = ko.observable("16:00:00"); 
 		self.previsaoHorasExtras     = ko.observable("00:00:00"); 
 
-	//	
+		//	
 		self.totalAusencias          = ko.pureComputed(function()
 		{
 		   return self.timeAdd(  self.totalAusenciaPeriodo12()
@@ -277,11 +277,11 @@
 		{            
 			return self.timeDiff(self.horasTotais(),self.horasContratadas());            
 		});
-	//	
+		//	
 		
 		self.agora = new Relogio();
 
-	//
+		//
 		self.totalTrabalhadoAteAgora = ko.pureComputed(function()
 		{
 			
@@ -289,25 +289,19 @@
 			{
 				var compara = moment();
 
-				if (self.saidaPeriodo1() < compara) total1 = self.totalAusenciaPeriodo12(); else total1 = "00:00:00";                
-				if (self.saidaPeriodo2() < compara) total2 = self.totalAusenciaPeriodo23(); else total2 = "00:00:00";                
-				if (self.saidaPeriodo3() < compara) total3 = self.totalAusenciaPeriodo34(); else total3 = "00:00:00";                
-				if (self.saidaPeriodo4() < compara) total4 = self.totalAusenciaPeriodo45(); else total4 = "00:00:00"; 
+				if (self.saidaPeriodo1() < compara) total1 = self.totalHorasPeriodo1(); else total1 = "00:00:00";                
+				if (self.saidaPeriodo2() < compara) total2 = self.totalHorasPeriodo2(); else total2 = "00:00:00";                
+				if (self.saidaPeriodo3() < compara) total3 = self.totalHorasPeriodo3(); else total3 = "00:00:00";                
+				if (self.saidaPeriodo4() < compara) total4 = self.totalHorasPeriodo4(); else total4 = "00:00:00"; 
+				if (self.saidaPeriodo5() < compara) total5 = self.totalHorasPeriodo5(); else total5 = "00:00:00"; 
 
-				var totalAusencias = self.timeAdd(total1, total2, total3, total4, "00:00:00");
-				var agora = moment().format("YYYY-MM-DD ")+self.agora.hora();
-				var inicio = self.entradaPeriodo1().format("YYYY-MM-DD HH:mm:ss");
-
-				return self.timeDiff( //  (inicio ate agora) menos ausencias
-					self.dateDiff(inicio,agora),
-					totalAusencias
-				);
+				return self.timeAdd(total1, total2, total3, total4, total5);
+				
 			}
 			else
 			{
 				return "00:00:00";
 			}
-			
 		},this);
 
 		self.previsaoSaida  = ko.pureComputed(function()
@@ -320,7 +314,7 @@
 				previsao[0] = "0" + previsao[0].toString();
 			return  previsao[0]+":"+previsao[1].toString()+":"+previsao[2].toString();
 		},this);
-	//
+		//
 		self.totalAusenciaPeriodo12 = ko.pureComputed(function()
 		{
 			var tempoEntrada = self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss");            
@@ -363,7 +357,7 @@
 				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida);
 		},this);
-	//
+		//
 
 		self.totalHorasPeriodo1 = ko.pureComputed(function()
 		{
@@ -420,7 +414,7 @@
 				tempoSaida = moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			return self.dateDiff(tempoEntrada, tempoSaida); 
 		},this);
-	//
+		//
 		self.setTime = function(e)
 		{
 			if(typeof(e) != 'function')
@@ -598,7 +592,7 @@
 			self.focoEntrada5(self.visuEntrada5());
 			self.focoSaida5(  self.visuSaida5()); 
 		});
-	//
+		//
 	}
 			
 //-----------------------------------------------------------------------------------------------------------------------

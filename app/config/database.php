@@ -26,6 +26,7 @@ return array(
 	|
 	*/
 
+	// 'default' => 'sqlsrv',
 	'default' => 'mysql',
 
 	/*
@@ -76,10 +77,10 @@ return array(
 
 		'sqlsrv' => array(
 			'driver'   => 'sqlsrv',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
+			'host'     => 'WKS0215\IKLEINER',
+			'database' => 'desafio_luxfacta',
+			'username' => 'sa',
+			'password' => 'F#k4u3h5',
 			'prefix'   => '',
 		),
 

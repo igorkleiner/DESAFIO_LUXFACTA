@@ -33,7 +33,6 @@
 
 			self.submit = function(url, dadosPost, callback)
 			{
-				urlError = "{{Route('log.error')}}";
 				$("#loading-modal").modal('show');
 				$.post(url, dadosPost)
 					.done(function(o_que_voltou_de_return_do_controller){

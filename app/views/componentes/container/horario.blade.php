@@ -1,5 +1,8 @@
 <template id="horariotemplate">
-	<input type='text' style='width:70px;' data-bind="masked:internalValue, mask: mask,visible:visible,hasFocus:hasFocus"></input>
+	<input type='text' 
+		style='width:50%px;' 
+		data-bind="masked:internalValue, mask: mask,visible:visible,hasFocus:hasFocus">
+	</input>
 </template>
 <script type="text/javascript">
 	ko.components.register('horario',{

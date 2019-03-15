@@ -79,3 +79,8 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+function debug($var)
+{
+  Log::debug(is_string($var)?$var:var_export($var,true));
+}

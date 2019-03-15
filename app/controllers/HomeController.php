@@ -127,7 +127,7 @@ class HomeController extends BaseController
 		$hora = date('H:i:s:u',time());
 		$true = true;
 		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called TIMER blade" );
-		$result = MakeRequest::callService('TimerService', 'listarHoje') ;
+		$result = MakeRequest::callService('TimerService2', 'listarHoje2') ;
 		Log::info('<< DADOS VINDOS DO BANCO: >>', $result);		
 		return View::make('timer.teste')
 							->with('usuario',Auth::user())
@@ -139,7 +139,7 @@ class HomeController extends BaseController
 		$nome = Auth::user()->usu_nome;
 		$date = date('d-m-Y',time());
 		$hora = date('H:i:s:u',time());
-		$result = MakeRequest::callService('TimerService', 'minhasHoras') ;
+		$result = MakeRequest::callService('TimerService2', 'minhasHoras2') ;
 		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called GRAFICO blade" );
 		$true = true;
 		return View::make('timer.grafico')

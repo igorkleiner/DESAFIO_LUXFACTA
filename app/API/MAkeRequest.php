@@ -28,9 +28,9 @@ abstract class MakeRequest
                 Log::info(' ==========>  OCORRREU UM PROBLEMA  <=============');
                 Log::info(' ===============>  INFORMACOES  <=================');
                 Log::info(' =================================================');
+                Log::info("[Servico: {$class}| Metodo: {$method}] Time: " . round((microtime(true) - $timeStart) * 1000) . " ms");
                 Log::error($error->getMessage());
                 Log::error($error->getTraceAsString());
-                Log::info("[Servico: {$class}| Metodo: {$method}] Time: " . round((microtime(true) - $timeStart) * 1000) . " ms");
 			}
 		});
 		return $content;

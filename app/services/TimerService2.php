@@ -9,20 +9,17 @@ class TimerService2
 
 	public function listarHoje2()
 	{
-		$key['timer_key'] = Auth::user()->usu_id.Auth::user()->per_id.date('Ymd',time());
-		Log::debug([$key]);
-		Log::info('<< FAZENDO A BUSCA COM:   >>',$key);
-		$data = Timer2::where('timer_key', $key['timer_key'])->first();		
-		return $data;
+		return Timer2::where('usu_id', Auth::user()->usu_id)->where('data', date('Ymd',time()))->first();
 	}
 
 	public function salvar2($data)
 	{
-		$timer = !empty($data['timer_id']) ? Timer2::find($data['timer_id']) : new Timer2;
+		$timer = !empty($data['timer_id']) 
+			? Timer2::find($data['timer_id']) 
+			: new Timer2;
 
 		$timer->usu_id    = $data['usu_id'];
 		$timer->data      = $data['data'];
-		$timer->timer_key = $data['timer_key'];
 		$timer->entrada_1 = $data['entrada_1']; 
 		$timer->entrada_2 = $data['entrada_2']; 
 		$timer->entrada_3 = $data['entrada_3']; 
@@ -38,12 +35,13 @@ class TimerService2
 		return $timer;
 	}
 
-	public function minhasHoras(){
-		$horas =  DB::table('timer')
+	public function minhasHoras2()
+	{
+		return array_reverse( DB::table('timer2')
 			->where('usu_id',Auth::user()->usu_id)
 			->orderBy('data', 'desc')
 			->take(30)
-			->get();
-		return array_reverse($horas);
+			->get()
+		);
 	}
 }

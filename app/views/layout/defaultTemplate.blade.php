@@ -35,8 +35,9 @@
 			{
 				$("#loading-modal").modal('show');
 				$.post(url, dadosPost)
-					.done(function(o_que_voltou_de_return_do_controller){
-						callback(JSON.parse(o_que_voltou_de_return_do_controller));
+					.done(function(response){
+						console.log(JSON.parse(response));
+						callback(JSON.parse(response));
 					})
 					.fail(function(error){
 

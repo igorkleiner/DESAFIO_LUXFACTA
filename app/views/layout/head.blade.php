@@ -1,6 +1,8 @@
 
 <link rel="stylesheet" type="text/css" href="{{asset('assets/bootstrap-3.3.6-dist/css/bootstrap.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/jquery-ui-1.11.4/jquery-ui.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/CSS/timer.css')}}">
+
 <script src="{{asset('assets/knockout-js/knockout-3.4.0.js')}}"></script>
 <script src="{{asset('assets/knockout-js/knockout_custom_bindings.js')}}"></script>
 <script src="{{asset('assets/knockout-js/knockout_custom_bindings.js')}}"></script>

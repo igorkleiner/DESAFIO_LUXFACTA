@@ -47,8 +47,6 @@
 			</center>
 		</div>		
 	</div>
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/CSS/timer.css')}}">
-	<script type="text/javascript" src="{{asset('assets/moment-js/moments.js')}}"></script>
 	<script type="text/javascript">
 	//-----------Tempo-----------------------------------------------------------------------------------------------
 		function Tempo(usuario,data,entrada_1,entrada_2,entrada_3,entrada_4,entrada_5,saida_1,saida_2,saida_3,saida_4,saida_5)
@@ -234,21 +232,20 @@
 			{
 				ko.utils.arrayForEach(grafico.response,function(tempo)
                 {
-                	//debugger;
                     self.tempos.push(
 						new Tempo(
 							tempo.usu_id,
-							tempo.data,
-							tempo.entrada_1,
-							tempo.entrada_2,
-							tempo.entrada_3,
-							tempo.entrada_4,
-							tempo.entrada_5,
-							tempo.saida_1,
-							tempo.saida_2,
-							tempo.saida_3,
-							tempo.saida_4,
-							tempo.saida_5
+							tempo.data.split(" ")[0],
+							tempo.entrada_1.split(" ")[1],
+							tempo.entrada_2.split(" ")[1],
+							tempo.entrada_3.split(" ")[1],
+							tempo.entrada_4.split(" ")[1],
+							tempo.entrada_5.split(" ")[1],
+							tempo.saida_1.split(" ")[1],
+							tempo.saida_2.split(" ")[1],
+							tempo.saida_3.split(" ")[1],
+							tempo.saida_4.split(" ")[1],
+							tempo.saida_5.split(" ")[1]
 						)
                     );
                 });
@@ -266,12 +263,13 @@
 					// console.log(a);
 					// var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100);
 					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
-					console.log(dia);
-					console.log(b);
+					// console.log(dia);
+					// console.log(b);
 					
 					self.dadosGrafico.push(
 						{label:dia.data.toString(), y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) }
      				)
+     				// console.log(self.dadosGrafico);
 				//===================================
                     Tp1 = dia.totalHorasPeriodo1().split(':');
                     var horas = new Date(dia.data);
@@ -283,6 +281,7 @@
 					self.dadosGrafico2["Tp1"].push(
 						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
                     )
+				//===================================
                     Tp2 = dia.totalHorasPeriodo2().split(':');
                     var horas = new Date(dia.data);
 					horas.setHours(Tp2[0]);
@@ -293,6 +292,7 @@
 					self.dadosGrafico2["Tp2"].push(
 						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
                     )
+				//===================================
                     Tp3 = dia.totalHorasPeriodo3().split(':');
                     var horas = new Date(dia.data);
 					horas.setHours(Tp3[0]);
@@ -303,6 +303,7 @@
 					self.dadosGrafico2["Tp3"].push(
 						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
                     )
+				//===================================
                     Tp4 = dia.totalHorasPeriodo4().split(':');
                     var horas = new Date(dia.data);
 					horas.setHours(Tp4[0]);
@@ -313,6 +314,7 @@
 					self.dadosGrafico2["Tp4"].push(
 						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
                     )
+				//===================================
                     Tp5 = dia.totalHorasPeriodo5().split(':');
                     var horas = new Date(dia.data);
 					horas.setHours(Tp5[0]);

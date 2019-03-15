@@ -1,6 +1,7 @@
 @extends('layout.defaulttemplate')
 @section('title','OFFICE')
 @section('content')
+
 	<script type="text/javascript">
 		var viewModel, diaSemana,data,hora,usuario,time, mask;
 		diaSemana = "{{date('D',time())}}";

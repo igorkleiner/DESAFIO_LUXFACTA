@@ -9,7 +9,9 @@ class TimerService2
 
 	public function listarHoje2()
 	{
-		return Timer2::where('usu_id', Auth::user()->usu_id)->where('data', date('Ymd',time()))->first();
+		return Timer2::where('usu_id', Auth::user()->usu_id)
+				->where('data', date('Ymd',time()))	
+				->first();
 	}
 
 	public function salvar2($data)

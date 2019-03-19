@@ -576,7 +576,6 @@
 			function ViewModel()
 			{
 				var self = this;
-				//		
 				if (time.status == 0 || time.response == null) 
 				{
 					self.timer = new Timer(

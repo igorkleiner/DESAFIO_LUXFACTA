@@ -340,7 +340,7 @@ var viewModel,dados,usuario;
             	{
             	    options = ko.utils.arrayFilter(options, function(i)
             	    {
-            	        return i.nome().toLowerCase().indexOf(self.busuario().toLowerCase()) ==0;
+            	        return i.nome().toLowerCase().indexOf(self.busuario().toLowerCase()) == 0;
             	    });
             	}
             	if(self.idclassificada() != null && self.idclassificada() != '')
@@ -349,14 +349,14 @@ var viewModel,dados,usuario;
             	    {
             	        options = options.sort(function(a,b)
             	        {
-            	            return parseFloat(a.id())  > parseFloat(b.id());
+            	            return parseFloat(a.id())  > parseFloat(b.id())? 1:-1;
             	        });
             	    }
             	    else
             	    {
             	        options = options.sort(function(a,b)
             	        {
-            	            return parseFloat(a.id())  < parseFloat(b.id());
+            	            return parseFloat(a.id())  < parseFloat(b.id())? 1:-1;
             	        }); 
             	    }
             	}
@@ -366,14 +366,14 @@ var viewModel,dados,usuario;
             	    {
             	        options = options.sort(function(a,b)
             	        {
-            	            return a.nome() > b.nome();
+            	            return a.nome() > b.nome()? 1:-1;
             	        });
             	    }
             	    else
             	    {
             	        options = options.sort(function(a,b)
             	        {
-            	            return a.nome() < b.nome();
+            	            return a.nome() < b.nome()? 1:-1;
             	        }); 
             	    }
             	}
@@ -391,7 +391,7 @@ var viewModel,dados,usuario;
         });
         self.verificaUsuario = function()
         {                   
-            if (usuario.per_id == 1) 
+            if (usuario.per_id == 2) 
             {
                 self.btnExcluir(false);
                 self.btnEdit(false);
@@ -401,7 +401,7 @@ var viewModel,dados,usuario;
                 self.consultaselectnome(false);
                 self.consultaperfil(false);                              
             }
-            if (usuario.per_id == 2) 
+            if (usuario.per_id == 3) 
             {
                 self.btnExcluir(false);
                 self.btnEdit(false);
@@ -411,7 +411,7 @@ var viewModel,dados,usuario;
                 self.consultaselectnome(false);
                 self.consultaperfil(false);                                 
             }
-            if (usuario.per_id == 3)               
+            if (usuario.per_id == 4)               
             {
                 self.btnExcluir(false);
                 self.btnEdit(true);
@@ -421,7 +421,7 @@ var viewModel,dados,usuario;
                 self.consultaselectnome(false);
                 self.consultaperfil(true);                  
             }
-            if (usuario.per_id == 4) 
+            if (usuario.per_id == 5) 
             {
                 self.btnExcluir(true);
                 self.btnEdit(true);

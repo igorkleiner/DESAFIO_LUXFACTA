@@ -379,7 +379,7 @@
                 self.btnPlus(true);
                 self.btnEdit(false);  
             }
-            if (usuario.per_id == 4) 
+            if (usuario.per_id == 5) 
             {
                 //console.log('entrei no if do usuario = 4...');
                 self.consultaNome(true);
@@ -395,82 +395,86 @@
         }
 
         self.listafiltrada = ko.computed(function()
+        {
+            var options = self.produtos();
+            
+            if(self.bnome() != null && self.bnome() != '')
             {
-                var options = self.produtos();
-                
-                if(self.bnome() != null && self.bnome() != '')
+                options = ko.utils.arrayFilter(options, function(i)
                 {
-                    options = ko.utils.arrayFilter(options, function(i)
+                    return i.nome().toLowerCase().indexOf(self.bnome().toLowerCase()) == 0;
+                });
+            }
+
+            if(self.nomeclassificado() != null && self.nomeclassificado() != '')
+            {
+                if(self.nomeclassificado() == 1)
+                {
+                    console.log('nomeclassificado() == 1');
+                    options = options.sort(function(a,b)
                     {
-                        return i.nome().toLowerCase().indexOf(self.bnome().toLowerCase()) == 0;
+                        console.log(a.nome());console.log(b.nome());
+                        return a.nome() < b.nome()? 1:-1;
                     });
                 }
-
-                if(self.nomeclassificado() != null && self.nomeclassificado() != '')
+                else
                 {
-                    if(self.nomeclassificado() == 1)
+                    console.log('nomeclassificado() == 2');
+                    options = options.sort(function(a,b)
                     {
-                        options = options.sort(function(a,b)
-                        {
-                            return a.nome() < b.nome();
-                        });
-                    }
-                    else
-                    {
-                        options = options.sort(function(a,b)
-                        {
-                            return a.nome() > b.nome();
-                        }); 
-                    }
+                        console.log(a.nome());console.log(b.nome());
+                        return a.nome() > b.nome()? 1:-1;
+                    }); 
                 }
+            }
 
-                if(self.precofiltrado() != null && self.precofiltrado() != '')
+            if(self.precofiltrado() != null && self.precofiltrado() != '')
+            {
+                if(self.precofiltrado() == 2)
                 {
-                    if(self.precofiltrado() == 2)
+                    options = options.sort(function(a,b)
                     {
-                        options = options.sort(function(a,b)
-                        {
-                            return parseFloat(a.preco())  < parseFloat(b.preco());
-                        });
-                    }
-                    else
-                    {
-                        options = options.sort(function(a,b)
-                        {
-                            return parseFloat(a.preco())  > parseFloat(b.preco());
-                        }); 
-                    }
+                        return parseFloat(a.preco())  < parseFloat(b.preco())? 1:-1;;
+                    });
                 }
-
-                if(self.qtdfiltrado() != null && self.precofiltrado() != '')
+                else
                 {
-                    if(self.qtdfiltrado() == 2)
+                    options = options.sort(function(a,b)
                     {
-                        options = options.sort(function(a,b)
-                        {
-                            return parseFloat(a.qtd()) < parseFloat(b.qtd());
-                        });
-                    }
-                    else
-                    {
-                        options = options.sort(function(a,b)
-                        {
-                            return parseFloat(a.qtd()) > parseFloat(b.qtd());
-                        }); 
-                    }
+                        return parseFloat(a.preco())  > parseFloat(b.preco())? 1:-1;;
+                    }); 
                 }
+            }
 
-                if(self.statusFiltrado() != null && self.statusFiltrado() != '')
+            if(self.qtdfiltrado() != null && self.precofiltrado() != '')
+            {
+                if(self.qtdfiltrado() == 2)
                 {
-                    options = ko.utils.arrayFilter(options, function(i)
+                    options = options.sort(function(a,b)
                     {
-                        if(self.statusFiltrado() == 1 && !i.disponivel()) return i;
-                        if(self.statusFiltrado() == 2 &&  i.disponivel()) return i;
-                    });                    
+                        return parseFloat(a.qtd()) < parseFloat(b.qtd())? 1:-1;
+                    });
                 }
+                else
+                {
+                    options = options.sort(function(a,b)
+                    {
+                        return parseFloat(a.qtd()) > parseFloat(b.qtd())? 1:-1;
+                    }); 
+                }
+            }
 
-                return options;
-            });
+            if(self.statusFiltrado() != null && self.statusFiltrado() != '')
+            {
+                options = ko.utils.arrayFilter(options, function(i)
+                {
+                    if(self.statusFiltrado() == 1 && !i.disponivel()) return i;
+                    if(self.statusFiltrado() == 2 &&  i.disponivel()) return i;
+                });                    
+            }
+
+            return options;
+        });
         
         self.salvar = function()
         {

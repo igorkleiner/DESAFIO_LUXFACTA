@@ -1,6 +1,6 @@
 <template id="horariotemplate">
 	<input type='text' 
-		style='width:50%px;' 
+		style='width:50%;' 
 		data-bind="masked:internalValue, mask: mask,visible:visible,hasFocus:hasFocus">
 	</input>
 </template>
@@ -16,7 +16,7 @@
 			{
 				read: function()
 				{
-					if (params.value() &&!!params.value() && params.value().format('HH:mm:ss') !="00:00:00")
+					if (params.value() && !!params.value() && params.value().format('HH:mm:ss') !="00:00:00")
 					{					
 						return params.value().format('HH:mm:ss');
 					}

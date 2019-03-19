@@ -16,6 +16,7 @@ function Relogio()
         tmp.ano = agora.getFullYear();
         tmp.hor = agora.getHours();
         tmp.min = agora.getMinutes();
+        tmp.sec = agora.getSeconds();
         tmp.sem = agora.getDay();
         tmp.pad = function(s, n) {
         s = '0000' + s;
@@ -31,14 +32,14 @@ function Relogio()
             return aMes[tmp.mes];
         }
         objeto.data(tmp.NomeSem() + ', ' + tmp.dia + ' de ' + tmp.NomeMes() + ' de ' + tmp.pad(tmp.ano, 4));
-        objeto.hora(tmp.pad(tmp.hor, 2) + ':' + tmp.pad(tmp.min, 2));
+        objeto.hora(tmp.pad(tmp.hor, 2) + ':' + tmp.pad(tmp.min, 2)+ ':' + tmp.pad(tmp.sec, 2));
 
         // função responsavel por atualizar o horario na div no handler setInterval
         function updateClock ( )
         {
           var currentTime = new Date ( );
 
-          var currentHours = currentTime.getHours ( );
+          var currentHours   = currentTime.getHours ( );
           var currentMinutes = currentTime.getMinutes ( );
           var currentSeconds = currentTime.getSeconds ( );
 

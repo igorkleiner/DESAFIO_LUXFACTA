@@ -1,5 +1,5 @@
 @extends('layout.defaulttemplate')
-@section('title','OFFICE')
+@section('title','PHP WORK TIME CALCULATOR')
 @section('content')
 
 	<script type="text/javascript">
@@ -563,13 +563,15 @@
 						self.horasRestantes(self.timeDiff(self.horasContratadas(),self.totalTrabalhadoAteAgora()));
 						self.horasExtras(self.timeDiff(self.horasTotais(),self.horasContratadas()));
 
-						var previsao = self.timeAdd(self.agora.hora(),self.horasRestantes(),self.previsaoHorasExtras(),"00:00:00","00:00:00");
-						previsao = previsao.split(":");
-						if (parseFloat(previsao[0]) > 24) 
-							previsao[0] = previsao[0]-24;
-						if (previsao[0] < 10)             
-							previsao[0] = "0" + previsao[0].toString();
-						self.previsaoSaida(previsao[0]+":"+previsao[1].toString()+":"+previsao[2].toString());
+						if (self.agora.hora() != undefined) {
+							var previsao = self.timeAdd(self.agora.hora(),self.horasRestantes(),self.previsaoHorasExtras(),"00:00:00","00:00:00");
+							previsao = previsao.split(":");
+							if (parseFloat(previsao[0]) > 24) 
+								previsao[0] = previsao[0]-24;
+							if (previsao[0] < 10)             
+								previsao[0] = "0" + previsao[0].toString();
+							self.previsaoSaida(previsao[0]+":"+previsao[1].toString()+":"+previsao[2].toString());
+						}
 					});		
 			}
 		//--VIEW MODEL-----------------------------------------------------------------------------------------------------------

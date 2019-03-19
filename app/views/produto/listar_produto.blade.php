@@ -475,13 +475,6 @@
 
             return options;
         });
-        
-        self.salvar = function()
-        {
-            // var post = {'dados': JSON.parse(ko.toJSON(self.produtos()))}; 
-            // $.post("{{Route('salvar.salvar')}}", post, function(a){console.log(a)});
-           
-        } 
     }  
 //-------------------------------------------------------------------------------------------------------------------------- 
     

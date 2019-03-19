@@ -345,7 +345,7 @@
 					self.focoSaida4              = ko.observable(false);
 					self.focoEntrada5            = ko.observable(false);
 					self.focoSaida5              = ko.observable(false);
-				//  ENTRADAS ? SAIDAS ?
+				//  ENTRADAS & SAIDAS 
 					self.entradaPeriodo1         = ko.observable(moment(entrada1,"YYYY-MM-DD HH:mm:ss" ));
 					self.saidaPeriodo1           = ko.observable(moment(saida1  ,"YYYY-MM-DD HH:mm:ss" ));
 
@@ -360,7 +360,7 @@
 
 					self.entradaPeriodo5         = ko.observable(moment(entrada5,"YYYY-MM-DD HH:mm:ss" ));
 					self.saidaPeriodo5           = ko.observable(moment(saida5  ,"YYYY-MM-DD HH:mm:ss" ));
-				// INSTANCIA DOS TOTAIS
+				//  INSTANCIA DOS TOTAIS
 					self.agora                   = new Relogio();
 					self.horasContratadas        = ko.observable("08:00:00");
 					self.saidaMinima             = ko.observable("16:00:00");
@@ -383,7 +383,7 @@
 				//  CALCULOS
 					self.dateDiff                = function (entrada, saida)
 					{
-
+						// CALCULA OS TOTAIS USANDO MOMENT.JS
 						if(!!entrada && !!saida && (entrada < saida))
 						{
 							try
@@ -402,12 +402,12 @@
 								if(minutos<10)   minutos = "0"+minutos.toString();
 								if(horas<10)       horas = "0"+horas.toString();
 
-								var diferenca = `${horas}:${minutos}:${segundos}`;
-								return diferenca;
+								return `${horas}:${minutos}:${segundos}`;
 							}
 							catch(ex)
 							{
-								console.log('entrei no catch do erro de dateDiff ', ex);
+								console.log("entrei no catch da function dateDiff");
+								console.log(ex);
 								return '00:00:00';
 							}
 						}
@@ -437,13 +437,14 @@
 						}
 						catch(ex)
 						{
-							console.log("entrei no catch do timeadd");
+							console.log("entrei no catch da function timeAdd");
 							console.log(ex);
 							return '00:00:00';
 						}
 					};
 					self.timeDiff                = function(antes,depois)
 					{
+						//CALCULA O TEMPO DAS STRINGS DOS TOTAIS
 						if (moment(moment().format('YYYY-MM-DD ')+antes) > moment(moment().format('YYYY-MM-DD ')+depois) )
 						{
 							try

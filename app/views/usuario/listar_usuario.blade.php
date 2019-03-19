@@ -311,7 +311,6 @@ var viewModel,dados,usuario;
             }
             return '';
         };
-
 		self.populaLista = function(dados)
         {
              if(dados != null && dados.status != undefined)
@@ -331,7 +330,6 @@ var viewModel,dados,usuario;
                     console.log(dados.mensagem);
                 }
              }
-                     
         };
         self.listafiltrada = ko.computed(function()
         {

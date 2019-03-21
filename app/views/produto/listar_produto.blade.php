@@ -186,7 +186,6 @@
                         }
                         else
                         {
-                            globalViewModel.submit("{{Route('log.error')}}", result.message,function(){location.reload()});
                             alert(result.message);
                             // console.log(result.message);
                         }
@@ -199,7 +198,7 @@
                     'prod_preco' : self.preco(),
                     'prod_qtd'   : self.qtd()
                 };                 
-                globalViewModel.submit("{{Route('salvar.salvar')}}", dadosPost,callback);               
+                globalViewModel.submit("{{Route('produtos.salvar')}}", dadosPost,callback);               
             }
             // PROPRIEDADE CANCELAR RECEBENDO A FUNÇÃO QUE VAI CANCELAR O CADASTRO NO MODAL
             self.cancelar = function()
@@ -243,7 +242,7 @@
                     'prod_qtd'   : self.qtd()
                 };  
                                
-                globalViewModel.submit("{{Route('excluir.excluir')}}", dadosPost,callback);                          
+                globalViewModel.submit("{{Route('produtos.excluir')}}", dadosPost,callback);                          
             };
 
             // PROPRIEDADE editar RECEBENDO A FUNÇÃO QUE VAI ABRIR O MODAL PARA EDIÇÃO

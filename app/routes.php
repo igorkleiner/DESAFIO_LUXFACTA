@@ -10,39 +10,29 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::group(array('before' => 'auth','prefix' => ''),function(){
+// Route::group(array('before' => 'auth','prefix' => ''),function(){
 	
-});
+// });
 	//Route::get('/cadastro'   ,   array('as' => 'home.home',                    'uses' => 'HomeController@home'));
-	Route::get('/',                array('as'=> 'produto.produto',               'uses' => 'HomeController@produto'));
+	Route::get('/',                array('as'=> 'produtos',                'uses' => 'HomeController@produto'));
 	//{{Route('produto.produto')}}
-	Route::any('/usuario',         array('as'=> 'usuario.usuario',               'uses' => 'HomeController@usuario'));
+	Route::any('/usuario',         array('as'=> 'usuarios',                'uses' => 'HomeController@usuario'));
 	//{{Route('usuario.usuario')}}
-	Route::post('/salvar',         array('as'=> 'salvar.salvar',                 'uses' => 'HomeController@salvarProduto'));
+	Route::post('/salvar',         array('as'=> 'produtos.salvar',         'uses' => 'HomeController@salvarProduto'));
 	//{{Route('salvar.salvar')}}
-	Route::post('/excluir',        array('as'=> 'excluir.excluir',               'uses' => 'HomeController@excluirProduto'));
+	Route::post('/excluir',        array('as'=> 'produtos.excluir',        'uses' => 'HomeController@excluirProduto'));
 	//{{Route('excluir.excluir')}}
-	Route::post('/salvacadastro',  array('as'=> 'salvacadastro.salvacadastro',   'uses' => 'HomeController@salvarUsuario'));
+	Route::post('/salvacadastro',  array('as'=> 'usuarios.salvacadastro',  'uses' => 'HomeController@salvarUsuario'));
 	//{{Route('salvacadastro.salvacadastro')}}
-	Route::post('/excluicadastro', array('as'=> 'excluicadastro.excluicadastro', 'uses' => 'HomeController@excluirUsuario'));
+	Route::post('/excluicadastro', array('as'=> 'usuarios.excluicadastro', 'uses' => 'HomeController@excluirUsuario'));
 	//{{Route('salvacadastro.salvacadastro')}}
-	Route::post('/getusuario'  ,   array('as'=>'igor.getusuario'  ,              'uses'=>'HomeController@getUsuario'));
-	//{{Route(getusuario.getusuario) }}
-	Route::post('/salvausuario',   array('as'=>'igor.salvausuario',              'uses'=>'HomeController@salvaUsuario'));
-	//{{Route(salvausuario.salvausuario) }}
-	Route::post('/makeLogin',      array('as'=>'igor.makeLogin',                 'uses'=>'HomeController@makeLogin'));
+	Route::post('/makeLogin',      array('as'=>'makeLogin',                'uses'=>'HomeController@makeLogin'));
 	//{{Route(igor.makeLogin) }}
-	Route::post('/logout',         array('as'=>'igor.logout',                    'uses'=>'HomeController@logout'));
+	Route::post('/logout',         array('as'=>'logout',                   'uses'=>'HomeController@logout'));
 	//{{Route(igor.logout) }}
-	Route::any('/timeControl',     array('as'=>'igor.timer',                     'uses'=>'HomeController@timeControl'));
-	//{{Route(igor.timer) }}
-	Route::any('/workLoger',       array('as'=>'igor.workLoger',                  'uses'=>'HomeController@workLoger'));
+	Route::any('/workLoger',       array('as'=>'workLoger',                'uses'=>'HomeController@workLoger'));
 	//{{Route(igor.teste) }}
-	Route::post('/salvarTimer',    array('as'=>'salvar.timer',                   'uses'=>'HomeController@salvarTimer'));
+	Route::post('/salvarTimer',    array('as'=>'salvar.timer',             'uses'=>'HomeController@salvarTimer'));
 	//{{Route(salvar.timer) }}
-	Route::any('/logError',        array('as'=>'log.error',                      'uses'=>'HomeController@logError'));
-	//{{Route(igor.erro) }}
-	Route::any('/grafico',         array('as'=>'usuario.grafico',                'uses'=>'HomeController@graficoHoras'));
-	//{{Route(usuario.grafico) }}
-	Route::any('/login',           array('as'=>'usuario.login',                  'uses'=>'HomeController@login'));
+	Route::any('/grafico',         array('as'=>'grafico',                  'uses'=>'HomeController@graficoHoras'));
 	//{{Route(usuario.grafico) }}

@@ -10,6 +10,7 @@ abstract class MakeRequest
 		$data['USUARIO_LOGADO'] = Auth::user();
 		$timeStart = microtime(true);
 		$content = null;
+        
 		DB::transaction(function() use ($class, $method, $data, $timeStart, &$content)
 		{
 			try
@@ -17,7 +18,7 @@ abstract class MakeRequest
 				$tmpClass = new $class;
 				$result = $tmpClass->$method($data);
 				$content = ['status'=> 1, 'response'=>$result];
-				Log::info("'Service@Method: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
+				Log::info("'".$data['USUARIO_LOGADO']['usu_id'].'-'.$data['USUARIO_LOGADO']['usu_nome']." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
 			}
 
 			catch (Exception $error)
@@ -28,7 +29,7 @@ abstract class MakeRequest
                 Log::info(' ==========>  OCORRREU UM PROBLEMA  <=============');
                 Log::info(' ===============>  INFORMACOES  <=================');
                 Log::info(' =================================================');
-                Log::info("[Servico: {$class}| Metodo: {$method}] Time: " . round((microtime(true) - $timeStart) * 1000) . " ms");
+                Log::info("'".$data['USUARIO_LOGADO']['usu_id'].'-'.$data['USUARIO_LOGADO']['usu_nome']." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
                 Log::error($error->getMessage());
                 Log::error($error->getTraceAsString());
 			}

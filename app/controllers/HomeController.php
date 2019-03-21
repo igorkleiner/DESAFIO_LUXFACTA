@@ -29,10 +29,7 @@ class HomeController extends BaseController
 
 	public function produto()
 	{
-		$nome = Auth::user()->usu_nome;
-		$date = date('d-m-Y',time());
-		$hora = date('H:i:s:u',time());
-		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called LISTAR PRODUTO blade" );		
+		
 		return View::make('produto.listar_produto')
 			->with('dados', MakeRequest::callService('ProdutoService', 'listar'))
 			->with('usuario',Auth::user()
@@ -51,10 +48,7 @@ class HomeController extends BaseController
 
 	public function usuario()
 	{	
-		$nome = Auth::user()->usu_nome;
-		$date = date('d-m-Y',time());
-		$hora = date('H:i:s:u',time());
-		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called LISTAR USUARIO blade" );		
+		
 		return View::make('usuario.listar_usuario')
 			->with('dados',MakeRequest::callService('UsuarioService', 'listar'))
 			->with('usuario',Auth::user());	
@@ -82,11 +76,7 @@ class HomeController extends BaseController
 
 	public function timeControl()
 	{
-		$data = Input::all();
-		$nome = Auth::user()->usu_nome;
-		$date = date('d-m-Y',time());
-		$hora = date('H:i:s:u',time());
-		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called TIMER blade" );
+		
 		return View::make('timer.time_Control')
 							->with('usuario',Auth::user())
 							->with('time', MakeRequest::callService('TimerService', 'listarHoje'));
@@ -99,27 +89,17 @@ class HomeController extends BaseController
 
 	public function workLoger()
 	{
-		$data = Input::all();
-		$nome = Auth::user()->usu_nome;
-		$date = date('d-m-Y',time());
-		$hora = date('H:i:s:u',time());
-		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called TIMER blade" );
+		
 		return View::make('timer.workLoger')
 			->with('usuario',Auth::user())
 			->with('time', MakeRequest::callService('TimerService', 'listarHoje'));
 	}
 
 	public function graficoHoras(){
-		$nome = Auth::user()->usu_nome;
-		$date = date('d-m-Y',time());
-		$hora = date('H:i:s:u',time());
-		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called GRAFICO blade" );
+		
 		return View::make('timer.grafico')
 			->with('usuario',Auth::user())
 			->with('grafico', MakeRequest::callService('TimerService', 'minhasHoras'));
-	}
-	public function login(){
-		return View::make('layout.login');
 	}
 
 	/**

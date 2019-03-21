@@ -1,9 +1,9 @@
 <?php
 
 class BaseController extends Controller {
-	// private $date = date('d-m-Y',time());
-	// private $hora = date('H:i:s:u',time());
-	// private $nome = Auth::user()->usu_nome;
+	protected $nome = null;
+	protected $date = null;
+	protected $hora = null;
 
 	/**
 	 * Setup the layout used by the controller.
@@ -13,6 +13,9 @@ class BaseController extends Controller {
 	public function __construct()
 	{
 		if(Auth::user()) Input::merge(['ID_USUARIO_LOGADO' => Auth::user()->usu_id]);
+		$this->nome = Auth::user()->usu_nome;
+		$this->date = date('d-m-Y',time());
+		$this->hora = date('H:i:s',time());
 	}
 
 	

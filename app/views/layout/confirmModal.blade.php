@@ -40,33 +40,6 @@
 	</div>
 </div>
 
-<div id="loading-modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h3 class="text-center">
-					<strong>Executando...</strong>
-				</h3>
-			</div>
-			<div class="modal-body">
-				<p class="text-center">
-					<img src="{{asset('assets/images/giphy.gif')}}" style="width:30%;">
-				</p>
-				<p class="text-center" id="loading-modal-text">Aguarde, enviando <span id="loading-modal-count"></span> de <span id="loading-modal-total"></span>...</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-
-
-
-
-
-
-
 <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   	<div class="modal-dialog">
   		<div class="modal-content"> 
@@ -185,50 +158,6 @@
 		$("#alert-modal strong[name=title]").html(title !=undefined ? title : '');
 		$("#alert-modal").modal("show");
 	}
-	
-	function loadingModal(msg, n)
-	{
-		//MODO DE USAR
-		//@paran msg mensagem de exibição da tela
-		//@paran n tipo inteiro não obrigatório, caso enviar um contator será exibido do tipo X de Y para ser exibido... para atualizar X chamar com ('update', X);
-
-		//ex: loadingModal('show', 10);
-		//loadingModal('update', 1);
-		//loadingModal('update', 2);
-		//loadingModal('update', 3);
-		//loadingModal('update', 4); .... loadingModal('hide');
-		//ou loadingModal('show') - loadingModal('hide');
-		if (msg == "show")
-		{
-			if (n != undefined)
-			{
-				$("#loading-modal-total").html(n);
-				$("#loading-modal-count").html(0);
-				$("#loading-modal-text").removeClass("hidden");
-			}
-			else
-			{
-				$("#loading-modal-text").addClass("hidden");
-			}
-
-			$("#loading-modal").modal("show");
-		}
-		else if (msg == "update")
-		{
-			if (n != undefined)
-			{
-				$("#loading-modal-count").html(n);
-			}
-			else
-			{
-				$("#loading-modal-text").addClass("hidden");
-			}
-		}
-		else if (msg == "hide")
-		{
-			$("#loading-modal").modal("hide");
-		}
-	}
 
 	function Login()
 	{		
@@ -248,7 +177,7 @@
 				'usuario':self.usuario(),
 				'senha'  :self.senha()
 			};
-			globalViewModel.submit("{{Route('igor.makeLogin')}}", dadosPost,callback);			
+			globalViewModel.submit("{{Route('makeLogin')}}", dadosPost,callback);			
 		}
 		self.fazlogout = function()
 		{
@@ -260,7 +189,7 @@
 				'usu_nome':'Guest',
 				'per_id'  :"0"
 			};
-			globalViewModel.submit("{{Route('igor.logout')}}", dadosPost,callback);			
+			globalViewModel.submit("{{Route('logout')}}", dadosPost,callback);			
 		}		
 	}
 	var login = new Login();

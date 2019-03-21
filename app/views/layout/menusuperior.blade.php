@@ -3,22 +3,21 @@
 		<div class="navbar-header" style="width: 100%;">
 			<div style="vertical-align: middle;">				
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left ">
-					<a class="navbar-brand " href="{{Route('produto.produto')}}">PRODUTOS</a>				
+					<a class="navbar-brand " href="{{Route('produtos')}}">PRODUTOS</a>				
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left">
-					<a class="navbar-brand" href="{{Route('usuario.usuario')}}">USUARIOS</a>
+					<a class="navbar-brand" href="{{Route('usuarios')}}">USUARIOS</a>
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left">
-					<a class="navbar-brand" href="{{Route('igor.workLoger')}}">WORKLOGER</a>
+					<a class="navbar-brand" href="{{Route('workLoger')}}">WORKLOGER</a>
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left ">
 					<a class="navbar-brand" href=""></a>	
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left">
-					<a class="navbar-brand" href="{{Route('usuario.grafico')}}">GRAFICO</a>	
+					<a class="navbar-brand" href="{{Route('grafico')}}">GRAFICO</a>	
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left">
-					<!-- <a class="navbar-brand" href="{{Route('igor.timer')}}">TIMER</a> -->
 					<a lass="navbar-brand"  href="#"></a>
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left ">
@@ -36,7 +35,7 @@
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left ">
 					<a class="navbar-brand" href=""></a>	
 				</div>
-				@if(Auth::user()->usu_id == 0)
+				@if(Auth::user()->usu_id == 1)
 					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-right">
 						<a class="navbar-brand" href="#loginModal" style="margin-left: 38px;">
 							<button type="button" class="btn btn-success btn-sm" id='login' data-toggle="modal" onclick='mostraLogin()' >
@@ -66,7 +65,7 @@
 			$("#usuario").focus();
 		}, 500);
 	};
-	if ({{Auth::user()->usu_id}} != 0) 
+	if ({{Auth::user()->usu_id}} != 1) 
 	{
 		$(function()
 		{

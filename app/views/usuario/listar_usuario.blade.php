@@ -197,7 +197,7 @@ var viewModel,dados,usuario;
                 'per_id'  : self.perfil()
             };             
             //SALVANDO OS DADOS NO BANCO
-            globalViewModel.submit("{{Route('salvacadastro.salvacadastro')}}", dadosPost,callback);
+            globalViewModel.submit("{{Route('usuarios.salvacadastro')}}", dadosPost,callback);
         }
 
         self.excluir = function()
@@ -225,7 +225,7 @@ var viewModel,dados,usuario;
                 'per_id'  : self.perfil()
             }; 
                     	
-        	globalViewModel.submit("{{Route('excluicadastro.excluicadastro')}}", dadosPost,callback);
+        	globalViewModel.submit("{{Route('usuarios.excluicadastro')}}", dadosPost,callback);
         }
 
         self.cancelar = function()

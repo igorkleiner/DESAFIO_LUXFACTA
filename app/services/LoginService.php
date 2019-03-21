@@ -38,13 +38,12 @@ class LoginService
 		Session::set('user',$t);				
 		if(Auth::user())
 		{
-			Log::debug("<<< ".Auth::user()->usu_nome.": Login efetuado com sucesso. >>>");
+			Log::info("<<< ".Auth::user()->usu_nome.": Login efetuado com sucesso. >>>");
 			return;
 		}
 		else
 		{
-			Log::debug("<<< Login NAO efetuado... TENTE NOVAMENTE >>>");
-			Log::debug(Auth::user()->usu_nome);
+			Log::info("<<< ".$t->usu_nome."Login NAO efetuado... TENTE NOVAMENTE >>>");
 			return;
 		}		
 	}	
@@ -52,7 +51,7 @@ class LoginService
 	function logout($data)
 	{
 		Session::flush();
-		Log::debug("<<< ".Auth::user()->usu_nome.": Logout efetuado >>>");		
+		Log::info("<<< ".Auth::user()->usu_nome.": Logout efetuado >>>");		
 		return ;
 	}	
 }

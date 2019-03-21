@@ -227,6 +227,18 @@
 			self.dadosGrafico2["Tp3"] = [];
 			self.dadosGrafico2["Tp4"] = [];
 			self.dadosGrafico2["Tp5"] = [];
+
+			self.periodo = function(data,periodo){
+				Tmp = periodo.split(':');
+                var horas = new Date(data);
+				horas.setHours(Tmp[0]);
+				horas.setMinutes(Tmp[1]);
+				horas.setSeconds(Tmp[2]);
+				var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
+				var b = parseInt((parseInt(horas.getMinutes())/60)*100);
+				
+				return	{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: data.toString() };
+			}
 				
 			if (grafico.status != 0 && grafico.response != null) 
 			{
@@ -252,80 +264,12 @@
                 //
                 ko.utils.arrayForEach(self.tempos,function(dia)
                 {
-					tempoEntrada = dia.horasTotais().split(':'); 
-					var horas = new Date(dia.data);
-					horas.setHours(tempoEntrada[0]);
-					// console.log(horas.getHours());
-					horas.setMinutes(tempoEntrada[1]);
-					// console.log(horas.getMinutes());
-					horas.setSeconds(tempoEntrada[2]); 
-					var a = parseInt(horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours());
-					// console.log(a);
-					// var b = parseInt((parseInt(horas.getMinutes()<10 ? '0'+horas.getMinutes() : horas.getMinutes())/60)*100);
-					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
-					// console.log(dia);
-					// console.log(b);
-					
-					self.dadosGrafico.push(
-						{label:dia.data.toString(), y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) }
-     				)
-     				// console.log(self.dadosGrafico);
-				//===================================
-                    Tp1 = dia.totalHorasPeriodo1().split(':');
-                    var horas = new Date(dia.data);
-					horas.setHours(Tp1[0]);
-					horas.setMinutes(Tp1[1]);
-					horas.setSeconds(Tp1[2]);
-					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
-					self.dadosGrafico2["Tp1"].push(
-						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
-                    )
-				//===================================
-                    Tp2 = dia.totalHorasPeriodo2().split(':');
-                    var horas = new Date(dia.data);
-					horas.setHours(Tp2[0]);
-					horas.setMinutes(Tp2[1]);
-					horas.setSeconds(Tp2[2]);
-					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
-					self.dadosGrafico2["Tp2"].push(
-						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
-                    )
-				//===================================
-                    Tp3 = dia.totalHorasPeriodo3().split(':');
-                    var horas = new Date(dia.data);
-					horas.setHours(Tp3[0]);
-					horas.setMinutes(Tp3[1]);
-					horas.setSeconds(Tp3[2]);
-					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
-					self.dadosGrafico2["Tp3"].push(
-						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
-                    )
-				//===================================
-                    Tp4 = dia.totalHorasPeriodo4().split(':');
-                    var horas = new Date(dia.data);
-					horas.setHours(Tp4[0]);
-					horas.setMinutes(Tp4[1]);
-					horas.setSeconds(Tp4[2]);
-					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
-					self.dadosGrafico2["Tp4"].push(
-						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
-                    )
-				//===================================
-                    Tp5 = dia.totalHorasPeriodo5().split(':');
-                    var horas = new Date(dia.data);
-					horas.setHours(Tp5[0]);
-					horas.setMinutes(Tp5[1]);
-					horas.setSeconds(Tp5[2]);
-					var a = horas.getHours()  <10 ? '0'+horas.getHours() : horas.getHours();
-					var b = parseInt((parseInt(horas.getMinutes())/60)*100);
-					self.dadosGrafico2["Tp5"].push(
-						{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: dia.data.toString() },
-                    )
-				//===================================
+     				self.dadosGrafico.push(self.periodo(dia.data,dia.horasTotais()));
+     				self.dadosGrafico2["Tp1"].push(self.periodo(dia.data, dia.totalHorasPeriodo1()));
+     				self.dadosGrafico2["Tp2"].push(self.periodo(dia.data, dia.totalHorasPeriodo2()));
+     				self.dadosGrafico2["Tp3"].push(self.periodo(dia.data, dia.totalHorasPeriodo3()));
+     				self.dadosGrafico2["Tp4"].push(self.periodo(dia.data, dia.totalHorasPeriodo4()));
+     				self.dadosGrafico2["Tp5"].push(self.periodo(dia.data, dia.totalHorasPeriodo5()));
                 });
                 //
 				//======= grafico 1 =========================================================================================
@@ -416,26 +360,27 @@
 					chart1.render();
 				//=============================================================================================================
 
-				// function toolTipContent(e) 
-				// {
-				// 	var str = "";
-				// 	var total = 0;
-				// 	var str2, str3;
-				// 	for (var i = 0; i < e.entries.length; i++)
-				// 	{
-				// 		var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + 
-				// 					"\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+
-				// 					e.entries[i].dataPoint.y+"</strong>bn<br/>";
+					// function toolTipContent(e) 
+					// {
+					// 	var str = "";
+					// 	var total = 0;
+					// 	var str2, str3;
+					// 	for (var i = 0; i < e.entries.length; i++)
+					// 	{
+					// 		var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + 
+					// 					"\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+
+					// 					e.entries[i].dataPoint.y+"</strong>bn<br/>";
 
-				// 		total = e.entries[i].dataPoint.y + total;
-				// 		str = str.concat(str1);
-				// 	}
-				// 	str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).getFullYear()+"</strong></span><br/>";
-				// 	total = Math.round(total * 100) / 100;
-				// 	str3 = "<span style = \"color:Tomato\">Total:</span><strong>"+total+"</strong>h<br/>";
-				// 	return (str2.concat(str)).concat(str3);
-				// }
+					// 		total = e.entries[i].dataPoint.y + total;
+					// 		str = str.concat(str1);
+					// 	}
+					// 	str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).getFullYear()+"</strong></span><br/>";
+					// 	total = Math.round(total * 100) / 100;
+					// 	str3 = "<span style = \"color:Tomato\">Total:</span><strong>"+total+"</strong>h<br/>";
+					// 	return (str2.concat(str)).concat(str3);
+					// }
 			}					
+			
 		}
 	//---------------------------------------------------------------------------------------------------------------
 		viewModel = new ViewModel;

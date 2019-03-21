@@ -12,13 +12,13 @@
 					<a class="navbar-brand" href="{{Route('igor.timer')}}">TIMER</a>
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left">
-					<a class="navbar-brand" href="{{Route('igor.teste')}}">OFFICE</a>
-				</div>
-				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left">
-					<a class="navbar-brand" href="{{Route('usuario.grafico')}}">GRAFICO</a>	
+					<a class="navbar-brand" href="{{Route('igor.teste')}}">WORKLOGER</a>
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left ">
 					<a class="navbar-brand" href=""></a>	
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left">
+					<a class="navbar-brand" href="{{Route('usuario.grafico')}}">GRAFICO</a>	
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left ">
 					<a class="navbar-brand" href=""></a>	

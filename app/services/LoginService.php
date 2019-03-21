@@ -15,9 +15,14 @@ class LoginService
 		}
 		$usuario = Usuario::where(function($q) use ($data)
 			{
-				$q->where('usu_login',$data['usuario'])
-					->where('usu_password', $data['senha']);
+				$q->where('usu_login',$data['usuario']);
+				$q->where('usu_password', $data['senha']);
 			})
+			->select(
+				'usu_id',
+				'usu_nome',
+				'per_id'
+			)
 			->first();		
 		if(!$usuario)
 		{

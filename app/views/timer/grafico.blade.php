@@ -65,8 +65,21 @@
 			self.saidaPeriodo4   = ko.observable(saida_4);
 			self.saidaPeriodo5   = ko.observable(saida_5);
 			//
+			self.totalHorasPeriodo1      = ko.observable("00:00:00");
+			self.totalHorasPeriodo2      = ko.observable("00:00:00");
+			self.totalHorasPeriodo3      = ko.observable("00:00:00");
+			self.totalHorasPeriodo4      = ko.observable("00:00:00");
+			self.totalHorasPeriodo5      = ko.observable("00:00:00");
+			self.horasTotais             = ko.observable("00:00:00");
+			//
 			self.agora = new Relogio();
-			self.dateDiff = function (date1, date2)
+
+			self.validaSaida             = function(entrada,saida){
+	        	if (entrada != "00:00:00"  && saida == "00:00:00" )
+					return "00:00:00";
+				return saida;
+	        }
+			self.dateDiff                = function (date1, date2)
 			{
 				tempoEntrada = date1.split(':');                                
 				var entrada = new Date();
@@ -116,7 +129,7 @@
 				}
 			};
 			//
-			self.timeAdd = function (time1, time2, time3, time4, time5)
+			self.timeAdd                 = function (time1, time2, time3, time4, time5)
 			{
 				time1 = time1.split(':');              
 				time2 = time2.split(':');
@@ -143,75 +156,17 @@
 				}
 			};
 			//
-			self.totalHorasPeriodo1 = ko.pureComputed(function()
+
+			self.masterComputed          = ko.computed(function()
 			{
-				var tempoEntrada = self.entradaPeriodo1()||"00:00:00";            
-				var tempoSaida = self.saidaPeriodo1()||"00:00:00";            
+				self.totalHorasPeriodo1(self.dateDiff(self.entradaPeriodo1(), self.validaSaida(self.entradaPeriodo1(),self.saidaPeriodo1())))
+				self.totalHorasPeriodo2(self.dateDiff(self.entradaPeriodo2(), self.validaSaida(self.entradaPeriodo2(),self.saidaPeriodo2())))
+				self.totalHorasPeriodo3(self.dateDiff(self.entradaPeriodo3(), self.validaSaida(self.entradaPeriodo3(),self.saidaPeriodo3())))
+				self.totalHorasPeriodo4(self.dateDiff(self.entradaPeriodo4(), self.validaSaida(self.entradaPeriodo4(),self.saidaPeriodo4())))
+				self.totalHorasPeriodo5(self.dateDiff(self.entradaPeriodo5(), self.validaSaida(self.entradaPeriodo5(),self.saidaPeriodo5())))
+				self.horasTotais(self.timeAdd(self.totalHorasPeriodo1(), self.totalHorasPeriodo2(), self.totalHorasPeriodo3(), self.totalHorasPeriodo4(), self.totalHorasPeriodo5()));
 				
-				if (tempoEntrada == "") tempoEntrada = "00:00:00"
-				if (tempoSaida == "") tempoSaida = "00:00:00"
-				if (tempoEntrada != "00:00:00"  && tempoSaida == "00:00:00" ) return "00:00:00";
-				var totalHorasPeriodo1 =  self.dateDiff(tempoEntrada, tempoSaida);
-				return totalHorasPeriodo1;
-			},this);
-			//
-			self.totalHorasPeriodo2 = ko.pureComputed(function()
-			{
-				var tempoEntrada = self.entradaPeriodo2()||"00:00:00";
-				var tempoSaida = self.saidaPeriodo2()||"00:00:00";
-
-				if (tempoEntrada == "") tempoEntrada = "00:00:00"
-				if (tempoSaida == "") tempoSaida = "00:00:00"
-				if (tempoEntrada != "00:00:00"  && tempoSaida == "00:00:00" ) return "00:00:00";
-				var totalHorasPeriodo2 =  self.dateDiff(tempoEntrada, tempoSaida);
-				return totalHorasPeriodo2; 
-			},this);
-			//
-			self.totalHorasPeriodo3 = ko.pureComputed(function()
-			{
-				var tempoEntrada = self.entradaPeriodo3()||"00:00:00";
-				var tempoSaida = self.saidaPeriodo3()||"00:00:00";
-
-				if (tempoEntrada == "") tempoEntrada = "00:00:00"
-				if (tempoSaida == "") tempoSaida = "00:00:00"
-				if (tempoEntrada != "00:00:00"  && tempoSaida == "00:00:00" )  return "00:00:00";
-				var totalHorasPeriodo3 =  self.dateDiff(tempoEntrada, tempoSaida);
-				return totalHorasPeriodo3; 
-			},this);
-			//
-			self.totalHorasPeriodo4 = ko.pureComputed(function()
-			{
-				var tempoEntrada = self.entradaPeriodo4()||"00:00:00";
-				var tempoSaida = self.saidaPeriodo4()||"00:00:00";
-
-				if (tempoEntrada == "") tempoEntrada = "00:00:00"
-				if (tempoSaida == "") tempoSaida = "00:00:00"
-				if (tempoEntrada != "00:00:00"  && tempoSaida == "00:00:00" )  return "00:00:00";
-				var totalHorasPeriodo4 =  self.dateDiff(tempoEntrada, tempoSaida);
-				return totalHorasPeriodo4; 
-			},this);
-			//
-			self.totalHorasPeriodo5 = ko.pureComputed(function()
-			{
-				var tempoEntrada = self.entradaPeriodo5()||"00:00:00";
-				var tempoSaida = self.saidaPeriodo5()||"00:00:00";
-
-				if (tempoEntrada == "") tempoEntrada = "00:00:00"
-				if (tempoSaida == "") tempoSaida = "00:00:00"
-				if (tempoEntrada != "00:00:00"  && tempoSaida == "00:00:00" )  return "00:00:00";
-				var totalHorasPeriodo5 =  self.dateDiff(tempoEntrada, tempoSaida);
-				return totalHorasPeriodo5; 
-			},this);
-			//
-			self.horasTotais = ko.pureComputed(function()
-			{
-				return self.timeAdd(  self.totalHorasPeriodo1()
-									, self.totalHorasPeriodo2()
-									, self.totalHorasPeriodo3()
-									, self.totalHorasPeriodo4()
-									, self.totalHorasPeriodo5()
-				);
-			},this);
+			});		
 		}				
 	//-----------ViewModel-------------------------------------------------------------------------------------------
 		function ViewModel()

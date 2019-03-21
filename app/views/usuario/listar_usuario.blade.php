@@ -93,6 +93,8 @@
                                 <th >Id</th>
                                 <th >Nome</th>
                                 <th >Perfil</th>
+                                <th >Login</th>
+                                <th >Senha</th>
                             </tr>    
                         </thead>
                         <tbody>
@@ -108,6 +110,8 @@
                                         optionsCaption:'selecione'
                                     "></select>
                                 </td>
+                                <td><input type='text' data-bind="value:login"></input></td>
+                                <td><input type='text' data-bind="value:senha"></input></td>
                             </tr>
                         </tbody>                                    
                     </table>
@@ -141,24 +145,30 @@ var viewModel,dados,usuario;
    
     //console.log(usuario);
 // --------------------------------------------------------------------------------------
-	function Usuario(id, nome, perfil, editando)
+	function Usuario(id, nome, perfil, login,senha, editando)
     {
-		var self = this;
-		self.id = ko.observable(id);
-		self.nome = ko.observable(nome);
-		self.perfil = ko.observable(perfil);
-		self.editando = ko.observable(editando);
+		var self      = this;
+		self.id       = ko.observable(id);
+		self.nome     = ko.observable(nome);
+		self.perfil   = ko.observable(perfil);
+        self.login    = ko.observable(login);
+		self.senha    = ko.observable(senha);
+        self.editando    = ko.observable(editando);
 		self.original = {
-            id   :id,
-            nome :nome,
-            perfil:perfil
+            id     :id,
+            nome   :nome,
+            perfil :perfil,
+            login  :login,
+            senha  :senha
         }
         // PROPRIEDADE atualizaOriginal RECEBENDO UMA FUNÇÃO QUE SUBSTITUI OS VALORES ORIGINAIS
         self.atualizaOriginal = function()
         {
-            self.original.id     = self.id();
-            self.original.nome   = self.nome();
+            self.original.id      = self.id();
+            self.original.nome    = self.nome();
             self.original.perfil  = self.perfil();                
+            self.original.login   = self.login();                
+            self.original.senha   = self.senha();                
         };
 		self.editar = function()
 		{
@@ -192,9 +202,11 @@ var viewModel,dados,usuario;
         	// CHAMA A FUNÇÃO DA PROPRIEDADE atualizaOriginal()            
             dadosPost = 
             {
-                'usu_id'  : self.id(),
-                'usu_nome': self.nome(),
-                'per_id'  : self.perfil()
+                'usu_id'       : self.id(),
+                'usu_nome'     : self.nome(),
+                'per_id'       : self.perfil(),
+                'usu_login'    : self.login(),
+                'usu_password' : self.senha()
             };             
             //SALVANDO OS DADOS NO BANCO
             globalViewModel.submit("{{Route('usuarios.salvacadastro')}}", dadosPost,callback);
@@ -298,7 +310,7 @@ var viewModel,dados,usuario;
 
         self.cadastraUsuario = function()
         {
-            self.usuarios.push(new Usuario(null, null, null, true));
+            self.usuarios.push(new Usuario(null, null, null,null, null, true));
         }
         self.getperfil = function(id)
         {
@@ -322,7 +334,16 @@ var viewModel,dados,usuario;
                     });
                     ko.utils.arrayForEach(dados.response.usuarios,function(usuario)
                     {
-                        self.usuarios.push(new Usuario(usuario.usu_id,usuario.usu_nome, usuario.per_id));
+                        self.usuarios.push(
+                            new Usuario(
+                                usuario.usu_id,
+                                usuario.usu_nome, 
+                                usuario.per_id,
+                                usuario.usu_login,
+                                usuario.usu_password,
+                                false
+                            )
+                        );
                     }); 
                 }
                 else

@@ -199,7 +199,7 @@
 								'entrada_5': self.entradaPeriodo5().format("YYYY-MM-DD HH:mm:ss"),
 								'saida_5'  : self.saidaPeriodo5().format("YYYY-MM-DD HH:mm:ss")
 							};    
-							globalViewModel.submit("{{Route('salvar.timer2')}}", dadosPost,callback);
+							globalViewModel.submit("{{Route('salvar.timer')}}", dadosPost,callback);
 						} 
 						self.visualizar              = ko.computed(function()
 						{

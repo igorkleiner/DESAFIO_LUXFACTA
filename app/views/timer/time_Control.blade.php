@@ -565,7 +565,7 @@
 				'saida_5'  : self.saidaPeriodo5().format("YYYY-MM-DD HH:mm:ss")
 			};    
 			console.log(dadosPost)                  ;
-			globalViewModel.submit("{{Route('salvar.timer2')}}", dadosPost,callback);
+			globalViewModel.submit("{{Route('salvar.timer')}}", dadosPost,callback);
 		} 
 
 

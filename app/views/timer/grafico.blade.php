@@ -3,7 +3,6 @@
 @section('content')
 
 	<script type="text/javascript">
-		// INSTANCIA DAS VARIAVEIS DA PAGINA
 		var viewModel, diaSemana,data,hora,usuario,time, mask, placeholder;
 		diaSemana = "{{date('D',time())}}";
 		data = "{{date('Y-m-d',time())}}";    

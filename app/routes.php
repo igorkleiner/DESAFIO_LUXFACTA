@@ -36,7 +36,7 @@ Route::group(array('before' => 'auth','prefix' => ''),function(){
 	//{{Route(igor.logout) }}
 	Route::any('/timeControl',     array('as'=>'igor.timer',                     'uses'=>'HomeController@timeControl'));
 	//{{Route(igor.timer) }}
-	Route::any('/teste',           array(/*'before'=> 'auth',*/'as'=>'igor.teste',   'uses'=>'HomeController@teste'));
+	Route::any('/workLoger',       array('as'=>'igor.workLoger',                  'uses'=>'HomeController@workLoger'));
 	//{{Route(igor.teste) }}
 	Route::post('/salvarTimer',    array('as'=>'salvar.timer',                   'uses'=>'HomeController@salvarTimer'));
 	//{{Route(salvar.timer) }}

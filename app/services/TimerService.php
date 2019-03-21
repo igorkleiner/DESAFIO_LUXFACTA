@@ -13,7 +13,7 @@ class TimerService
 	{
 		$timer = !empty($data['timer_id']) 
 			? Timer::find($data['timer_id']) 
-			: new Timer2;
+			: new Timer;
 
 		$timer->usu_id    = $data['usu_id'];
 		$timer->data      = $data['data'];

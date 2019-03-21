@@ -1,6 +1,9 @@
 <?php
 
 class BaseController extends Controller {
+	// private $date = date('d-m-Y',time());
+	// private $hora = date('H:i:s:u',time());
+	// private $nome = Auth::user()->usu_nome;
 
 	/**
 	 * Setup the layout used by the controller.

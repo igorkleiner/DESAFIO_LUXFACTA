@@ -32,23 +32,21 @@ class HomeController extends BaseController
 		$nome = Auth::user()->usu_nome;
 		$date = date('d-m-Y',time());
 		$hora = date('H:i:s:u',time());
-		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called LISTAR PRODUDO blade" );		
-		$result = MakeRequest::callService('ProdutoService', 'listar') ;			
-		return View::make('produto.listar_produto')->with('dados',$result)->with('usuario',Auth::user());
+		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called LISTAR PRODUTO blade" );		
+		return View::make('produto.listar_produto')
+			->with('dados', MakeRequest::callService('ProdutoService', 'listar'))
+			->with('usuario',Auth::user()
+		);
 	}
 
 	public function salvarProduto()
 	{
-		$data = Input::all();		
-		$result = MakeRequest::callService('ProdutoService', 'salvar', $data);		
-		return json_encode($result);
+		return json_encode(MakeRequest::callService('ProdutoService', 'salvar', Input::all()));
 	}
 
 	public function excluirProduto()
 	{
-		$data = Input::all();		
-		$result = MakeRequest::callService('ProdutoService', 'excluir', $data);		
-		return json_encode($result);
+		return json_encode(MakeRequest::callService('ProdutoService', 'excluir', Input::all()));
 	}
 
 	public function usuario()
@@ -57,36 +55,29 @@ class HomeController extends BaseController
 		$date = date('d-m-Y',time());
 		$hora = date('H:i:s:u',time());
 		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called LISTAR USUARIO blade" );		
-		$result = MakeRequest::callService('UsuarioService', 'listar') ;		
-		return View::make('usuario.listar_usuario')->with('dados',$result)->with('usuario',Auth::user());	
+		return View::make('usuario.listar_usuario')
+			->with('dados',MakeRequest::callService('UsuarioService', 'listar'))
+			->with('usuario',Auth::user());	
 	}
 
 	public function salvarUsuario()
 	{
-		$data = Input::all();
-		$result = MakeRequest::callService('UsuarioService', 'salvar', $data);
-		return json_encode($result);
+		return json_encode(MakeRequest::callService('UsuarioService', 'salvar', Input::all()));
 	}
 
 	public function excluirUsuario()
 	{
-		$data = Input::all();
-		$result = MakeRequest::callService('UsuarioService', 'excluir', $data);
-		return json_encode($result);
+		return json_encode(MakeRequest::callService('UsuarioService', 'excluir', Input::all()));
 	}
 	
 	public function makeLogin()
 	{
-		$data = Input::all();
-		$result =  MakeRequest::callService('LoginService', 'validarLogin', $data);
-		return json_encode($result);
+		return json_encode(MakeRequest::callService('LoginService', 'validarLogin', Input::all()));
 	}
 
 	public function logout()
 	{
-		$data = Input::all();		
-		$result =  MakeRequest::callService('LoginService', 'logout', $data);
-		return json_encode($result);
+		return json_encode(MakeRequest::callService('LoginService', 'logout', Input::all()));
 	}
 
 	public function timeControl()
@@ -96,46 +87,36 @@ class HomeController extends BaseController
 		$date = date('d-m-Y',time());
 		$hora = date('H:i:s:u',time());
 		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called TIMER blade" );
-		$result = MakeRequest::callService('TimerService', 'listarHoje') ;
-		Log::info('<< DADOS VINDOS DO BANCO: >>', $result);		
 		return View::make('timer.time_Control')
 							->with('usuario',Auth::user())
-							->with('time', $result);
+							->with('time', MakeRequest::callService('TimerService', 'listarHoje'));
 	}
 
 	public function salvarTimer()
 	{
-		$data = Input::all();		
-		Log::info('<< metodo salvar no controler: >>', $data);	
-		$result = MakeRequest::callService('TimerService', 'salvar', $data) ;
-		return json_encode($result);
+		return json_encode(MakeRequest::callService('TimerService', 'salvar', Input::all()));
 	}
 
-	public function teste()
+	public function workLoger()
 	{
 		$data = Input::all();
 		$nome = Auth::user()->usu_nome;
 		$date = date('d-m-Y',time());
 		$hora = date('H:i:s:u',time());
 		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called TIMER blade" );
-		$result = MakeRequest::callService('TimerService', 'listarHoje') ;
-		Log::info('<< DADOS VINDOS DO BANCO: >>', $result);		
-		return View::make('timer.teste')
-							->with('usuario',Auth::user())
-							->with('time', $result);
+		return View::make('timer.workLoger')
+			->with('usuario',Auth::user())
+			->with('time', MakeRequest::callService('TimerService', 'listarHoje'));
 	}
 
 	public function graficoHoras(){
 		$nome = Auth::user()->usu_nome;
 		$date = date('d-m-Y',time());
 		$hora = date('H:i:s:u',time());
-		$result = MakeRequest::callService('TimerService', 'minhasHoras') ;
 		Log::info("<< {$nome}, at: ,{$date}, {$hora} >> called GRAFICO blade" );
-		$true = true;
 		return View::make('timer.grafico')
-							->with('usuario',Auth::user())
-							->with('grafico', $result)
-							->with('true',$true);
+			->with('usuario',Auth::user())
+			->with('grafico', MakeRequest::callService('TimerService', 'minhasHoras'));
 	}
 	public function login(){
 		return View::make('layout.login');

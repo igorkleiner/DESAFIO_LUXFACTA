@@ -9,7 +9,7 @@
 					<a class="navbar-brand" href="{{Route('usuario.usuario')}}">USUARIOS</a>
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left">
-					<a class="navbar-brand" href="{{Route('igor.teste')}}">WORKLOGER</a>
+					<a class="navbar-brand" href="{{Route('igor.workLoger')}}">WORKLOGER</a>
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left ">
 					<a class="navbar-brand" href=""></a>	

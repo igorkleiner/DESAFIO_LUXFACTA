@@ -160,5 +160,6 @@ GO
 
 
 -- ===========================================================================
--- DBCC CHECKIDENT ('timer', RESEED, 32)
+-- script para reajustar ids primarios
+-- DBCC CHECKIDENT ('timer', RESEED, 0)
 -- GO

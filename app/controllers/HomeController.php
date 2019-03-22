@@ -14,6 +14,11 @@ class HomeController extends BaseController
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	public function api()
+	{
+		// debug(['Input::all() no controler'=>Input::all()]);
+		return InterceptorHandler::interceptService(Input::all());
+	}
 
 	public function showWelcome()
 	{
@@ -31,14 +36,14 @@ class HomeController extends BaseController
 	{
 		
 		return View::make('produto.listar_produto')
-			->with('dados', MakeRequest::callService('ProdutoService', 'listar'))
+			->with('dados', MakeRequest::callService_api('ProdutoService', 'listar'))
 			->with('usuario',Auth::user()
 		);
 	}
 
 	public function salvarProduto()
 	{
-		return json_encode(MakeRequest::callService('ProdutoService', 'salvar', Input::all()));
+		return json_encode(MakeRequest::callService_api('ProdutoService', 'salvar', Input::all()));
 	}
 
 	public function excluirProduto()

@@ -13,7 +13,8 @@
 // Route::group(array('before' => 'auth','prefix' => ''),function(){
 	
 // });
-	//Route::get('/cadastro'   ,   array('as' => 'home.home',                    'uses' => 'HomeController@home'));
+	Route::any('/api',             array('as'=> 'api',                     'uses' => 'HomeController@api'));
+	//{{Route('api')}}
 	Route::get('/',                array('as'=> 'produtos',                'uses' => 'HomeController@produto'));
 	//{{Route('produto.produto')}}
 	Route::any('/usuario',         array('as'=> 'usuarios',                'uses' => 'HomeController@usuario'));

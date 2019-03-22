@@ -160,6 +160,43 @@ GO
 
 
 -- ===========================================================================
+
+
+
+
+
+USE [desafio_luxfacta]
+GO
+
+/****** Object:  Table [dbo].[log]    Script Date: 21/03/2019 14:51:51 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[log](
+	[log_id]       [int] IDENTITY(1,1) NOT NULL,
+	[usu_id]       [int]               NOT NULL,
+	[usu_nome]     [varchar](45)       NOT NULL,
+	[data]         [datetime2](7)      NOT NULL,
+	[serviço]      [varchar](40)       NOT NULL,
+	[metodo]       [varchar](40)       NOT NULL,
+	[parametros]   [varchar](max)      NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[log_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[log]  WITH CHECK ADD  CONSTRAINT [usu_id] FOREIGN KEY([usu_id])
+REFERENCES [dbo].[usuario] ([usu_id])
+GO
+
+ALTER TABLE [dbo].[log] CHECK CONSTRAINT [usu_id]
+GO
+-- ===========================================================================
 -- script para reajustar ids primarios
 -- DBCC CHECKIDENT ('timer', RESEED, 0)
 -- GO

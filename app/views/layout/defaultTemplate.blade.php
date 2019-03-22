@@ -12,7 +12,11 @@
 	<style>
 		.body {background-color: rgba(6, 75, 65, 0.41);}
 	</style>
-	    
+	<script type="text/javascript">
+		usuario = {{json_encode($usuario)}};   
+     	usuario['usu_id'] = {{$usuario->usu_id}};
+     	
+	</script>    
 	<body>
 		<div style="padding: 5px;">		
 			@include('componentes.knockoutComponents')

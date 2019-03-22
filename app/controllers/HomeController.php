@@ -37,8 +37,8 @@ class HomeController extends BaseController
 		
 		return View::make('produto.listar_produto')
 			->with('dados', MakeRequest::callService_api('ProdutoService', 'listar'))
-			->with('usuario',Auth::user()
-		);
+			->with('usuario',Auth::user())
+		;
 	}
 
 	public function salvarProduto()

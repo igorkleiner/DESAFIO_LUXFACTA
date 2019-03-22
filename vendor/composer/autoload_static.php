@@ -196,6 +196,8 @@ class ComposerStaticInit673ffeeed5ab3b89e7efaa69ec7e9fb2
         'HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
         'InterceptorHandler' => __DIR__ . '/../..' . '/app/API/InterceptHandler.php',
+        'LogService' => __DIR__ . '/../..' . '/app/services/LogService.php',
+        'Logger' => __DIR__ . '/../..' . '/app/models/Logger.php',
         'LoginService' => __DIR__ . '/../..' . '/app/services/LoginService.php',
         'MakeRequest' => __DIR__ . '/../..' . '/app/API/MakeRequest.php',
         'Normalizer' => __DIR__ . '/..' . '/patchwork/utf8/src/Normalizer.php',

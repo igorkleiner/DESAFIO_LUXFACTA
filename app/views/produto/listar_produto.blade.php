@@ -137,11 +137,10 @@
 <script type="text/javascript">
 //console.log($Session);
     // INSTANCIA DAS VARIAVEIS DA PAGINA
-    var viewModel,dados, usuario;
-    // DADOS RECEBE JSON ENCODE DO POST 
-    dados = {{json_encode($dados)}};    
-     usuario = {{json_encode($usuario)}};   
-     usuario['usu_id'] = {{$usuario->usu_id}};    
+    var viewModel;
+    var dados = {{json_encode($dados)}}; 
+       
+         
     //console.log(usuario);
     //---------------------------------------------------------------------------------------------------------------
     // CRIANDO A CLASSE PRODUTO

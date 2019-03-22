@@ -28,14 +28,11 @@ class LoginService
 		{
 			throw new Exception("Login ou senha incorretos.");
 		}
-		$t = new UsuarioMakeLogin;
-		$t->usu_id = $usuario->usu_id;
-		$t->usu_nome = $usuario->usu_nome;
-		$t->per_id = $usuario->per_id;
-		$t->usu_login = $usuario->usu_login;
-		$t->usu_password = $usuario->usu_password;		
-		Auth::login($t);
-		Session::set('user',$t);				
+		else
+		{
+			$this->login($usuario);
+		}
+						
 		if(Auth::user())
 		{
 			Log::info("<<< ".Auth::user()->usu_nome.": Login efetuado com sucesso. >>>");
@@ -46,6 +43,31 @@ class LoginService
 			Log::info("<<< ".$t->usu_nome."Login NAO efetuado... TENTE NOVAMENTE >>>");
 			return;
 		}		
+	}
+	function login($usuario)
+	{
+		try
+		{
+			$t = new UsuarioMakeLogin;
+			$t->usu_id = $usuario->usu_id;
+			$t->usu_nome = $usuario->usu_nome;
+			$t->per_id = $usuario->per_id;
+			$t->usu_login = $usuario->usu_login;
+			$t->usu_password = $usuario->usu_password;		
+			Auth::login($t);
+			Session::set('user',$t);
+			return;
+		}
+		catch (Exception $error)
+		{
+            Log::info(' =================================================');
+            Log::info(' ==========>  OCORRREU UM PROBLEMA  <=============');
+            Log::info(' ===============>  INFORMACOES  <=================');
+            Log::info(' =================================================');
+            Log::error($error->getMessage());
+            Log::error($error->getTraceAsString());
+            return;
+		}
 	}	
 
 	function logout($data)

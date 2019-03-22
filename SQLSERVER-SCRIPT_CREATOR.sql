@@ -1,13 +1,13 @@
 
 
-/****** Object:  Database [desafio_luxfacta_teste_criação]    Script Date: 21/03/2019 14:48:30 ******/
-CREATE DATABASE [desafio_luxfacta_teste_criação]
+/****** Object:  Database [desafio_luxfacta]    Script Date: 21/03/2019 14:48:30 ******/
+CREATE DATABASE [desafio_luxfacta]
 
 GO
 -- ===========================================================================
 
 
-USE [desafio_luxfacta_teste_criação]
+USE [desafio_luxfacta]
 GO
 
 /****** Object:  Table [dbo].[perfil]    Script Date: 21/03/2019 14:50:08 ******/
@@ -37,7 +37,7 @@ INSERT INTO perfil (per_nome) VALUES ('Dono');
 -- ===========================================================================
 
 
-USE [desafio_luxfacta_teste_criação]
+USE [desafio_luxfacta]
 GO
 
 /****** Object:  Table [dbo].[usuario]    Script Date: 21/03/2019 14:51:51 ******/
@@ -84,7 +84,7 @@ INSERT INTO usuario (usu_nome,per_id,usu_login,usu_password) VALUES ('Ciclano',2
 -- ===========================================================================
 
 
-USE [desafio_luxfacta_teste_criação]
+USE [desafio_luxfacta]
 GO
 
 /****** Object:  Table [dbo].[produto]    Script Date: 21/03/2019 14:53:26 ******/
@@ -117,7 +117,7 @@ GO
 -- ===========================================================================
 
 
-USE [desafio_luxfacta_teste_criação]
+USE [desafio_luxfacta]
 GO
 
 /****** Object:  Table [dbo].[timer]    Script Date: 21/03/2019 14:54:16 ******/

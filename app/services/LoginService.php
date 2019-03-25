@@ -18,11 +18,11 @@ class LoginService
 				$q->where('usu_login',$data['usuario']);
 				$q->where('usu_password', $data['senha']);
 			})
-			->select(
-				'usu_id',
-				'usu_nome',
-				'per_id'
-			)
+			// ->select(
+			// 	'usu_id',
+			// 	'usu_nome',
+			// 	'per_id'
+			// )
 			->first();		
 		if(!$usuario)
 		{
@@ -45,11 +45,15 @@ class LoginService
 		}		
 	}
 
-	function ApiLogin($id){
-		debug([
-			'ApiLogin'=>$id
-		]);
-		$usuario = Usuario::where('usu_id', $id)->first();
+	function ApiLogin($user){
+		// debug([
+		// 	'ApiLogin'=>$user
+		// ]);
+		$usuario = Usuario::where('usu_login', $user['usu_login'])
+			->where('usu_password', $user['usu_password'])
+			->first();
+
+
 		if (!empty($usuario)) {
 			$this->login($usuario);
 			return true;
@@ -59,18 +63,17 @@ class LoginService
 
 	function login($usuario)
 	{
-		debug([
-			$usuario['attibutes']
-		]);
+		// debug([$usuario['attibutes']]);
 
 		try
 		{
-			$t = new UsuarioMakeLogin;
-			$t->usu_id = $usuario->usu_id;
-			$t->usu_nome = $usuario->usu_nome;
-			$t->per_id = $usuario->per_id;
-			$t->usu_login = $usuario->usu_login;
-			$t->usu_password = $usuario->usu_password;		
+			$t               = new UsuarioMakeLogin;
+			$t->usu_id       = $usuario->usu_id;
+			$t->usu_nome     = $usuario->usu_nome;
+			$t->per_id       = $usuario->per_id;
+			$t->usu_login    = $usuario->usu_login;
+			$t->usu_password = $usuario->usu_password;
+
 			Auth::login($t);
 			Session::set('user',$t);
 			return;

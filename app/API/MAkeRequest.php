@@ -7,12 +7,12 @@ abstract class MakeRequest
 {
 	public static function callService($class, $method, array $data = array()) /*array $data = array()*/
 	{
-		$data['USUARIO_LOGADO'] = Auth::user()->usu_id.'- '.Auth::user()->usu_nome;
 		$timeStart = microtime(true);
 		$content = null;
         
 		DB::transaction(function() use ($class, $method, $data, $timeStart, &$content)
 		{
+            $user = Auth::user()->usu_id.'- '.Auth::user()->usu_nome;
 			try
 			{
 				$tmpClass = new $class;
@@ -31,7 +31,7 @@ abstract class MakeRequest
                 LogService::registrarAtividade($evento);
 
 
-                Log::info("'".$data['USUARIO_LOGADO']." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
+                Log::info("'".$user." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
 			}
 
 			catch (Exception $error)
@@ -42,7 +42,7 @@ abstract class MakeRequest
                 Log::info(' ==========>  OCORRREU UM PROBLEMA  <=============');
                 Log::info(' ===============>  INFORMACOES  <=================');
                 Log::info(' =================================================');
-                Log::info("'".$data['USUARIO_LOGADO']." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
+                Log::info("'".$user." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
                 Log::error($error->getMessage());
                 Log::error($error->getTraceAsString());
 			}
@@ -62,13 +62,15 @@ abstract class MakeRequest
         {
 
             $configs = json_encode([
-                'Request' => [
-                    'usu_id'  => Auth::user()->usu_id,
-                    'usu_nome'=> Auth::user()->usu_nome,
-                    'token'   => sha1('sneverscriverdovertouch'),
-                    'Service' => $servico,
-                    'Method'  => $metodo,
-                    'Params'  => $params
+                'Request'   => [
+                    'usu_id'       => Auth::user()->usu_id,
+                    'usu_nome'     => Auth::user()->usu_nome,
+                    'usu_login'    => Auth::user()->usu_login,
+                    'usu_password' => Auth::user()->usu_password,
+                    'token'        => sha1('sneverscriverdovertouch'),
+                    'Service'      => $servico,
+                    'Method'       => $metodo,
+                    'Params'       => $params
                 ]
             ]);
 

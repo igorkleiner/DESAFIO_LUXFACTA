@@ -49,8 +49,10 @@ abstract class MakeRequest
 
         $configs = json_encode([
             'Request' => [
+                'usu_id'  => 0,
                 'usu_id'  =>Auth::user()->usu_id,
                 'usu_nome'=>Auth::user()->usu_nome,
+                'token'   => sha1('sneverscriverdovertouch'),
                 'Service' => $servico,
                 'Method'  => $metodo,
                 'Params'  => $params

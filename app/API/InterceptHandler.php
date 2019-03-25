@@ -6,11 +6,28 @@ abstract class InterceptorHandler
 {
     public static function interceptService(array $input)
     {
-    	// debug(['$input  no interceptService'=>Input::all()]);
-     //    DB::listen(function($s,$b,$t)
-     //    {
-     //        debug([$s, $b, $t]);
-     //    });
+		debug(['$input  no interceptService'=>Input::all()]);
+		// DB::listen(function($s,$b,$t)
+		// {
+		// 	debug([$s, $b, $t]);
+		// });
+
+		if (
+			$input['Request']['token'] == sha1('sneverscriverdovertouch') &&
+			$input['Request']['usu_id'] != Auth::user()->usu_id
+		) {
+			$login = (new LoginService)->ApiLogin($input['Request']['usu_id']);
+			if (!$login) {
+				throw new Exception("Api não autenticada");
+			}
+		}
+		debug([
+			'ID_USUARIO_LOGADO' => Auth::user()->usu_id,
+			'NOME_USUARIO_LOGADO' => Auth::user()->usu_nome
+		]);
+
+		// Nesse ponto, implementar o login via token para a api.
+
 
         $timeStart = microtime(true);
         $content = null;
@@ -45,17 +62,17 @@ abstract class InterceptorHandler
             catch(Exception $exc)
             {
 				$content = ['status' => 0, 'message' => $exc->getMessage()];
-				Log::info(' ====================================================');
-				Log::info(' =============>  OCORRREU UM PROBLEMA  <=============');
-				Log::info(' =================>  INFORMACOES   <=================');
-				Log::info(' ====================================================');
+				Log::info(' ==================================================== ');
+				Log::info(' =============>  OCORRREU UM PROBLEMA  <============= ');
+				Log::info(' =================>  INFORMACOES   <================= ');
+				Log::info(' ==================================================== ');
 				Log::info(
 					"'".$request['usu_id'].'-'.$request['usu_nome']." action: '".
 					$servico."@".$metodo ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms"
 				);
 				Log::info($exc->getMessage());
 				Log::info($exc->getTraceAsString());
-				Log::info(' ====================================================');
+				Log::info(' ==================================================== ');
             }
             catch (Exception $exc)
             {

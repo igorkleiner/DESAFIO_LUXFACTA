@@ -44,8 +44,25 @@ class LoginService
 			return;
 		}		
 	}
+
+	function ApiLogin($id){
+		debug([
+			'ApiLogin'=>$id
+		]);
+		$usuario = Usuario::where('usu_id', $id)->first();
+		if (!empty($usuario)) {
+			$this->login($usuario);
+			return true;
+		}
+		return false;
+	}
+
 	function login($usuario)
 	{
+		debug([
+			$usuario['attibutes']
+		]);
+
 		try
 		{
 			$t = new UsuarioMakeLogin;

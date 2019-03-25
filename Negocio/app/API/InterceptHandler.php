@@ -13,7 +13,7 @@ abstract class InterceptorHandler
 		// });
 
 		if (
-			$input['Request']['token'] == sha1('sneverscriverdovertouch') &&
+			$input['Request']['token'] == sha1('isneverscrivesdovertouch') &&
 			$input['Request']['usu_id'] != Auth::user()->usu_id
 		){
 			$user = [

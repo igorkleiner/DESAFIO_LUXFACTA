@@ -5,7 +5,6 @@
 
 abstract class MakeRequest
 {
-    private $ApiCookie = null;
 	public static function callService($class, $method, array $data = array()) /*array $data = array()*/
 	{
 		$timeStart = microtime(true);
@@ -68,8 +67,7 @@ abstract class MakeRequest
                     'usu_nome'     => Auth::user()->usu_nome,
                     'usu_login'    => Auth::user()->usu_login,
                     'usu_password' => Auth::user()->usu_password,
-                    'token'        => sha1('sneverscriverdovertouch'),
-                    // 'cookie'       => self::ApiCookie(),
+                    'token'        => sha1('isneverscrivesdovertouch'),
                     'Service'      => $servico,
                     'Method'       => $metodo,
                     'Params'       => $params

@@ -6,7 +6,7 @@ abstract class InterceptorHandler
 {
     public static function interceptService(array $input)
     {
-		debug(['$input  no interceptService'=>Input::all()]);
+		// debug(['$input  no interceptService'=>Input::all()]);
 		// DB::listen(function($s,$b,$t)
 		// {
 		// 	debug([$s, $b, $t]);
@@ -52,7 +52,7 @@ abstract class InterceptorHandler
 					'parametros' => json_encode($params),
 				];
 				
-				self::salvarLog($evento);
+				LogService::registrarAtividade($evento);
 				
 				Log::info(
 					"'".$request['usu_id'].'-'.$request['usu_nome']." action: '".
@@ -80,11 +80,5 @@ abstract class InterceptorHandler
         }); 
 
         return Response::make($content, 200);  
-    }
-
-    private static function salvarLog($evento)
-    {
-        $log = new LogService;
-        $log->registrarAtividade($evento);
     }
 }

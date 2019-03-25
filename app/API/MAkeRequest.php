@@ -7,7 +7,7 @@ abstract class MakeRequest
 {
 	public static function callService($class, $method, array $data = array()) /*array $data = array()*/
 	{
-		$data['USUARIO_LOGADO'] = Auth::user();
+		$data['USUARIO_LOGADO'] = Auth::user()->usu_id.'- '.Auth::user()->usu_nome;
 		$timeStart = microtime(true);
 		$content = null;
         
@@ -18,7 +18,20 @@ abstract class MakeRequest
 				$tmpClass = new $class;
                 $result = $tmpClass->$method($data);
 				$content = ['status'=> 1, 'response'=>$result];
-                Log::info("'".$data['USUARIO_LOGADO']['usu_id'].'-'.$data['USUARIO_LOGADO']['usu_nome']." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
+
+                $evento = [
+                    'usu_id'     => Auth::user()->usu_id,
+                    'usu_nome'   => Auth::user()->usu_nome,
+                    'data'       => new DateTime(),
+                    'servico'    => $class,
+                    'metodo'     => $method,
+                    'parametros' => json_encode($data),
+                ];
+
+                LogService::registrarAtividade($evento);
+
+
+                Log::info("'".$data['USUARIO_LOGADO']." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
 			}
 
 			catch (Exception $error)
@@ -29,7 +42,7 @@ abstract class MakeRequest
                 Log::info(' ==========>  OCORRREU UM PROBLEMA  <=============');
                 Log::info(' ===============>  INFORMACOES  <=================');
                 Log::info(' =================================================');
-                Log::info("'".$data['USUARIO_LOGADO']['usu_id'].'-'.$data['USUARIO_LOGADO']['usu_nome']." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
+                Log::info("'".$data['USUARIO_LOGADO']." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
                 Log::error($error->getMessage());
                 Log::error($error->getTraceAsString());
 			}
@@ -45,26 +58,24 @@ abstract class MakeRequest
      */
 	public static function callService_api($servico, $metodo, array $params = array())
     {
-        // $params['USUARIO_LOGADO'] = Auth::user();
-
-        $configs = json_encode([
-            'Request' => [
-                'usu_id'  => 0,
-                'usu_id'  =>Auth::user()->usu_id,
-                'usu_nome'=>Auth::user()->usu_nome,
-                'token'   => sha1('sneverscriverdovertouch'),
-                'Service' => $servico,
-                'Method'  => $metodo,
-                'Params'  => $params
-            ]
-        ]);
-
-        $url = Config::get('app.webservice-endpoint');
-
-        $ch = self::configCurl($url,$configs,$params);
-        
         try
         {
+
+            $configs = json_encode([
+                'Request' => [
+                    'usu_id'  => Auth::user()->usu_id,
+                    'usu_nome'=> Auth::user()->usu_nome,
+                    'token'   => sha1('sneverscriverdovertouch'),
+                    'Service' => $servico,
+                    'Method'  => $metodo,
+                    'Params'  => $params
+                ]
+            ]);
+
+            $url = Config::get('app.webservice-endpoint');
+
+            $ch = self::configCurl($url,$configs,$params);
+        
             $result = curl_exec($ch);
             curl_close($ch);
             

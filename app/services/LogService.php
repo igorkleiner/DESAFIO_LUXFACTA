@@ -2,7 +2,7 @@
 
 // @author IGOR KLEINER <igor_kleiner@hotmail.com> date 03/2019
 
-class LogService
+abstract class LogService
 {
 	/**
 	* Armazena no banco de dados o log do sistema 
@@ -16,7 +16,7 @@ class LogService
 	];
 
 	**/
-	public function registrarAtividade($evento)
+	public static  function registrarAtividade($evento)
 	{
 		// debug([$evento]);
 		$log             = new Logger;

@@ -9,7 +9,6 @@ return array(
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'BaseModel' => $baseDir . '/app/models/BaseModel.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
-    'HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'LogService' => $baseDir . '/app/services/LogService.php',
     'Logger' => $baseDir . '/app/models/Logger.php',

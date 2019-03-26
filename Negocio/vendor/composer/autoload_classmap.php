@@ -23,7 +23,6 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'Timer' => $baseDir . '/app/models/Timer.php',
-    'TimerService' => $baseDir . '/app/services/TimerService.php',
     'User' => $baseDir . '/app/models/User.php',
     'Usu_Produto' => $baseDir . '/app/models/Usu_Produto.php',
     'Usuario' => $baseDir . '/app/models/Usuario.php',
@@ -34,4 +33,5 @@ return array(
     'Whoops\\Module' => $vendorDir . '/filp/whoops/src/deprecated/Zend/Module.php',
     'Whoops\\Provider\\Zend\\ExceptionStrategy' => $vendorDir . '/filp/whoops/src/deprecated/Zend/ExceptionStrategy.php',
     'Whoops\\Provider\\Zend\\RouteNotFoundStrategy' => $vendorDir . '/filp/whoops/src/deprecated/Zend/RouteNotFoundStrategy.php',
+    'WorkService' => $baseDir . '/app/services/WorkService.php',
 );

@@ -10,7 +10,6 @@ class BaseController extends Controller {
 	{
 		
 	}
-
 	
 	protected function setupLayout()
 	{

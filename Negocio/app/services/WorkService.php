@@ -1,6 +1,6 @@
 <?php
 
-class TimerService
+class WorkService
 {
 	public function listarHoje($dados)
 	{

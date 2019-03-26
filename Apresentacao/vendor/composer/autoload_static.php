@@ -193,7 +193,6 @@ class ComposerStaticInit673ffeeed5ab3b89e7efaa69ec7e9fb2
         'BaseController' => __DIR__ . '/../..' . '/app/controllers/BaseController.php',
         'BaseModel' => __DIR__ . '/../..' . '/app/models/BaseModel.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/app/database/seeds/DatabaseSeeder.php',
-        'HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
         'LogService' => __DIR__ . '/../..' . '/app/services/LogService.php',
         'Logger' => __DIR__ . '/../..' . '/app/models/Logger.php',

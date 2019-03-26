@@ -207,7 +207,6 @@ class ComposerStaticInit673ffeeed5ab3b89e7efaa69ec7e9fb2
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
         'TestCase' => __DIR__ . '/../..' . '/app/tests/TestCase.php',
         'Timer' => __DIR__ . '/../..' . '/app/models/Timer.php',
-        'TimerService' => __DIR__ . '/../..' . '/app/services/TimerService.php',
         'User' => __DIR__ . '/../..' . '/app/models/User.php',
         'Usu_Produto' => __DIR__ . '/../..' . '/app/models/Usu_Produto.php',
         'Usuario' => __DIR__ . '/../..' . '/app/models/Usuario.php',
@@ -218,6 +217,7 @@ class ComposerStaticInit673ffeeed5ab3b89e7efaa69ec7e9fb2
         'Whoops\\Module' => __DIR__ . '/..' . '/filp/whoops/src/deprecated/Zend/Module.php',
         'Whoops\\Provider\\Zend\\ExceptionStrategy' => __DIR__ . '/..' . '/filp/whoops/src/deprecated/Zend/ExceptionStrategy.php',
         'Whoops\\Provider\\Zend\\RouteNotFoundStrategy' => __DIR__ . '/..' . '/filp/whoops/src/deprecated/Zend/RouteNotFoundStrategy.php',
+        'WorkService' => __DIR__ . '/../..' . '/app/services/WorkService.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

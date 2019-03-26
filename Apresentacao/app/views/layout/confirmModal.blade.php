@@ -174,8 +174,8 @@
 
 			}
 			var dadosPost = {
-				'usuario':self.usuario(),
-				'senha'  :self.senha()
+				'usu_login':self.usuario(),
+				'usu_password'  :self.senha()
 			};
 			globalViewModel.submit("{{Route('makeLogin')}}", dadosPost,callback);			
 		}

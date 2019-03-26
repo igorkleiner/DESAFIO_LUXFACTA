@@ -7,53 +7,54 @@ class LoginService
 	* @param array ['usuario', 'senha'];
 	* @return string "sucesso"
 	**/
-	function validarLogin($data)
-	{
-		if(empty($data['usuario']) || empty($data['senha']))
-		{
-			throw new Exception("Dados inválidos para login");
-		}
-		$usuario = Usuario::where(function($q) use ($data)
+	// function validarLogin($data)
+	// {
+	// 	if(empty($data['usuario']) || empty($data['senha']))
+	// 	{
+	// 		throw new Exception("Dados inválidos para login");
+	// 	}
+	// 	$usuario = $this->getUser($data);
+				
+	// 	if(!$usuario)
+	// 	{
+	// 		throw new Exception("Login ou senha incorretos.");
+	// 	}
+	// 	else
+	// 	{
+	// 		$this->login($usuario);
+	// 	}
+						
+	// 	if(Auth::user())
+	// 	{
+	// 		Log::info("<<< ".Auth::user()->usu_nome.": Login efetuado com sucesso. >>>");
+	// 		return;
+	// 	}
+	// 	else
+	// 	{
+	// 		Log::info("<<< ".$t->usu_nome."Login NAO efetuado... TENTE NOVAMENTE >>>");
+	// 		return;
+	// 	}		
+	// }
+
+	function getUser($user){
+		return Usuario::where(function($q) use ($user)
 			{
-				$q->where('usu_login',$data['usuario']);
-				$q->where('usu_password', $data['senha']);
+				$q->where('usu_login',$user['usu_login']);
+				$q->where('usu_password', $user['usu_password']);
 			})
 			// ->select(
 			// 	'usu_id',
 			// 	'usu_nome',
 			// 	'per_id'
 			// )
-			->first();		
-		if(!$usuario)
-		{
-			throw new Exception("Login ou senha incorretos.");
-		}
-		else
-		{
-			$this->login($usuario);
-		}
-						
-		if(Auth::user())
-		{
-			Log::info("<<< ".Auth::user()->usu_nome.": Login efetuado com sucesso. >>>");
-			return;
-		}
-		else
-		{
-			Log::info("<<< ".$t->usu_nome."Login NAO efetuado... TENTE NOVAMENTE >>>");
-			return;
-		}		
-	}
+			->first();	
 
+	}
 	function ApiLogin($user){
 		debug([
 			'ApiLogin'=>$user
 		]);
-		$usuario = Usuario::where('usu_login', $user['usu_login'])
-			->where('usu_password', $user['usu_password'])
-			->first();
-
-
+		$usuario = $this->getUser($user);
 		if (!empty($usuario)) {
 			$this->login($usuario);
 			return true;
@@ -90,10 +91,10 @@ class LoginService
 		}
 	}	
 
-	function logout($data)
-	{
-		Session::flush();
-		Log::info("<<< ".Auth::user()->usu_nome.": Logout efetuado >>>");		
-		return ;
-	}	
+	// function logout($data)
+	// {
+	// 	Session::flush();
+	// 	Log::info("<<< ".Auth::user()->usu_nome.": Logout efetuado >>>");		
+	// 	return ;
+	// }	
 }

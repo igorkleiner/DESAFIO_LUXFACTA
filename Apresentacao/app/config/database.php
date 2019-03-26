@@ -45,44 +45,44 @@ return array(
 	|
 	*/
 
-	'connections' => array(
+	// 'connections' => array(
 
-		'sqlite' => array(
-			'driver'   => 'sqlite',
-			'database' => __DIR__.'/../database/production.sqlite',
-			'prefix'   => '',
-		),
+	// 	'sqlite' => array(
+	// 		'driver'   => 'sqlite',
+	// 		'database' => __DIR__.'/../database/production.sqlite',
+	// 		'prefix'   => '',
+	// 	),
 
-		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'desafio_luxfacta',
-			'username'  => 'root',
-			'password'  => '',
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-		),
+	// 	'mysql' => array(
+	// 		'driver'    => 'mysql',
+	// 		'host'      => 'localhost',
+	// 		'database'  => 'desafio_luxfacta',
+	// 		'username'  => 'root',
+	// 		'password'  => '',
+	// 		'charset'   => 'utf8',
+	// 		'collation' => 'utf8_unicode_ci',
+	// 		'prefix'    => '',
+	// 	),
 
-		'pgsql' => array(
-			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'forge',
-			'username' => 'forge',
-			'password' => '',
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
-		),
+	// 	'pgsql' => array(
+	// 		'driver'   => 'pgsql',
+	// 		'host'     => 'localhost',
+	// 		'database' => 'forge',
+	// 		'username' => 'forge',
+	// 		'password' => '',
+	// 		'charset'  => 'utf8',
+	// 		'prefix'   => '',
+	// 		'schema'   => 'public',
+	// 	),
 
-		'sqlsrv' => array(
-			'driver'   => 'sqlsrv',
-			'host'     => 'WKS0215\IKLEINER',
-			'database' => 'desafio_luxfacta',
-			'username' => 'sa',
-			'password' => 'F#k4u3h5',
-			'prefix'   => '',
-		),
+	// 	'sqlsrv' => array(
+	// 		'driver'   => 'sqlsrv',
+	// 		'host'     => 'WKS0215\IKLEINER',
+	// 		'database' => 'desafio_luxfacta',
+	// 		'username' => 'sa',
+	// 		'password' => 'F#k4u3h5',
+	// 		'prefix'   => '',
+	// 	),
 
 	),
 
@@ -111,9 +111,7 @@ return array(
 	*/
 
 	'redis' => array(
-
 		'cluster' => false,
-
 		'default' => array(
 			'host'     => '127.0.0.1',
 			'port'     => 6379,

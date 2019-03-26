@@ -61,6 +61,7 @@ abstract class MakeRequest
         try
         {
             $timeStart = microtime(true);
+            
             $configs = json_encode([
                 'Request'   => [
                     'usu_id'       => Auth::user()->usu_id,

@@ -13,17 +13,17 @@
 
 App::before(function($request)
 {
-	if( !Auth::user()) 
-	{
-		$t = new UsuarioMakeLogin;
-		$t->usu_id = '1';
-		$t->usu_nome = 'Guest';
-		$t->per_id = "0";
-		$t->usu_login = 'guest';
-		$t->usu_password = 'guest';
-		Auth::login($t);
-		Session::set('user',$t);
- 	}
+	// if( !Auth::user()) 
+	// {
+	// 	$t = new UsuarioMakeLogin;
+	// 	$t->usu_id = '1';
+	// 	$t->usu_nome = 'Guest';
+	// 	$t->per_id = "0";
+	// 	$t->usu_login = 'guest';
+	// 	$t->usu_password = 'guest';
+	// 	Auth::login($t);
+	// 	Session::set('user',$t);
+ // 	}
 });
 
 App::after(function($request, $response)

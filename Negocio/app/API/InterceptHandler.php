@@ -6,29 +6,31 @@ abstract class InterceptorHandler
 {
     public static function interceptService(array $input)
     {
-		debug(['$input  no interceptService'=>$input]);
+		// debug(['$input  no interceptService'=>$input]);
 		// DB::listen(function($s,$b,$t)
 		// {
 		// 	debug([$s, $b, $t]);
 		// });
 
-		if (
-			$input['Request']['token'] == sha1('isneverscrivesdovertouch') &&
-			$input['Request']['usu_id'] != Auth::user()->usu_id
+		$user = [
+            'usu_id'       => $input['Request']['usu_id'],
+            'usu_login'    => $input['Request']['usu_login'],
+            'usu_password' => $input['Request']['usu_password'],
+		];
+
+		if ( 
+			($input['Request']['token'] == sha1('isneverscrivesdovertouch') && !Auth::user() ) ||
+			($input['Request']['token'] == sha1('isneverscrivesdovertouch') && $user['usu_id'] != Auth::user()->usu_id)
 		){
-			$user = [
-                'usu_login'    => $input['Request']['usu_login'],
-                'usu_password' => $input['Request']['usu_password'],
-			];
 			$login = (new LoginService)->ApiLogin($user);
 			if (!$login) {
 				throw new Exception("Api não autenticada");
 			}
 		}
-		debug([
-			'ID_USUARIO_LOGADO'   => Auth::user()->usu_id,
-			'NOME_USUARIO_LOGADO' => Auth::user()->usu_nome
-		]);
+		// debug([
+		// 	'ID_USUARIO_LOGADO'   => Auth::user()->usu_id,
+		// 	'NOME_USUARIO_LOGADO' => Auth::user()->usu_nome
+		// ]);
 
         $timeStart = microtime(true);
         $content = null;
@@ -76,7 +78,7 @@ abstract class InterceptorHandler
 				Log::info(' ==================================================== ');
             }
         }); 
-
+        Session::clear();
         return Response::make($content, 200);  
     }
 }

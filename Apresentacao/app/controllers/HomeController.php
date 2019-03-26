@@ -22,12 +22,75 @@ class HomeController extends BaseController
 
 	public function makeLogin()
 	{
-		return json_encode(MakeRequest::callService('LoginService', 'validarLogin', Input::all()));
+		return $this->validarLogin(Input::all());
+	}
+
+	public function validarLogin($data)
+	{
+		if(empty($data['usu_login']) || empty($data['usu_password']))
+		{
+			throw new Exception("Dados inválidos para login");
+		}
+		$usuario = MakeRequest::callService_api('LoginService','getUser',$data);
+		// debug([
+		// 	'validarLogin'=>$data,
+		// 	'usuario'=>$usuario
+		// ]);
+				
+		if(!$usuario->response)
+		{
+			throw new Exception("Login ou senha incorretos.");
+		}
+		else
+		{
+			$this->login($usuario->response);
+		}
+						
+		if(Auth::user())
+		{
+			Log::info("<<< ".Auth::user()->usu_nome.": Login efetuado com sucesso. >>>");
+			return json_encode(['status'=>1]);
+		}
+		else
+		{
+			Log::info("<<< ".$t->usu_nome."Login NAO efetuado... TENTE NOVAMENTE >>>");
+			return json_encode(['status'=>0]);
+		}		
+	}
+
+	public function login($usuario)
+	{
+		// debug([$usuario['attibutes']]);
+		try
+		{
+			$t               = new UsuarioMakeLogin;
+			$t->usu_id       = $usuario->usu_id;
+			$t->usu_nome     = $usuario->usu_nome;
+			$t->per_id       = $usuario->per_id;
+			$t->usu_login    = $usuario->usu_login;
+			$t->usu_password = $usuario->usu_password;
+
+			Auth::login($t);
+			Session::set('user',$t);
+			return;
+		}
+		catch (Exception $error)
+		{
+            Log::info(' =================================================');
+            Log::info(' ==========>  OCORRREU UM PROBLEMA  <=============');
+            Log::info(' ===============>  INFORMACOES  <=================');
+            Log::info(' =================================================');
+            Log::error($error->getMessage());
+            Log::error($error->getTraceAsString());
+            return;
+		}
 	}
 
 	public function logout()
 	{
-		return json_encode(MakeRequest::callService('LoginService', 'logout', Input::all()));
+		Session::flush();
+		Log::info("<<< ".Auth::user()->usu_nome.": Logout efetuado >>>");		
+		return json_encode(['status'=>1]);
 	}
 
 	public function produto()

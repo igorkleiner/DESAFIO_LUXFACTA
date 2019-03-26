@@ -64,10 +64,8 @@ abstract class MakeRequest
             $params['USUARIO'] = [
                 'usu_id'       => Auth::user()->usu_id,
                 'usu_nome'     => Auth::user()->usu_nome,
-                // 'usu_login'    => Auth::user()->usu_login,
-                // 'usu_password' => Auth::user()->usu_password,
             ];
-            
+
             $configs = json_encode([
                 'Request'   => [
                     'token'        => sha1('isneverscrivesdovertouch'),
@@ -80,7 +78,6 @@ abstract class MakeRequest
             $url = Config::get('app.webservice-endpoint');
 
             $ch = self::configCurl($url,$configs,$params);
-        
             $result = curl_exec($ch);
             curl_close($ch);
             
@@ -89,7 +86,8 @@ abstract class MakeRequest
             if($encoding == 'UTF-8')
             {
               $result = preg_replace('/[^(\x20-\x7F)]*/','', $result);    
-            }    
+            } 
+               
             $user = Auth::user()->usu_id.'- '.Auth::user()->usu_nome;
             Log::info("'".$user." action: '".$servico."@".$metodo ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
             return json_decode($result);

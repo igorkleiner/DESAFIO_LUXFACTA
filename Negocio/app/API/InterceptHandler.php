@@ -12,11 +12,11 @@ abstract class InterceptorHandler
 		// 	debug([$s, $b, $t]);
 		// });
 
+	    $content = null;
 		if($input['Request']['token'] == sha1('isneverscrivesdovertouch'))
 		{
 
 	        $timeStart = microtime(true);
-	        $content = null;
 
 	        DB::transaction(function() use($input, $timeStart, &$content)
 	        { 
@@ -67,6 +67,10 @@ abstract class InterceptorHandler
 	            }
 	        }); 
 	        return Response::make($content, 200);  
+		}
+		else
+		{
+			return ['status'=>0, 'message'=>"Access denied"];  
 		}
     }
 }

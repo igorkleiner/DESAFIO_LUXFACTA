@@ -190,16 +190,15 @@ class ComposerStaticInit673ffeeed5ab3b89e7efaa69ec7e9fb2
     );
 
     public static $classMap = array (
+        'ApiController' => __DIR__ . '/../..' . '/app/controllers/ApiController.php',
         'BaseController' => __DIR__ . '/../..' . '/app/controllers/BaseController.php',
         'BaseModel' => __DIR__ . '/../..' . '/app/models/BaseModel.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/app/database/seeds/DatabaseSeeder.php',
-        'HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
         'InterceptorHandler' => __DIR__ . '/../..' . '/app/API/InterceptHandler.php',
         'LogService' => __DIR__ . '/../..' . '/app/services/LogService.php',
         'Logger' => __DIR__ . '/../..' . '/app/models/Logger.php',
         'LoginService' => __DIR__ . '/../..' . '/app/services/LoginService.php',
-        'MakeRequest' => __DIR__ . '/../..' . '/app/API/MakeRequest.php',
         'Normalizer' => __DIR__ . '/..' . '/patchwork/utf8/src/Normalizer.php',
         'Perfil' => __DIR__ . '/../..' . '/app/models/Perfil.php',
         'PerfilService' => __DIR__ . '/../..' . '/app/services/PerfilService.php',

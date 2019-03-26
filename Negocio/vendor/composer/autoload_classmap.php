@@ -6,16 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ApiController' => $baseDir . '/app/controllers/ApiController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'BaseModel' => $baseDir . '/app/models/BaseModel.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
-    'HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'InterceptorHandler' => $baseDir . '/app/API/InterceptHandler.php',
     'LogService' => $baseDir . '/app/services/LogService.php',
     'Logger' => $baseDir . '/app/models/Logger.php',
     'LoginService' => $baseDir . '/app/services/LoginService.php',
-    'MakeRequest' => $baseDir . '/app/API/MakeRequest.php',
     'Normalizer' => $vendorDir . '/patchwork/utf8/src/Normalizer.php',
     'Perfil' => $baseDir . '/app/models/Perfil.php',
     'PerfilService' => $baseDir . '/app/services/PerfilService.php',

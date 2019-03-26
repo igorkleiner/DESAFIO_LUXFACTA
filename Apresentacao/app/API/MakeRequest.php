@@ -61,13 +61,15 @@ abstract class MakeRequest
         try
         {
             $timeStart = microtime(true);
+            $params['USUARIO'] = [
+                'usu_id'       => Auth::user()->usu_id,
+                'usu_nome'     => Auth::user()->usu_nome,
+                // 'usu_login'    => Auth::user()->usu_login,
+                // 'usu_password' => Auth::user()->usu_password,
+            ];
             
             $configs = json_encode([
                 'Request'   => [
-                    'usu_id'       => Auth::user()->usu_id,
-                    'usu_nome'     => Auth::user()->usu_nome,
-                    'usu_login'    => Auth::user()->usu_login,
-                    'usu_password' => Auth::user()->usu_password,
                     'token'        => sha1('isneverscrivesdovertouch'),
                     'Service'      => $servico,
                     'Method'       => $metodo,

@@ -2,9 +2,9 @@
 
 class TimerService
 {
-	public function listarHoje()
+	public function listarHoje($dados)
 	{
-		return Timer::where('usu_id', Auth::user()->usu_id)
+		return Timer::where('usu_id', $dados['USUARIO']['usu_id'])
 				->where('data', date('Ymd',time()))	
 				->first();
 	}
@@ -32,10 +32,10 @@ class TimerService
 		return $timer;
 	}
 
-	public function minhasHoras()
+	public function minhasHoras($dados)
 	{
 		return array_reverse( DB::table('timer')
-			->where('usu_id',Auth::user()->usu_id)
+			->where('usu_id',$dados['USUARIO']['usu_id'])
 			->orderBy('data', 'desc')
 			->take(30)
 			->get()

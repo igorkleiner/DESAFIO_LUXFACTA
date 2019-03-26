@@ -37,7 +37,7 @@ class TimerService
 		return array_reverse( DB::table('timer')
 			->where('usu_id',$dados['USUARIO']['usu_id'])
 			->orderBy('data', 'desc')
-			->take(30)
+			->take(28)
 			->get()
 		);
 	}

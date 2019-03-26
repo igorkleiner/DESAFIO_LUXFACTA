@@ -8,15 +8,7 @@ class BaseController extends Controller {
 	 */
 	public function __construct()
 	{
-		// debug([
-		// 	'Auth::user()'=>Auth::user(),
-		// 	'Session::get(user)'=>Session::get('user')
-		// ]);
-
-		if(Auth::user()) {
-			Input::merge(['ID_USUARIO_LOGADO' => Auth::user()->usu_id]);
-			Input::merge(['NOME_USUARIO_LOGADO' => Auth::user()->usu_nome]);
-		}
+		
 	}
 
 	

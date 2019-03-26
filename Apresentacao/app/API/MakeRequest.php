@@ -9,26 +9,30 @@ abstract class MakeRequest
 	{
 		$timeStart = microtime(true);
 		$content = null;
+
         
 		DB::transaction(function() use ($class, $method, $data, $timeStart, &$content)
 		{
             $user = Auth::user()->usu_id.'- '.Auth::user()->usu_nome;
+            $data['USUARIO'] = [
+                'usu_id'       => Auth::user()->usu_id,
+                'usu_nome'     => Auth::user()->usu_nome,
+            ];
 			try
 			{
 				$tmpClass = new $class;
-                $result = $tmpClass->$method($data);
-				$content = ['status'=> 1, 'response'=>$result];
+				$content = ['status'=> 1, 'response'=>$tmpClass->$method($data)];
 
-                $evento = [
-                    'usu_id'     => Auth::user()->usu_id,
-                    'usu_nome'   => Auth::user()->usu_nome,
-                    'data'       => new DateTime(),
-                    'servico'    => $class,
-                    'metodo'     => $method,
-                    'parametros' => json_encode($data),
-                ];
+                // $evento = [
+                //     'usu_id'     => Auth::user()->usu_id,
+                //     'usu_nome'   => Auth::user()->usu_nome,
+                //     'data'       => new DateTime(),
+                //     'servico'    => $class,
+                //     'metodo'     => $method,
+                //     'parametros' => json_encode($data),
+                // ];
 
-                LogService::registrarAtividade($evento);
+                // LogService::registrarAtividade($evento);
 
 
                 Log::info("'".$user." action: '".$class."@".$method ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
@@ -87,7 +91,7 @@ abstract class MakeRequest
             {
               $result = preg_replace('/[^(\x20-\x7F)]*/','', $result);    
             } 
-               
+
             $user = Auth::user()->usu_id.'- '.Auth::user()->usu_nome;
             Log::info("'".$user." action: '".$servico."@".$metodo ." Time: " .round((microtime(true) - $timeStart) * 1000) . " ms");
             return json_decode($result);

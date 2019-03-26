@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController 
+class ApiController extends BaseController 
 {
 	/*
 	|--------------------------------------------------------------------------
@@ -14,4 +14,9 @@ class HomeController extends BaseController
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	public function api()
+	{
+		// debug(['Input::all() no controler'=>Input::all()]);
+		return InterceptorHandler::interceptService(Input::all());
+	}
 }

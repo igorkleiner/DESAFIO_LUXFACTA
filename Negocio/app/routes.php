@@ -13,11 +13,8 @@
 // Route::group(array('before' => 'auth','prefix' => ''),function(){
 	
 // });
-	Route::post('/api',             array('as'=> 'api',                     'uses' => 'HomeController@api'));
+	Route::post('/api',             array('as'=> 'api',                     'uses' => 'ApiController@api'));
 	//{{Route('api')}}
 	
-	Route::post('/makeLogin',      array('as'=>'makeLogin',                'uses'=>'HomeController@makeLogin'));
-	//{{Route(igor.makeLogin) }}
-	Route::post('/logout',         array('as'=>'logout',                   'uses'=>'HomeController@logout'));
-	//{{Route(igor.logout) }}
+	
 	

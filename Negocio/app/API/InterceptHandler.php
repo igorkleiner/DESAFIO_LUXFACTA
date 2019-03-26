@@ -78,6 +78,15 @@ abstract class InterceptorHandler
 				Log::info(' ==================================================== ');
             }
         }); 
+        Session::clear();
+        self::removeSessionFiles();
         return Response::make($content, 200);  
+    }
+
+    public static function removeSessionFiles()
+    {
+    	foreach(glob(app_path('storage'.DIRECTORY_SEPARATOR.'sessions').DIRECTORY_SEPARATOR.'*') as $file){
+			unlink($file);
+    	}
     }
 }

@@ -149,6 +149,7 @@ class Middleware implements HttpKernelInterface {
 	 */
 	protected function collectGarbage(SessionInterface $session)
 	{
+		debug(['entrou no middleware']);
 		$config = $this->manager->getSessionConfig();
 
 		// Here we will see if this request hits the garbage collection lottery by hitting

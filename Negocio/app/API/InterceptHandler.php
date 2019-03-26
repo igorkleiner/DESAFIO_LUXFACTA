@@ -78,7 +78,6 @@ abstract class InterceptorHandler
 				Log::info(' ==================================================== ');
             }
         }); 
-        Session::clear();
         return Response::make($content, 200);  
     }
 }

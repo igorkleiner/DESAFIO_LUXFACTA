@@ -51,9 +51,9 @@ class LoginService
 
 	}
 	function ApiLogin($user){
-		debug([
-			'ApiLogin'=>$user
-		]);
+		// debug([
+		// 	'ApiLogin'=>$user
+		// ]);
 		$usuario = $this->getUser($user);
 		if (!empty($usuario)) {
 			$this->login($usuario);

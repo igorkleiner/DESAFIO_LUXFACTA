@@ -65,6 +65,11 @@ abstract class MakeRequest
         try
         {
             $timeStart = microtime(true);
+            
+            $accessToken = 'xQWOrWrtJuyMwglGD2tAL7sRh8OUjCy9N11Ku3ga6DYv6mQmQXbkD19aGpya';
+            // $accessToken = 'fRe9A7uzYY8mLnZFXV4btC8MCQj19yVeItNVrntD';
+            // $accessToken = 'lygn4lRuWo4uRmAyHwBw1OLslpvuOXsDpqepiLpr';
+
             $params['USUARIO'] = [
                 'usu_id'       => Auth::user()->usu_id,
                 'usu_nome'     => Auth::user()->usu_nome,
@@ -81,9 +86,17 @@ abstract class MakeRequest
 
             $url = Config::get('app.webservice-endpoint');
 
-            $ch = self::configCurl($url,$configs,$params);
+            $ch = self::configCurl($url,$accessToken,$configs,$params);
+
+
+
             $result = curl_exec($ch);
+            debug([
+                '$result'=>$result,
+                '$ch'=>$ch
+            ]);
             curl_close($ch);
+
             
             $encoding = mb_detect_encoding($result);
 
@@ -105,9 +118,8 @@ abstract class MakeRequest
         }
     }
 
-    public static function configCurl($url,$configs,$params)
+    public static function configCurl($url,$accessToken,$configs,$params)
     {
-
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -117,11 +129,74 @@ abstract class MakeRequest
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $configs);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($configs))
-        );
+            // 'Content-Length: ' . strlen($configs),
+            // 'Content-Type: application/json',
+            'Accept: application/json',
+            'Authorization: Bearer '.$accessToken,
+        ));
         return $ch;
     }
 
+
+        // private $server_url = 'http://192.168.48.2:8072'; // dev
+        private $server_url = 'http://atendimentoaceite.la.interbrew.net'; // aceite
+        // private $server_url = 'http://atendimentopp.la.interbrew.net';     //pre prod
+        // private $server_url = 'http://atendimento.la.interbrew.net';       // prod
+
+        public function open()
+        {
+            $token = $this->request();
+
+            if (!empty($token) && !isset( json_decode($token)->status ) ) 
+            {
+                $url =  $this->server_url.
+                       '/webservice/v2/login-token-web?'.  // caminho para o webservice
+                       'token='. md5('click_api_chamados').// token da api
+                       '&setToken='.$token.                // token dinamico que indentifica o usuario
+                       '&url='.\Input::get('url');         // url que foi solicitada de abrir no sistema de chamados
+
+                debug([$url]);
+                
+                return Redirect::to($url);
+            }
+            else
+            {
+                return 'Impossivel logar no servidor do Atendimentos';
+            }
+        }
+
+        public function request()
+        {
+            $timeStart = microtime(true);
+            $url = $this->server_url.'/webservice/v2/login-token-web';
+            $data = [
+                'getToken' =>true,
+                'token' => md5('click_api_chamados'),
+                'usuario'  => Session::get('user')->NUMERO_PESSOAL
+            ];
+
+            $postdata = http_build_query($data);
+
+            $opts = [
+                'http' => [
+                    'method'  => 'POST',
+                    'header'  => 'Content-type: application/x-www-form-urlencoded',
+                    'content' => $postdata
+                ]
+            ];
+
+            $context = stream_context_create($opts);
+            $result  = file_get_contents($url, false, $context);
+
+            debug([
+                '$opts'=>$opts,
+                '$url'=>$url,
+                '$result'=>$result
+            ]);
+
+            $diff = microtime(true) - $timeStart;
+            \Log::info('POST TO: CLICK-API-CHAMADOS: '.$url.' Time : '. number_format($diff,3,',','.') . " s");
+            return $result;
+        }
     
 }

@@ -14,7 +14,7 @@ class ApiController extends BaseController
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-	public function api()
+	public function interceptService()
 	{
 		// debug(['Input::all() no controler'=>Input::all()]);
 		return InterceptorHandler::interceptService(Input::all());

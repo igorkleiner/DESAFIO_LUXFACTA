@@ -27,7 +27,8 @@ return array(
 	*/
 
 	'url' => 'http://wks0215.luxfacta.com.br:8080',
-	'webservice-endpoint'=>'http://wks0215.luxfacta.com.br:8081/api',
+	// 'webservice-endpoint'=>'http://wks0215.luxfacta.com.br:8081/api',
+	'webservice-endpoint'=>'http://wks0215.luxfacta.com.br:8082/api',
 
 	/*
 		|--------------------------------------------------------------------------

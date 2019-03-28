@@ -13,7 +13,7 @@
 // Route::group(array('before' => 'auth','prefix' => ''),function(){
 	
 // });
-	Route::post('/api',             array('as'=> 'api',                     'uses' => 'ApiController@api'));
+	Route::post('/api', array('as'=> 'api', 'uses' => 'ApiController@interceptService'));
 	//{{Route('api')}}
 	
 	

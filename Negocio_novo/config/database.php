@@ -79,7 +79,7 @@ return [
         //     'port' => env('DB_PORT', '1433'),
         //     'database' => env('DB_DATABASE', 'forge'),
         //     'username' => env('DB_USERNAME', 'forge'),
-        //     'password' => "F#k4u3h5",//env('DB_PASSWORD', ''),
+        //     'password' => env('DB_PASSWORD', ''),
         //     'charset' => 'utf8',
         //     'prefix' => '',
         //     'prefix_indexes' => true,
@@ -91,6 +91,9 @@ return [
             'username' => 'sa',
             'password' => 'F#k4u3h5',
             'prefix'   => '',
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
         ),
 
     ],

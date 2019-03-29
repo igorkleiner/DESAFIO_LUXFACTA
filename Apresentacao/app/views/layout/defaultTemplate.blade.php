@@ -13,9 +13,10 @@
 		.body {background-color: rgba(6, 75, 65, 0.41);}
 	</style>
 	<script type="text/javascript">
-		usuario = {{json_encode($usuario)}};   
-     	usuario['usu_id'] = {{$usuario->usu_id}};
-     	
+		data = "{{date('Y-m-d',time())}}";
+		usuario = {{json_encode(Auth::user())}};   
+     	usuario['usu_id'] = {{Auth::user()->usu_id}};
+     	mask = '99:99:99';
 	</script>    
 	<body>
 		<div style="padding: 5px;">		

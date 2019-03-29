@@ -4,13 +4,8 @@
 
 	<script type="text/javascript">
 		var viewModel, diaSemana,data,hora,usuario,time, mask;
-		diaSemana = "{{date('D',time())}}";
-		data = "{{date('Y-m-d',time())}}";    
-		hora = "{{date('H:i:s:u',time())}}";          
-		usuario = {{json_encode($usuario)}};   
-		usuario['usu_id'] = {{$usuario->usu_id}};    
 		time = {{json_encode($time)}};
-		mask = '99:99:99';	
+		
 	</script>
 
 	<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 warning master borda1 " id='divTimer' data-bind='with:timer'>
@@ -390,10 +385,9 @@
 							{
 								var antes    = moment(entrada);
 								var depois   = moment(saida);
-								var tempoCorrido = depois.diff(antes, 'seconds');
 								var horas    = 0;
 								var minutos  = 0;
-								var segundos = tempoCorrido;
+								var segundos = depois.diff(antes, 'seconds');
 
 								while(segundos>59){segundos = segundos-60;minutos++;}
 								while(minutos >59){minutos  = minutos -60;horas++;}

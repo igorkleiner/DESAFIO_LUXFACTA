@@ -11,27 +11,30 @@ namespace App\Http\Controllers;
 
 abstract class InterceptorHandler
 {
-    public static function interceptService($input)
+    public static function interceptService($request)
     {
-		Log::debug($input[0]);
-		// DB::listen(function($s,$b,$t)
+		// debug($request[0]);
+		// DB::listen(function ($query) 
 		// {
-		// 	Log::debug([$s]);
+		// 	debug([
+		// 		$query->sql,
+		// 		$query->bindings,
+		// 		$query->time,
+		// 	]);
 		// });
 
-
-		if($input[0]['Request']['token'] == sha1('isneverscrivesdovertouch'))
+		if($request[0]['Request']['token'] == sha1('isneverscrivesdovertouch'))
 		{
 	    	$content = null;
 
 	        $timeStart = microtime(true);
 
 
-	        DB::transaction(function() use($input, $timeStart, &$content)
+	        DB::transaction(function() use($request, $timeStart, &$content)
 	        { 
 	            try
 	            {
-					$request = $input[0]['Request'];
+					$request = $request[0]['Request'];
 					$servico = $request['Service'];
 					$metodo  = $request['Method'];
 					$params  = $request['Params'];

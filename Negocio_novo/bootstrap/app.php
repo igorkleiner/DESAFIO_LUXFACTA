@@ -15,6 +15,11 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+function debug($var)
+{
+  Log::debug(is_string($var)?$var:var_export($var,true));
+}
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

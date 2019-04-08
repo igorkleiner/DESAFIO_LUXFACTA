@@ -316,7 +316,7 @@
 			{
 				var self                         = this;
 				//  ID E USER
-					self.timerId                 = ko.observable(timer_id);
+					self.timer_id                 = ko.observable(timer_id);
 					self.usuario                 = ko.observable(usuario.usu_nome);
 				//  VISIBLES
 					self.visuEntrada1            = ko.observable(true);
@@ -486,7 +486,8 @@
 						{
 							if(result.status)
 							{  
-								alert("Salvo com sucesso");                      
+								self.timer_id(result.response.timer_id);
+								alert("Salvo com sucesso"); 
 							}
 							else
 							{
@@ -497,7 +498,7 @@
 						{
 							'data'     : data,
 							"usu_id"   : usuario['usu_id'],
-							'timer_id' : self.timerId(),
+							'timer_id' : self.timer_id(),
 							'entrada_1': self.entradaPeriodo1().format("YYYY-MM-DD HH:mm:ss"),
 							'saida_1'  : self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss"),
 							'entrada_2': self.entradaPeriodo2().format("YYYY-MM-DD HH:mm:ss"),

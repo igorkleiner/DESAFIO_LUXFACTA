@@ -89,7 +89,7 @@ abstract class MakeRequest
             $result = curl_exec($ch);
             curl_close($ch);
 
-            debug([$result]);
+            // debug([$result]);
 
             $encoding = mb_detect_encoding($result);
 

@@ -77,6 +77,7 @@ abstract class MakeRequest
             $configs = json_encode([
                 'Request'   => [
                     'token'        => sha1('isneverscrivesdovertouch'),
+                    'api-token'    => $accessToken,
                     'Service'      => $servico,
                     'Method'       => $metodo,
                     'Params'       => $params
@@ -124,72 +125,9 @@ abstract class MakeRequest
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Length: ' . strlen($configs),
             'Content-Type: application/json',
-            // 'Accept: application/json',
-            // 'Authorization: Bearer '.$accessToken,
+            'Accept: application/json',
+            'Authorization: Bearer '.$accessToken,
         ));
         return $ch;
     }
-
-
-        // // private $server_url = 'http://192.168.48.2:8072'; // dev
-        // private $server_url = 'http://atendimentoaceite.la.interbrew.net'; // aceite
-        // // private $server_url = 'http://atendimentopp.la.interbrew.net';     //pre prod
-        // // private $server_url = 'http://atendimento.la.interbrew.net';       // prod
-
-        // public function open()
-        // {
-        //     $token = $this->request();
-
-        //     if (!empty($token) && !isset( json_decode($token)->status ) ) 
-        //     {
-        //         $url =  $this->server_url.
-        //                '/webservice/v2/login-token-web?'.  // caminho para o webservice
-        //                'token='. md5('click_api_chamados').// token da api
-        //                '&setToken='.$token.                // token dinamico que indentifica o usuario
-        //                '&url='.\Input::get('url');         // url que foi solicitada de abrir no sistema de chamados
-
-        //         debug([$url]);
-                
-        //         return Redirect::to($url);
-        //     }
-        //     else
-        //     {
-        //         return 'Impossivel logar no servidor do Atendimentos';
-        //     }
-        // }
-
-        // public function request()
-        // {
-        //     $timeStart = microtime(true);
-        //     $url = $this->server_url.'/webservice/v2/login-token-web';
-        //     $data = [
-        //         'getToken' =>true,
-        //         'token' => md5('click_api_chamados'),
-        //         'usuario'  => Session::get('user')->NUMERO_PESSOAL
-        //     ];
-
-        //     $postdata = http_build_query($data);
-
-        //     $opts = [
-        //         'http' => [
-        //             'method'  => 'POST',
-        //             'header'  => 'Content-type: application/x-www-form-urlencoded',
-        //             'content' => $postdata
-        //         ]
-        //     ];
-
-        //     $context = stream_context_create($opts);
-        //     $result  = file_get_contents($url, false, $context);
-
-        //     debug([
-        //         '$opts'=>$opts,
-        //         '$url'=>$url,
-        //         '$result'=>$result
-        //     ]);
-
-        //     $diff = microtime(true) - $timeStart;
-        //     \Log::info('POST TO: CLICK-API-CHAMADOS: '.$url.' Time : '. number_format($diff,3,',','.') . " s");
-        //     return $result;
-        // }
-    
 }

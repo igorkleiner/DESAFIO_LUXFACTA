@@ -3,8 +3,7 @@
 @section('content')
 
 	<script type="text/javascript">
-		var viewModel, diaSemana,data,hora,usuario,time, mask;
-		time = {{json_encode($time)}};
+		var time = {{json_encode($time)}};
 		
 	</script>
 
@@ -613,7 +612,7 @@
 				}, 010);
 			}
 		//------------------------------------------------------------------------------------------------------------------------ 
-			viewModel = new ViewModel;
+			var viewModel = new ViewModel;
 			$(function(){
 				ko.applyBindings(viewModel, document.getElementById('divTimer'));
 			});

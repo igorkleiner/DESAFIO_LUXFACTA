@@ -193,7 +193,7 @@
 				
 				return	{ y: parseFloat(a+'.'+ ( b<10? '0'+b :b)) , label: data.toString() };
 			}
-				
+
 			if (grafico.status != 0 && grafico.response != null) 
 			{
 				ko.utils.arrayForEach(grafico.response,function(tempo)
@@ -219,11 +219,11 @@
                 ko.utils.arrayForEach(self.tempos,function(dia)
                 {
      				self.dadosGrafico.push(self.periodo(dia.data,dia.horasTotais()));
-     				self.dadosGrafico2["Tp1"].push(self.periodo(dia.data, dia.totalHorasPeriodo1()));
-     				self.dadosGrafico2["Tp2"].push(self.periodo(dia.data, dia.totalHorasPeriodo2()));
-     				self.dadosGrafico2["Tp3"].push(self.periodo(dia.data, dia.totalHorasPeriodo3()));
-     				self.dadosGrafico2["Tp4"].push(self.periodo(dia.data, dia.totalHorasPeriodo4()));
-     				self.dadosGrafico2["Tp5"].push(self.periodo(dia.data, dia.totalHorasPeriodo5()));
+     				self.dadosGrafico2["Tp1"].push(self.periodo(dia.data,dia.totalHorasPeriodo1()));
+     				self.dadosGrafico2["Tp2"].push(self.periodo(dia.data,dia.totalHorasPeriodo2()));
+     				self.dadosGrafico2["Tp3"].push(self.periodo(dia.data,dia.totalHorasPeriodo3()));
+     				self.dadosGrafico2["Tp4"].push(self.periodo(dia.data,dia.totalHorasPeriodo4()));
+     				self.dadosGrafico2["Tp5"].push(self.periodo(dia.data,dia.totalHorasPeriodo5()));
                 });
                 //
 				//======= grafico 1 =========================================================================================
@@ -267,10 +267,10 @@
 							title: "Horas",
 							interval: 1,
 						},
-						// toolTip: {
-						// 	shared: true,
-						// 	content: toolTipContent
-						// },
+						toolTip: {
+							shared: true,
+							content: toolTipContent
+						},
 						data: 
 						[
 							{
@@ -314,25 +314,28 @@
 					chart1.render();
 				//=============================================================================================================
 
-					// function toolTipContent(e) 
-					// {
-					// 	var str = "";
-					// 	var total = 0;
-					// 	var str2, str3;
-					// 	for (var i = 0; i < e.entries.length; i++)
-					// 	{
-					// 		var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + 
-					// 					"\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+
-					// 					e.entries[i].dataPoint.y+"</strong>bn<br/>";
+					function toolTipContent(e) 
+					{
+						var head = "<span style = \"color:Tomato\">Horas em formato decimal</span><strong></strong><br/>";
+						var body = "";
+						var total = 0;
+						var data, foot;
+						for (var i = 0; i < e.entries.length; i++)
+						{
+							var  tmp = 
+								"<span style= \"color:"+e.entries[i].dataSeries.color + "\"> "
+								+e.entries[i].dataSeries.name+"</span>: <strong>"
+								+e.entries[i].dataPoint.y+"</strong> Hs<br/>"
+							;
 
-					// 		total = e.entries[i].dataPoint.y + total;
-					// 		str = str.concat(str1);
-					// 	}
-					// 	str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).getFullYear()+"</strong></span><br/>";
-					// 	total = Math.round(total * 100) / 100;
-					// 	str3 = "<span style = \"color:Tomato\">Total:</span><strong>"+total+"</strong>h<br/>";
-					// 	return (str2.concat(str)).concat(str3);
-					// }
+							total = e.entries[i].dataPoint.y + total;
+							body = body.concat(tmp);
+						}
+						data = "<span style = \"color:DodgerBlue;\"><strong>Data: "+(e.entries[0].dataPoint.label)+"</strong></span><br/>";
+						total = Math.round(total * 100) / 100;
+						foot = "<span style = \"color:Tomato\">Total:</span><strong>"+total+"</strong>h<br/>";
+						return head.concat(data).concat(body).concat(foot);
+					}
 			}					
 			
 		}

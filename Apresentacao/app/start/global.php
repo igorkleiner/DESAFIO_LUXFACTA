@@ -94,6 +94,12 @@ Event::listen('saml2.loginRequestReceived', function(Saml2User $saml2User)
     // Useful data in $saml2User:
     // $saml2User->getAttributes();
     // $saml2User->getUserId();
+    // $saml2User->getUserId();
+    debug([
+    	'global $samlUser->getNameId() '      => $saml2User->getNameId(),
+    	'global $samlUser->getUserId() '      => $saml2User->getUserId(),
+    	'global $saml2User->getAttributes() ' => $saml2User->getAttributes()
+	]);
     // base64_decode($saml2User->getRawSamlAssertion());
     // $saml2User->getIntendedUrl()
 });

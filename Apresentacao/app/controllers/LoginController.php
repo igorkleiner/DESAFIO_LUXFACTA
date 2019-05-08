@@ -85,5 +85,11 @@ class LoginController extends BaseController
 		return json_encode(['status'=>1]);
 	}
 
+	public function samlLogin($user)
+	{
+		debug(['$user'=>$user]);
+		return; //json_encode(['status'=>1]);
+	}
+
 	
 }

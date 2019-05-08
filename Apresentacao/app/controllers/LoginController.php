@@ -79,6 +79,7 @@ class LoginController extends BaseController
 
 	public function logout()
 	{
+		Auth::logout();
 		Session::flush();
 		Log::info("<<< ".Auth::user()->usu_nome.": Logout efetuado >>>");		
 		return json_encode(['status'=>1]);

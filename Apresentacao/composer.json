@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"pitbulk/laravel4-saml2": "^0.0.5"
 	},
 	"autoload": {
 		"classmap": [

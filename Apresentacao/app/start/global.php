@@ -84,3 +84,23 @@ function debug($var)
 {
   Log::debug(is_string($var)?$var:var_export($var,true));
 }
+
+
+Event::listen('saml2.loginRequestReceived', function(Saml2User $saml2User)
+{
+    $login = new LoginController;
+    $login->samlLogin($saml2User->getAttributes());
+    
+    // Useful data in $saml2User:
+    // $saml2User->getAttributes();
+    // $saml2User->getUserId();
+    // base64_decode($saml2User->getRawSamlAssertion());
+    // $saml2User->getIntendedUrl()
+});
+
+
+Event::listen('saml2.logoutRequestReceived', function()
+{
+  Auth::logout();
+  Session::flush();
+});

@@ -1,5 +1,8 @@
 <?php
 
+use  Pitbulk\Saml2\Saml2Auth;
+use  Pitbulk\Saml2\Saml2User;
+
 class LoginController extends BaseController 
 {
 	/*

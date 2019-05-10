@@ -53,6 +53,32 @@
 						$("#loading-modal").modal('hide');
 					});
 			}
+
+			self.ajax = function(url, dadosPost, callback)
+			{
+				// $("#loading-modal").modal('show');
+				var headers = {
+			       'X-CSRF-TOKEN':"{{csrf_token()}}"
+			    }
+			    console.log('headers'+ JSON.stringify(headers));
+				$.ajax({
+			        url:url,
+			        data:dadosPost,
+			        dataType:'json',
+			        method:'post',
+			        headers:headers
+			    })
+			    .done(function(response){
+			        if(typeof(callback) == 'function') callback(response);
+			    })
+			    .fail(function(error, textStatus, jqXHR){
+			        console.log(error);
+			        Alert.error('Ocorreu um erro, contate o administrador do sistema!!!', 'Ops...');
+			    })
+			    .always(function(error, textStatus, jqXHR){
+			        $("#loading-modal").modal('hide');
+			    });
+			}
 		}
 		var globalViewModel = new GlobalViewModel();
 	</script>

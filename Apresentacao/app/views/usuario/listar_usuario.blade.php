@@ -149,7 +149,7 @@
 								<input style="width:90px;"
 									type="text"
 									class="date-picker meus-filter input-filter"
-									data-bind="datepicker: dateToEdit"
+									data-bind="datepicker2: dateToEdit"
 								>
 							</div>
 						</div>
@@ -291,6 +291,7 @@ var viewModel,dados,usuario;
                 console.log(dadosPost);
                 
                 globalViewModel.submit("{{Route('getToEditEmployeeData')}}", dadosPost,callback);
+                // globalViewModel.ajax("{{Route('getToEditEmployeeData')}}", dadosPost,callback);
             } else {
             	alert('Você não pode usar essa funcionalidade!');
         	}

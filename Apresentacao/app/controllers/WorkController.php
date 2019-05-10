@@ -11,6 +11,7 @@ class WorkController extends BaseController
 	{
 		return View::make('timer.workLoger')
 			->with('usuario',Auth::user())
+			->with('editMode',false)
 			->with('time', MakeRequest::callService_api('WorkService', 'listarHoje'));
 	}
 
@@ -19,5 +20,19 @@ class WorkController extends BaseController
 		return View::make('timer.grafico')
 			->with('usuario',Auth::user())
 			->with('grafico', MakeRequest::callService_api('WorkService', 'minhasHoras'));
+	}
+
+	public function getToEditEmployeeData()
+	{
+		$employee = json_encode(Input::all());
+
+		debug($employee);
+		
+		// return View::make('timer.workLoger')
+		// 	->with('usuario',$employee)
+		// 	->with('editMode',true)
+		// 	->with('time', MakeRequest::callService_api('WorkService', 'getToEditEmployeeData', Input::all()));
+		
+		return json_encode(MakeRequest::callService_api('WorkService', 'getToEditEmployeeData', Input::all()));
 	}
 }

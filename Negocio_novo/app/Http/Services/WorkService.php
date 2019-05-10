@@ -38,6 +38,13 @@ class WorkService
 		return $timer;
 	}
 
+	public function getToEditEmployeeData($dados){
+		debug(['caiu service'=>$dados]);
+		return Timer::where('usu_id', $dados['usu_id'])
+			->where('data', $dados['data'])	
+			->first();
+	}
+
 	public function minhasHoras($dados)
 	{
 		return array_reverse(DB::table('timer')

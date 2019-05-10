@@ -6,3 +6,4 @@
 	//{{Route('usuarios.salvacadastro')}}
 	Route::post('/excluicadastro', array('as'=> 'usuarios.excluicadastro', 'uses' => 'UsuarioController@excluirUsuario'));
 	//{{Route('usuarios.excluicadastro')}}
+	

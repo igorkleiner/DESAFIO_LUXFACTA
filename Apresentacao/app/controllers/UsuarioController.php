@@ -19,5 +19,4 @@ class UsuarioController extends BaseController
 	{
 		return json_encode(MakeRequest::callService_api('UsuarioService', 'excluir', Input::all()));
 	}
-	
 }

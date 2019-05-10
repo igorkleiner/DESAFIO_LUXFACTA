@@ -9,6 +9,12 @@ class WorkService
 				->first();
 	}
 
+	public function getToEditEmployeeData($dados){
+		return Timer::where('usu_id', $dados['usu_id'])
+			->where('data', $dados['data']))	
+			->first();
+	}
+
 	public function salvar($data)
 	{
 		$timer = !empty($data['timer_id']) 

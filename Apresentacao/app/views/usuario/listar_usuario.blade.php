@@ -4,132 +4,166 @@
 
 
 <div id='mostrausuarios'>
-<div class="row">
-	<div class=" col-md-12"> 
-        <table class="table table-bordered ">
-            
-            <thead>
-            	<tr class='warning'>                
-            		<th>Id</th>
-            		<th>Nome</th>
-            		<th>Perfil</th>
-            		<th width="150px">Ação</th>
-            	</tr>
-            	<tr class='success'>
-                    <td>
-                    	<select class="btn btn-default dropdown-toggle pull-center" id='consultaId' style="display: none" data-bind=" visible:consultaId,
-                       		options:selectid,
-                       		optionsText:'nome',
-                       		optionsValue:'id',
-                       		value:idclassificada,
-                       		optionsCaption:'selecione'
-                       	"></select>
-                    </td>                    
-                    <td>
-                        <input type="text" placeholder='digite um nome para buscar' id='consultaNome' style="display: none"   data-bind = " visible:consultaNome, value:busuario, valueUpdate:'afterkeydown'">
-                        <select class="btn btn-default dropdown-toggle pull-right" id='consultaselectnome' style="display: none"  data-bind=" visible:consultaselectnome, 
-                            options:selectnome,
-                            optionsText:'nome',
-                            optionsValue:'id',
-                            value:nomeclassificado,
-                            optionsCaption:'selecione'
-                        "></select>
-                    </td>
-                    <td>
-                    	<select class="btn btn-default dropdown-toggle pull-center" id='consultaperfil' style="display: none"  data-bind=" visible:consultaperfil,
-                            options:selectperfil,
-                            optionsValue:'id',
-                            optionsText:'nome',                            
-                            value:perfilfiltrado,
-                            optionsCaption:'selecione'
-                        "></select>
-                    </td>
-                    <td><button class= "btn btn-primary pull-center" id='btnCadastraNovo' style="display: none" data-bind = " visible:btnCadastraNovo, click:cadastraUsuario">Cadastrar Novo</button></td>
-                    
-                    
-                </tr>
-            </thead>
-            <tbody data-bind="foreach:listafiltrada">            	
-		    	<tr class='warning'>
-				    <td><span data-bind="text:id"></span></td>
-                    <td><span data-bind="text:nome"></span></td>
-                    <td><span data-bind="text:$root.getperfil(perfil())"></span></td>
-				    <td>				    					    	
-				    	<button class='btn btn-danger pull-left' id='btnExcluir' style="display: none" data-bind="visible:  $root.btnExcluir , click:excluir" >
-				    		<span class="glyphicon glyphicon-remove"></span>
-				    	</button>
-				    	<button class='btn btn-info pull-right' id='btnEdit' style="display: none" data-bind="visible:  $root.btnEdit , click:editar">
-				    		<span class='glyphicon glyphicon-pencil'></span>
-				    	</button>
-				    </td>
-		    	</tr>		        
-            </tbody>
-            <tfoot>
+	<div class="row">
+		<div class=" col-md-12"> 
+	        <table class="table table-bordered ">
+	            
+	            <thead>
+	            	<tr class='warning'>                
+	            		<th>Id</th>
+	            		<th>Nome</th>
+	            		<th>Perfil</th>
+	            		<th width="150px">Ação</th>
+	            	</tr>
+	            	<tr class='success'>
+	                    <td>
+	                    	<select class="btn btn-default dropdown-toggle pull-center" id='consultaId' style="display: none" data-bind=" visible:consultaId,
+	                       		options:selectid,
+	                       		optionsText:'nome',
+	                       		optionsValue:'id',
+	                       		value:idclassificada,
+	                       		optionsCaption:'selecione'
+	                       	"></select>
+	                    </td>                    
+	                    <td>
+	                        <input type="text" placeholder='digite um nome para buscar' id='consultaNome' style="display: none"   data-bind = " visible:consultaNome, value:busuario, valueUpdate:'afterkeydown'">
+	                        <select class="btn btn-default dropdown-toggle pull-right" id='consultaselectnome' style="display: none"  data-bind=" visible:consultaselectnome, 
+	                            options:selectnome,
+	                            optionsText:'nome',
+	                            optionsValue:'id',
+	                            value:nomeclassificado,
+	                            optionsCaption:'selecione'
+	                        "></select>
+	                    </td>
+	                    <td>
+	                    	<select class="btn btn-default dropdown-toggle pull-center" id='consultaperfil' style="display: none"  data-bind=" visible:consultaperfil,
+	                            options:selectperfil,
+	                            optionsValue:'id',
+	                            optionsText:'nome',                            
+	                            value:perfilfiltrado,
+	                            optionsCaption:'selecione'
+	                        "></select>
+	                    </td>
+	                    <td><button class= "btn btn-primary pull-center" id='btnCadastraNovo' style="display: none" data-bind = " visible:btnCadastraNovo, click:cadastraUsuario">Cadastrar Novo</button></td>
+	                    
+	                    
+	                </tr>
+	            </thead>
+	            <tbody data-bind="foreach:listafiltrada">            	
+			    	<tr class='warning'>
+					    <td><span data-bind="text:id"></span></td>
+	                    <td><span data-bind="text:nome"></span></td>
+	                    <td><span data-bind="text:$root.getperfil(perfil())"></span></td>
+					    <td>				    					    	
+	                        <button class='btn btn-success pull-left' id='btnEditWork' style="display: none; " data-bind="visible:  $root.btnEditWork , click:editWork" >
+	                            <span class="glyphicon glyphicon-calendar"></span>
+	                        </button>
+					    	<button class='btn btn-info pull-left' id='btnEdit' style="display: none;margin-left: 7px;" data-bind="visible:  $root.btnEdit , click:editar">
+					    		<span class='glyphicon glyphicon-pencil'></span>
+					    	</button>
+					    	<button class='btn btn-danger pull-right' id='btnExcluir' style="display: none" data-bind="visible:  $root.btnExcluir , click:excluir" >
+					    		<span class="glyphicon glyphicon-remove"></span>
+					    	</button>
+					    </td>
+			    	</tr>		        
+	            </tbody>
+	            <tfoot>
 
-            </tfoot>
-          </table>
-	</div>	
-</div>
+	            </tfoot>
+	          </table>
+		</div>	
+	</div>
 
+	<!-- Modal -->
+	<div id='usuarioModal' class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content" data-bind= "with:usuarioModal">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h4 class="modal-title">Editar Usuario</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="row">
+	                <div class=" col-md-12">        
+	                    <table class="table table-bordered table-striped">
+	                        <thead>
+	                            <tr>                
+	                                <th >Id</th>
+	                                <th >Nome</th>
+	                                <th >Perfil</th>
+	                                <th >Login</th>
+	                                <th >Senha</th>
+	                            </tr>    
+	                        </thead>
+	                        <tbody>
+	                            <tr>
+	                                <td><span type='text' data-bind="text:id"></span></td>
+	                                <td><input type='text' data-bind="value:nome"></input></td>
+	                                <td>
+	                                    <select class="btn btn-default dropdown-toggle pull-center" data-bind="
+	                                        options:$root.selectperfil,
+	                                        optionsValue:'id',
+	                                        optionsText:'nome',                            
+	                                        value:perfil,
+	                                        optionsCaption:'selecione'
+	                                    "></select>
+	                                </td>
+	                                <td><input type='text' data-bind="value:login"></input></td>
+	                                <td><input type='text' data-bind="value:senha"></input></td>
+	                            </tr>
+	                        </tbody>                                    
+	                    </table>
+	                </div>
+	            </div>
+	      </div>
+	      <div class="modal-footer">
+	         {{-- BOTÃO QUE VAI EXCLUIR O usuario: USA PROPRIEDADE excluir DO OBJETO Usuario --}}
+	        <button type="button" class="btn btn-danger" data-bind= "click:excluir" >Excluir</button>
+	        {{-- BOTÃO QUE VAI SALVAR O usuario: USA PROPRIEDADE salVar DO OBJETO Usuario --}}
+	        <button type="button" class="btn btn-success" data-bind= "click:salvar">Salvar</button>
+	        {{-- BOTÃO QUE VAI CANCELAR O usuario: USA PROPRIEDADE cancelar DO OBJETO Usuario --}}
+	        <button type="button" class="btn btn-info" data-bind= "click:cancelar" >Cancelar</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
-
-
-<!-- Modal -->
-<div id='usuarioModal' class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content" data-bind= "with:usuarioModal">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Editar Usuario</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-                <div class=" col-md-12">        
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>                
-                                <th >Id</th>
-                                <th >Nome</th>
-                                <th >Perfil</th>
-                                <th >Login</th>
-                                <th >Senha</th>
-                            </tr>    
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span type='text' data-bind="text:id"></span></td>
-                                <td><input type='text' data-bind="value:nome"></input></td>
-                                <td>
-                                    <select class="btn btn-default dropdown-toggle pull-center" data-bind="
-                                        options:$root.selectperfil,
-                                        optionsValue:'id',
-                                        optionsText:'nome',                            
-                                        value:perfil,
-                                        optionsCaption:'selecione'
-                                    "></select>
-                                </td>
-                                <td><input type='text' data-bind="value:login"></input></td>
-                                <td><input type='text' data-bind="value:senha"></input></td>
-                            </tr>
-                        </tbody>                                    
-                    </table>
-                </div>
-            </div>
-      </div>
-      <div class="modal-footer">
-         {{-- BOTÃO QUE VAI EXCLUIR O usuario: USA PROPRIEDADE excluir DO OBJETO Usuario --}}
-        <button type="button" class="btn btn-danger" data-bind= "click:excluir" >Excluir</button>
-        {{-- BOTÃO QUE VAI SALVAR O usuario: USA PROPRIEDADE salVar DO OBJETO Usuario --}}
-        <button type="button" class="btn btn-success" data-bind= "click:salvar">Salvar</button>
-        {{-- BOTÃO QUE VAI CANCELAR O usuario: USA PROPRIEDADE cancelar DO OBJETO Usuario --}}
-        <button type="button" class="btn btn-info" data-bind= "click:cancelar" >Cancelar</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- fim do Modal -->
+	<!-- fim do Modal -->
+	<div id="datePickerModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog modal-sm">
+			<!-- <div class="modal-content" data-bind= "with:Usuario"> -->
+            <div class="modal-content" data-bind= "with:usuarioModal">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Editar Ponto do Usuario</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div  style="margin-top:10px;">
+							<div >
+								Data a ser Editada:  
+								<input style="width:90px;"
+									type="text"
+									class="date-picker meus-filter input-filter"
+									data-bind="datepicker: dateToEdit"
+								>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-bind='click:submitWorkEdit' >Abrir</button>
+						<button type="button" class="btn btn-info"  >Cancelar</button>
+						<button type="button" class="btn btn-danger"  >Excluir</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+	</div>
+	<!-- fim do Modal -->
 </div>
 
 
@@ -139,22 +173,18 @@
 var viewModel,dados,usuario;
     // DADOS RECEBE JSON ENCODE DO POST 
     dados = {{json_encode($dados)}};
-   
-    usuario = {{json_encode($usuario)}};   
-    usuario['usu_id'] = {{$usuario->usu_id}};      
-   
-    //console.log(usuario);
 // --------------------------------------------------------------------------------------
 	function Usuario(id, nome, perfil, login,senha, editando)
     {
-		var self      = this;
-		self.id       = ko.observable(id);
-		self.nome     = ko.observable(nome);
-		self.perfil   = ko.observable(perfil);
-        self.login    = ko.observable(login);
-		self.senha    = ko.observable(senha);
+		var self         = this;
+		self.id          = ko.observable(id);
+		self.nome        = ko.observable(nome);
+		self.perfil      = ko.observable(perfil);
+        self.login       = ko.observable(login);
+		self.senha       = ko.observable(senha);
+		self.dateToEdit  = ko.observable();
         self.editando    = ko.observable(editando);
-		self.original = {
+		self.original    = {
             id     :id,
             nome   :nome,
             perfil :perfil,
@@ -240,6 +270,32 @@ var viewModel,dados,usuario;
         	globalViewModel.submit("{{Route('usuarios.excluicadastro')}}", dadosPost,callback);
         }
 
+        self.editWork = function()
+        {
+            viewModel.usuarioModal(self);
+            $("#datePickerModal").modal('show');
+        }
+
+        self.submitWorkEdit = function(){
+        	if ( usuario.per_id >= 4 ) {
+        		$("#datePickerModal").modal('hide');
+                var callback  = function() {
+                	
+                };
+                
+                var dadosPost = {
+                    usu_id   : self.id(), 
+                    usu_nome : self.nome(), 
+                    data     : self.dateToEdit()
+                };
+                console.log(dadosPost);
+                
+                globalViewModel.submit("{{Route('getToEditEmployeeData')}}", dadosPost,callback);
+            } else {
+            	alert('Você não pode usar essa funcionalidade!');
+        	}
+        }
+
         self.cancelar = function()
         {
             // SE PROPRIEDADE id FOR null REMOVE O OBJETO CRIADO DE DENTRO DA ViewModel
@@ -276,8 +332,6 @@ var viewModel,dados,usuario;
         self.dono = ko.computed(function(){
             return self.perfil() == 4;
         });
-
-
 	}
 //------------------------------------------------------------------------------------------
 	function ViewModel(){
@@ -288,6 +342,7 @@ var viewModel,dados,usuario;
 		self.selectperfil = []
 		self.perfilfiltrado = ko.observable();
         self.btnExcluir = ko.observable();
+        self.btnEditWork = ko.observable();
         self.btnEdit = ko.observable();
         self.btnCadastraNovo = ko.observable();
         self.consultaId = ko.observable();
@@ -413,6 +468,7 @@ var viewModel,dados,usuario;
             if (usuario.per_id == 2) 
             {
                 self.btnExcluir(false);
+                self.btnEditWork(false);
                 self.btnEdit(false);
                 self.btnCadastraNovo(false);
                 self.consultaId(false);
@@ -423,6 +479,7 @@ var viewModel,dados,usuario;
             if (usuario.per_id == 3) 
             {
                 self.btnExcluir(false);
+                self.btnEditWork(false);
                 self.btnEdit(false);
                 self.btnCadastraNovo(false);
                 self.consultaId(false);
@@ -433,6 +490,7 @@ var viewModel,dados,usuario;
             if (usuario.per_id == 4)               
             {
                 self.btnExcluir(false);
+                self.btnEditWork(true);
                 self.btnEdit(true);
                 self.btnCadastraNovo(false);
                 self.consultaId(false);
@@ -443,6 +501,7 @@ var viewModel,dados,usuario;
             if (usuario.per_id == 5) 
             {
                 self.btnExcluir(true);
+                self.btnEditWork(true);
                 self.btnEdit(true);
                 self.btnCadastraNovo(true);
                 self.consultaId(true);
@@ -451,15 +510,14 @@ var viewModel,dados,usuario;
                 self.consultaperfil(true);                 
             }
         }
-
 	}
 
     viewModel = new ViewModel;
     viewModel.populaLista(dados);
     viewModel.verificaUsuario();
     $(function()
-        {
-            ko.applyBindings(viewModel,document.getElementById('mostrausuarios'));
-        });
+    {
+        ko.applyBindings(viewModel,document.getElementById('mostrausuarios'));
+    });
 </script>
 @stop

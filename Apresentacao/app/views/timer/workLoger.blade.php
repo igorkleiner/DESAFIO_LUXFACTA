@@ -315,8 +315,14 @@
 			{
 				var self                         = this;
 				//  ID E USER
-					self.timer_id                 = ko.observable(timer_id);
-					self.usuario                 = ko.observable(usuario.usu_nome);
+					self.timer_id                = ko.observable(timer_id);
+					if (true) {
+						self.usu_id              = ko.observable(usuario.usu_id);
+						self.usuario             = ko.observable(usuario.usu_nome);
+					} else {
+						self.usu_id              = ko.observable(employee.usu_id);
+						self.usuario             = ko.observable(employee.usu_nome);
+					}
 				//  VISIBLES
 					self.visuEntrada1            = ko.observable(true);
 					self.visuSaida1              = ko.observable(false);
@@ -496,7 +502,7 @@
 						var dadosPost = 
 						{
 							'data'     : data,
-							"usu_id"   : usuario['usu_id'],
+							"usu_id"   : self.usu_id(),
 							'timer_id' : self.timer_id(),
 							'entrada_1': self.entradaPeriodo1().format("YYYY-MM-DD HH:mm:ss"),
 							'saida_1'  : self.saidaPeriodo1().format("YYYY-MM-DD HH:mm:ss"),

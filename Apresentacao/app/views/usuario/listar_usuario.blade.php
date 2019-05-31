@@ -289,8 +289,8 @@ var viewModel,dados,usuario;
                     data     : self.dateToEdit()
                 };
                 console.log(dadosPost);
-                
-                globalViewModel.submit("{{Route('getToEditEmployeeData')}}", dadosPost,callback);
+                window.open("{{Route('getToEditEmployeeData')}}"+'?usu_id='+self.id()+'&usu_nome='+self.nome()+'&data='+self.dateToEdit());
+                // globalViewModel.submit("{{Route('getToEditEmployeeData')}}", dadosPost,callback);
                 // globalViewModel.ajax("{{Route('getToEditEmployeeData')}}", dadosPost,callback);
             } else {
             	alert('Você não pode usar essa funcionalidade!');

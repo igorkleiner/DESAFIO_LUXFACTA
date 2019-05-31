@@ -6,5 +6,5 @@
 	//{{Route(salvar.timer) }}
 	Route::any('/grafico',                array('as'=>'grafico',                'uses'=>'WorkController@graficoHoras'));
 	//{{Route(grafico) }}
-	Route::post('/getToEditEmployeeData', array('as'=> 'getToEditEmployeeData', 'uses' => 'WorkController@getToEditEmployeeData'));
+	Route::any('/getToEditEmployeeData', array('as'=> 'getToEditEmployeeData', 'uses' => 'WorkController@getToEditEmployeeData'));
 	//{{Route('getToEditEmployeeData')}}

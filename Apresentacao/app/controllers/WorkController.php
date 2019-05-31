@@ -26,13 +26,9 @@ class WorkController extends BaseController
 	{
 		$employee = json_encode(Input::all());
 
-		debug($employee);
-		
-		// return View::make('timer.workLoger')
-		// 	->with('usuario',$employee)
-		// 	->with('editMode',true)
-		// 	->with('time', MakeRequest::callService_api('WorkService', 'getToEditEmployeeData', Input::all()));
-		
-		return json_encode(MakeRequest::callService_api('WorkService', 'getToEditEmployeeData', Input::all()));
+		return View::make('timer.workLoger')
+			->with('usuario',$employee)
+			->with('editMode',true)
+			->with('time', MakeRequest::callService_api('WorkService', 'getToEditEmployeeData', Input::all()));
 	}
 }

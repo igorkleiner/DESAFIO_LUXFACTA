@@ -12,6 +12,9 @@
 			self.mask          - ko.observable(params.mask);
 			self.visible       = params.visible;
 			self.hasFocus      = params.hasFocus;
+			self.data          = params.data;
+			self.editMode      = params.editMode;
+			
 			self.internalValue = ko.computed(
 			{
 				read: function()
@@ -23,12 +26,25 @@
 				},
 				write: function(hora)
 				{
-					if(moment(moment().format("YYYY-MM-DD")+' '+ hora, "YYYY-MM-DD HH:mm:ss")._isValid == true){
-						params.value( moment(moment().format("YYYY-MM-DD ")+ hora , "YYYY-MM-DD HH:mm:ss"));
-					}
-					else{
-						params.value(params.value());
-						alert("Digite um horário válido");
+					if (!self.editMode) {
+
+						if(moment(moment().format("YYYY-MM-DD")+' '+ hora, "YYYY-MM-DD HH:mm:ss")._isValid == true){
+							params.value( moment(moment().format("YYYY-MM-DD ")+ hora , "YYYY-MM-DD HH:mm:ss"));
+						}
+						else{
+							params.value(params.value());
+							alert("Digite um horário válido");
+						}
+					} else {
+
+						if(moment(moment(data,'YYYY-MM-DD').format("YYYY-MM-DD ")+' '+ hora, "YYYY-MM-DD HH:mm:ss")._isValid == true){
+							params.value( moment(moment(data,'YYYY-MM-DD').format("YYYY-MM-DD ")+ hora , "YYYY-MM-DD HH:mm:ss"));
+						}
+						else{
+							params.value(params.value());
+							alert("Digite um horário válido");
+						}
+
 					}
 				}
 			});

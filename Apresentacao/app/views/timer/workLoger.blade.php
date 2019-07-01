@@ -19,39 +19,38 @@
 	<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 warning master borda1 " id='divTimer' data-bind='with:timer'>
 	    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px">
 	        <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
-	            <strong>
-	                <span data-bind=' relogio:agora, text:agora.data '></span>
-	                <span data-bind=' text:agora.hora'></span>
-	            </strong>
+		    	<!-- ko if: !self.editMode -->
+		            <strong>
+		                <span data-bind=' relogio:agora, text:agora.data '></span>
+		                <span data-bind=' text:agora.hora'></span>
+		            </strong>
+	    	    <!-- /ko -->
 	        </div>
 	        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center">
-	            <button class="btn-lg btn-success" style="margin-top: 3px;" data-bind='click:salvar'>Salvar</button>
+	            <button class="btn-lg btn-success" style="margin-top: 3px;" data-bind='click:salvar, visible:editMode'>Salvar</button>
 	        </div>
-	        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" data-bind='visible:!editMode'>
-	            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-
-	                <div style="width: 50px; margin-top: 15px;">
-	                    <span>Olá </span>
-	                    <span data-bind='text:usuario'></span>
-	                </div>
-	            </div>
-	            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-	                <div class="borda-redonda" style="margin-right: -10px">
-	                    <img class="borda-redonda" src="{{asset('assets/images/Capturar.png')}}">
-	                </div>
-	            </div>
+	        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+	        	<!-- ko if: !self.editMode -->
+		            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+		                <div style="width: 50px; margin-top: 15px;">
+		                    <span>Olá </span>
+		                    <span data-bind='text:usuario'></span>
+		                </div>
+		            </div>
+		            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+		                <div class="borda-redonda" style="margin-right: -10px">
+		                    <img class="borda-redonda" src="{{asset('assets/images/Capturar.png')}}">
+		                </div>
+		            </div>
+	    	    <!-- /ko -->
 	        </div>
 	    </div>
-
-	    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" 
-	    style="border-radius: 30px;margin-top: 15px;" 
-	    data-bind='visible:editMode'>
-	            <strong>
-	                <span>Edit mode para:</span>
-	                <span data-bind='text:usuario'></span>
+	    <!-- ko if: self.editMode -->
+		    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px;margin-top: 15px;" >
+	            <strong> <span>Edit mode para:</span><span data-bind='text:usuario'></span> em <span data-bind='text:data'></span>
 	            </strong>
-	    </div>
-
+		    </div>
+	    <!-- /ko -->
 	    <!-- PERIODO 1 -->
 		    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 borda1 borda2 fundo-claro " style="margin-top: 10px;">
 		        <div class="row">
@@ -60,7 +59,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Entrada do periodo 1</h3>
 		                        <horario params="value:entradaPeriodo1,mask:mask, data:data, editMode:editMode, visible:visuEntrada1,hasFocus:focoEntrada1"></horario>
-		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo1"), visible:visuEntrada1'>Set Now</button>
+		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo1"), visible:visuEntrada1 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -69,7 +68,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Saida do periodo 1</h3>
 		                        <horario params="value:saidaPeriodo1,mask:mask,data:data,editMode:editMode, visible:visuSaida1,hasFocus:focoSaida1"></horario>
-		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo1"), visible:visuSaida1'>Set Now</button>
+		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo1"), visible:visuSaida1 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -102,7 +101,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Entrada do periodo 2</h3>
 		                        <horario params="value:entradaPeriodo2,mask:mask, data:data,editMode:editMode, visible:visuEntrada2,hasFocus:focoEntrada2"></horario>
-		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo2"), visible:visuEntrada2'>Set Now</button>
+		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo2"), visible:visuEntrada2 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -111,7 +110,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Saida do periodo 2</h3>
 		                        <horario params="value:saidaPeriodo2,mask:mask, data:data,editMode:editMode, visible:visuSaida2,hasFocus:focoSaida2"></horario>
-		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo2"), visible:visuSaida2'>Set Now</button>
+		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo2"), visible:visuSaida2 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -144,7 +143,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Entrada do periodo 3</h3>
 		                        <horario params="value:entradaPeriodo3,mask:mask, data:data,editMode:editMode, visible:visuEntrada3,hasFocus:focoEntrada3"></horario>
-		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo3"), visible:visuEntrada3'>Set Now</button>
+		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo3"), visible:visuEntrada3 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -153,7 +152,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Saida do periodo 3</h3>
 		                        <horario params="value:saidaPeriodo3,mask:mask, data:data,editMode:editMode, visible:visuSaida3,hasFocus:focoSaida3"></horario>
-		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo3"), visible:visuSaida3'>Set Now</button>
+		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo3"), visible:visuSaida3 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -186,7 +185,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Entrada do periodo 4</h3>
 		                        <horario params="value:entradaPeriodo4,mask:mask, data:data,editMode:editMode, visible:visuEntrada4,hasFocus:focoEntrada4"></horario>
-		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo4"), visible:visuEntrada4'>Set Now</button>
+		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo4"), visible:visuEntrada4 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -195,7 +194,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Saida do periodo 4</h3>
 		                        <horario params="value:saidaPeriodo4,mask:mask, data:data,editMode:editMode, visible:visuSaida4,hasFocus:focoSaida4"></horario>
-		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo4"), visible:visuSaida4'>Set Now</button>
+		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo4"), visible:visuSaida4 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -228,7 +227,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Entrada do periodo 5</h3>
 		                        <horario params="value:entradaPeriodo5,mask:mask, data:data,editMode:editMode, visible:visuEntrada5,hasFocus:focoEntrada5"></horario>
-		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo5"), visible:visuEntrada5'>Set Now</button>
+		                        <button class='btn btn-success' data-bind='click: setTime.bind($data,"entradaPeriodo5"), visible:visuEntrada5 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -237,7 +236,7 @@
 		                    <div class="caption" style="display: inline-block;">
 		                        <h3>Saida do periodo 5</h3>
 		                        <horario params="value:saidaPeriodo5,mask:mask, data:data,editMode:editMode, visible:visuSaida5,hasFocus:focoSaida5"></horario>
-		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo5"), visible:visuSaida5'>Set Now</button>
+		                        <button class='btn btn-danger' data-bind='click: setTime.bind($data,"saidaPeriodo5"), visible:visuSaida5 && !editMode'>Set Now</button>
 		                    </div>
 		                </div>
 		            </div>
@@ -398,6 +397,7 @@
 				//  CALCULOS
 					self.dateDiff                = function (entrada, saida)
 					{
+						console.log(saida);
 						// CALCULA OS TOTAIS USANDO MOMENT.JS
 						if(!!entrada && !!saida && (entrada < saida))
 						{
@@ -494,10 +494,17 @@
 			        {
 			            if(typeof(e) != 'function')
 			                self[e](moment());
+			            self.salvar();
 			        };
 			        self.validaSaida             = function(entrada,saida){
-			        	if (entrada.format('HH:mm:ss') != "00:00:00"  && saida.format('HH:mm:ss') == "00:00:00" )
-							return moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
+
+			        	if (entrada.format('HH:mm:ss') != "00:00:00"  && saida.format('HH:mm:ss') == "00:00:00" ){
+			        		if (!editMode) {
+								return moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
+			        		} else {
+			        			return data + " " + self.agora.hora();
+			        		}
+			        	}
 						return saida.format("YYYY-MM-DD HH:mm:ss");
 			        }
 			        self.salvar                  = function()
@@ -627,10 +634,10 @@
 					);
 				}
 				
-				setTimeout(function()
-				{
-					self.timer.visualizar();
-				}, 010);
+				// setTimeout(function()
+				// {
+				// 	self.timer.visualizar();
+				// }, 010);
 			}
 		//------------------------------------------------------------------------------------------------------------------------ 
 			var viewModel = new ViewModel;

@@ -1,8 +1,10 @@
 <template id="horariotemplate">
-	<input type='text' 
-		style='width:50%;' 
-		data-bind="masked:internalValue, mask: mask,visible:visible,hasFocus:hasFocus">
-	</input>
+	<!-- ko if: self.editMode -->
+		<input type='text' style='width:50%;' data-bind="masked:internalValue, mask: mask,visible:visible ,hasFocus:hasFocus"></input>
+    <!-- /ko -->
+    <!-- ko if: !self.editMode -->
+		<span type='text' data-bind="text:internalValue, visible:visible,hasFocus:hasFocus"></span>    
+    <!-- /ko -->
 </template>
 <script type="text/javascript">
 	ko.components.register('horario',{

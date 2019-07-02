@@ -12,7 +12,7 @@
 
 		console.log('data: '+data);
 		console.log('editMode: '+editMode);
-		console.log(usuario);
+		console.log(usuario.per_id);
 		
 	</script>
 
@@ -25,10 +25,12 @@
 		            </strong>
 	        </div>
 	        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center">
-	            <button class="btn-lg btn-success" style="margin-top: 3px;" data-bind='click:salvar, visible:editMode'>Salvar</button>
+	        	<!-- ko if:showSaveButton() -->
+	            	<button class="btn-lg btn-success" style="margin-top: 3px;" data-bind='click:salvar'>Salvar</button>
+	            <!-- /ko -->
 	        </div>
 	        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-	        	<!-- ko if: !self.editMode -->
+	        	<!-- ko if: !editMode -->
 		            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 		                <div style="width: 50px; margin-top: 15px;">
 		                    <span>Olá </span>
@@ -43,7 +45,7 @@
 	    	    <!-- /ko -->
 	        </div>
 	    </div>
-	    <!-- ko if: self.editMode -->
+	    <!-- ko if: editMode -->
 		    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px;margin-top: 15px;" >
 	            <strong> <span>Edit mode para:</span><span data-bind='text:usuario'></span> em <span data-bind='text:data'></span>
 	            </strong>
@@ -280,7 +282,7 @@
 	                    </div>
 	                </div>
 	            </div>
-	            <div class=" ccol-sm-6 col-md-4 ">
+	            <div class=" col-sm-6 col-md-4 ">
 	                <div class="thumbnail" style="max-height: 150px;">
 	                    <div class="caption">
 	                        <div class="row " style="text-align: center">
@@ -591,6 +593,9 @@
 								previsao[0] = "0" + previsao[0].toString();
 							self.previsaoSaida(previsao[0]+":"+previsao[1].toString()+":"+previsao[2].toString());
 						}
+					});
+					self.showSaveButton = ko.computed(function(){
+						return editMode || usuario.per_id == 5;
 					});		
 			}
 		//--VIEW MODEL-----------------------------------------------------------------------------------------------------------

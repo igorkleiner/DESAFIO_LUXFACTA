@@ -1,8 +1,8 @@
 <template id="horariotemplate">
-	<!-- ko if: self.editMode -->
+	<!-- ko if: self.editMode || (usuario.per_id == 5 && !editMode) -->
 		<input type='text' style='width:50%;' data-bind="masked:internalValue, mask: mask,visible:visible ,hasFocus:hasFocus"></input>
     <!-- /ko -->
-    <!-- ko if: !self.editMode -->
+    <!-- ko if: !self.editMode && usuario.per_id != 5 -->
 		<span type='text' data-bind="text:internalValue, visible:visible,hasFocus:hasFocus"></span>    
     <!-- /ko -->
 </template>

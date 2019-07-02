@@ -282,16 +282,12 @@ var viewModel,dados,usuario;
                 var callback  = function() {
                 	
                 };
-                
-                var dadosPost = {
-                    usu_id   : self.id(), 
-                    usu_nome : self.nome(), 
-                    data     : self.dateToEdit()
-                };
-                console.log(dadosPost);
-                window.open("{{Route('getToEditEmployeeData')}}"+'?usu_id='+self.id()+'&usu_nome='+self.nome()+'&data='+self.dateToEdit());
-                // globalViewModel.submit("{{Route('getToEditEmployeeData')}}", dadosPost,callback);
-                // globalViewModel.ajax("{{Route('getToEditEmployeeData')}}", dadosPost,callback);
+                window.open("{{Route('getToEditEmployeeData')}}"+
+                    '?usu_id='+self.id()+
+                    '&usu_nome='+self.nome()+
+                    '&per_id='+self.perfil()+
+                    '&data='+self.dateToEdit()
+                );
             } else {
             	alert('Você não pode usar essa funcionalidade!');
         	}

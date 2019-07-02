@@ -1,4 +1,4 @@
-DBCC CHECKIDENT ('timer', RESEED, 0)
+DBCC CHECKIDENT ('timer', RESEED, 104)
 GO
 
 insert into timer 

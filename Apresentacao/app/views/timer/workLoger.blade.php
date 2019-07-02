@@ -19,12 +19,10 @@
 	<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 warning master borda1 " id='divTimer' data-bind='with:timer'>
 	    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px">
 	        <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
-		    	<!-- ko if: !self.editMode -->
-		            <strong>
+		            <strong data-bind='visible:!editMode' visible>
 		                <span data-bind=' relogio:agora, text:agora.data '></span>
 		                <span data-bind=' text:agora.hora'></span>
 		            </strong>
-	    	    <!-- /ko -->
 	        </div>
 	        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center">
 	            <button class="btn-lg btn-success" style="margin-top: 3px;" data-bind='click:salvar, visible:editMode'>Salvar</button>
@@ -397,7 +395,6 @@
 				//  CALCULOS
 					self.dateDiff                = function (entrada, saida)
 					{
-						console.log(saida);
 						// CALCULA OS TOTAIS USANDO MOMENT.JS
 						if(!!entrada && !!saida && (entrada < saida))
 						{
@@ -497,12 +494,11 @@
 			            self.salvar();
 			        };
 			        self.validaSaida             = function(entrada,saida){
-
 			        	if (entrada.format('HH:mm:ss') != "00:00:00"  && saida.format('HH:mm:ss') == "00:00:00" ){
 			        		if (!editMode) {
 								return moment().format('YYYY-MM-DD')+ " " +self.agora.hora();
 			        		} else {
-			        			return data + " " + self.agora.hora();
+			        			return data+" "+self.agora.hora();
 			        		}
 			        	}
 						return saida.format("YYYY-MM-DD HH:mm:ss");

@@ -283,10 +283,10 @@ var viewModel,dados,usuario;
                 	
                 };
                 window.open("{{Route('getToEditEmployeeData')}}"+
-                    '?usu_id='+self.id()+
+                    '?usu_id='  +self.id()+
                     '&usu_nome='+self.nome()+
-                    '&per_id='+self.perfil()+
-                    '&data='+self.dateToEdit()
+                    '&per_id='  +self.perfil()+
+                    '&data='    +self.dateToEdit()
                 );
             } else {
             	alert('Você não pode usar essa funcionalidade!');

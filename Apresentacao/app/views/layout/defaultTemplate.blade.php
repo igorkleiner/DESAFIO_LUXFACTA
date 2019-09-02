@@ -16,6 +16,8 @@
 		data = "{{date('Y-m-d',time())}}";
 		usuario = {{json_encode(Auth::user())}};   
      	usuario.usu_id = {{Auth::user()->usu_id}};
+     	// usuario.per_id = 3;
+
      	mask = '99:99:99';
 	</script>    
 	<body>
@@ -30,7 +32,6 @@
 	</body>
 </html>
 	@include('layout.footer')
-	<!-- <script type="text/javascript" src="{{asset('assets/bootstrap-3.3.6-dist/js/bootstrap.js')}}"></script> -->
 	<script type="text/javascript">
 
 		function GlobalViewModel()

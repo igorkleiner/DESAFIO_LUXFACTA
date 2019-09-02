@@ -47,7 +47,11 @@
 	    </div>
 	    <!-- ko if: editMode -->
 		    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 borda2 fundo-claro" style="border-radius: 30px;margin-top: 15px;" >
-	            <strong> <span>Edit mode para:</span><span data-bind='text:usuario'></span> em <span data-bind='text:data'></span>
+	            <strong> 
+	            	<span>Edit mode para: </span>
+	            	<span data-bind='text:usuario'></span>
+	            	<span> em </span>
+	            	<span data-bind='text:data'></span>
 	            </strong>
 		    </div>
 	    <!-- /ko -->

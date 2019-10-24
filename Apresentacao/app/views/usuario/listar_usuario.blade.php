@@ -314,20 +314,24 @@ var viewModel,dados,usuario;
             self.editar();
         }
 
-        self.cliente = ko.computed(function(){
+        self.guest = ko.computed(function(){
             return self.perfil() == 1;
         });
 
+        self.cliente = ko.computed(function(){
+            return self.perfil() == 2;
+        });
+
         self.funcionario = ko.computed(function(){
-            return self.perfil()== 2;
+            return self.perfil()== 3;
         });
 
         self.gerente = ko.computed(function(){
-            return self.perfil() == 3;
+            return self.perfil() == 4;
         });
 
         self.dono = ko.computed(function(){
-            return self.perfil() == 4;
+            return self.perfil() == 5;
         });
 	}
 //------------------------------------------------------------------------------------------
@@ -452,10 +456,11 @@ var viewModel,dados,usuario;
                 {
                     options = ko.utils.arrayFilter(options, function(i)
                     {
-                        if(self.perfilfiltrado() == 1 && i.cliente())     return i;
-                        if(self.perfilfiltrado() == 2 && i.funcionario()) return i;
-                        if(self.perfilfiltrado() == 3 && i.gerente())     return i;
-                        if(self.perfilfiltrado() == 4 && i.dono())        return i;
+                        if(self.perfilfiltrado() == 1 && i.guest())     return i;
+                        if(self.perfilfiltrado() == 2 && i.cliente())     return i;
+                        if(self.perfilfiltrado() == 3 && i.funcionario()) return i;
+                        if(self.perfilfiltrado() == 4 && i.gerente())     return i;
+                        if(self.perfilfiltrado() == 5 && i.dono())        return i;
                     });                        
                 }                	
  			return options; 				

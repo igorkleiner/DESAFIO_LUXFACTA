@@ -76,6 +76,21 @@
   	</div>
 </div>
 
+<div id="loading-modal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false"
+    style="z-index: 9999;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                 <h3 class="text-center"><strong>Executando...</strong></h3>
+            </div>
+            <div class="modal-body">
+                <p class="text-center"><img src="{{asset('images/loading2.gif')}}"></p>
+                <p class="text-center">Por favor, aguarde...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 

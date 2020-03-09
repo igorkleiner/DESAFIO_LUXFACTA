@@ -13,7 +13,6 @@ abstract class InterceptorHandler
 {
     public static function interceptService($request)
     {
-		// debug($request[0]);
 		// DB::listen(function ($query) 
 		// {
 		// 	debug([
@@ -23,6 +22,8 @@ abstract class InterceptorHandler
 		// 	]);
 		// });
 
+    	// return[ 'status'=> 1,'message'=>'Success' ];
+    	
 		if($request[0]['Request']['token'] == sha1('isneverscrivesdovertouch'))
 		{
 	    	$content = null;

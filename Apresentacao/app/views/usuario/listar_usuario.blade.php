@@ -358,8 +358,8 @@ var viewModel,dados,usuario;
         self.nomeclassificado = ko.observable();
 
         self.selectid = [
-            {'id':1,'nome':'mais antigos'},
-            {'id':2,'nome':'mais recentes'}
+            {'id':1,'nome':'Mais Antigos'},
+            {'id':2,'nome':'Mais Recentes'}
         ];
 
         self.idclassificada = ko.observable();

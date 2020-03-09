@@ -24,6 +24,17 @@ ko.bindingHandlers.masked =
     }
 };
 
+ko.bindingHandlers.placeholder = {
+    init: function (element, valueAccessor, allBindingsAccessor) {
+        var underlyingObservable = valueAccessor();
+        ko.applyBindingsToNode(element, {
+            attr: {
+                placeholder: underlyingObservable
+            }
+        });
+    }
+};
+
 /*
     DATEPICKER MODO DE USO:
     <input type="text" class="form-control" data-bind="

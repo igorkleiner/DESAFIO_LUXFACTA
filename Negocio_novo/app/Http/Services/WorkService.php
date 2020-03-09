@@ -39,7 +39,6 @@ class WorkService
 	}
 
 	public function getToEditEmployeeData($dados){
-		debug(['caiu service'=>$dados]);
 		return Timer::where('usu_id', $dados['usu_id'])
 			->where('data', $dados['data'])	
 			->first();

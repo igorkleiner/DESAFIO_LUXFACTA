@@ -2,9 +2,11 @@
 
 use  Pitbulk\Saml2\Saml2Auth;
 use  Pitbulk\Saml2\Saml2User;
+use Illuminate\Http\Request;
 
 class LoginController extends BaseController 
 {
+private $request = null;
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
@@ -17,6 +19,12 @@ class LoginController extends BaseController
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+
+	public function __construct(Request $request){
+
+		$this->request = $request;
+
+	}
 	
 	public function makeLogin()
 	{
@@ -92,6 +100,11 @@ class LoginController extends BaseController
 	{
 		debug(['$user'=>$user]);
 		return; //json_encode(['status'=>1]);
+	}
+
+	public function debugar(){
+		debug($this->request);
+		return ['status'=>'OK'];
 	}
 
 	

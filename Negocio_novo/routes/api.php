@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\InterceptorHandler;
-
+use Illuminate\Support\Facades\Log;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,5 +19,6 @@ use App\Http\Controllers\InterceptorHandler;
 // });
 // Route::any('/web', 'ApiController@interceptService')->name('web');
 Route::any('/web', function(Request $request){
+	Log::debug($request);
 	return InterceptorHandler::interceptService(array($request));
 })->name('web');
